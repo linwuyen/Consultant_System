@@ -1,0 +1,45 @@
+{
+  "sources": [
+    {
+      "company": "McKinsey",
+      "name": "McKinsey Insights",
+      "url": "https://www.mckinsey.com/insights/en",
+      "allowed_path_prefixes": ["/capabilities/", "/industries/", "/mgi/", "/featured-insights/"]
+    },
+    {
+      "company": "McKinsey",
+      "name": "McKinsey Global Institute",
+      "url": "https://www.mckinsey.com/mgi/overview",
+      "allowed_path_prefixes": ["/mgi/"]
+    },
+    {
+      "company": "BCG",
+      "name": "BCG Publications",
+      "url": "https://www.bcg.com/publications",
+      "allowed_path_prefixes": ["/publications/"]
+    },
+    {
+      "company": "Deloitte",
+      "name": "Deloitte Insights",
+      "url": "https://www.deloitte.com/us/en/insights.html?site=global-en",
+      "allowed_path_prefixes": ["/us/en/insights/", "/global/en/our-thinking/"]
+    },
+    {
+      "company": "PwC",
+      "name": "PwC Today's Issues",
+      "url": "https://www.pwc.com/gx/en/issues.html",
+      "allowed_path_prefixes": ["/gx/en/issues/", "/gx/en/services/", "/gx/en/research-insights/"]
+    }
+  ],
+  "topic_keywords": {
+    "AI": ["artificial intelligence", "generative ai", "gen ai", "agentic", "ai agent", "machine learning"],
+    "Semiconductor": ["semiconductor", "chip", "wafer", "foundry"],
+    "Energy": ["energy", "power", "electricity", "grid", "renewable", "battery"],
+    "Manufacturing": ["manufacturing", "factory", "industrial", "automation"],
+    "Supply Chain": ["supply chain", "logistics", "procurement", "resilience"],
+    "Data Center": ["data center", "datacenter", "cloud infrastructure"],
+    "Economics": ["economy", "economic", "inflation", "productivity", "gdp", "investment"],
+    "Strategy": ["strategy", "growth", "portfolio", "transformation", "value creation"],
+    "Workforce": ["workforce", "talent", "jobs", "skills", "human capital"]
+  }
+}
