@@ -1,85 +1,85 @@
 # Consultant System
 
-一個以公開顧問研究為來源的個人研究知識庫。
-
-目前涵蓋：
+自動更新的顧問研究資料庫與 GitHub Pages 網站，追蹤：
 
 - McKinsey & Company
 - Boston Consulting Group (BCG)
 - Deloitte
 - PwC
 
-## 目標
-
-這個 repository 不鏡像顧問公司的全文內容，而是保存：
-
-1. 官方來源入口
-2. 報告 / 研究的 metadata
-3. 自己整理的摘要、關鍵結論與反證條件
-4. 可被 GitHub Search、Codex、ChatGPT 直接檢索的 Markdown
-5. 機器可讀的 `catalog/sources.csv`
-
-這樣做的核心目標是：**低維護成本、可追溯來源、方便 AI 查詢。**
-
-## Repository 結構
+## 架構
 
 ```text
-Consultant_System/
-├─ README.md
-├─ AGENTS.md
-├─ catalog/
-│  └─ sources.csv
-├─ docs/
-│  └─ QUERY_GUIDE.md
-├─ sources/
-│  ├─ mckinsey.md
-│  ├─ bcg.md
-│  ├─ deloitte.md
-│  └─ pwc.md
-└─ knowledge/
-   └─ README.md
+官方公開研究頁
+      ↓
+scripts/update_reports.py
+      ↓
+data/reports.json + reports.csv
+      ↓
+GitHub Pages 靜態網站
 ```
 
-## 快速查詢
+GitHub Actions 每天 09:17（Asia/Taipei）自動更新一次，也可手動執行 `Update consultant database` workflow。
 
-### GitHub
+## 網站功能
 
-可搜尋：
+- 關鍵字搜尋
+- 公司篩選
+- 主題篩選
+- 年份篩選
+- 日期排序
+- 原始官方來源連結
+- JSON / CSV 資料匯出
+
+## 資料政策
+
+本 repository **不鏡像顧問公司的全文**，只保存公開頁面的：
+
+- 標題
+- 發布日期（若官方頁面可取得）
+- 摘要 / meta description
+- 公司
+- 主題標籤
+- 原始 URL
+- 發現時間與最後確認時間
+
+更新器會讀取各站 `robots.txt`，被禁止抓取的頁面會略過。任何數字與結論仍應回到原始來源驗證。
+
+## 主要檔案
 
 ```text
-AI
-semiconductor
-power electronics
-energy
-manufacturing
-supply chain
-macroeconomics
-Taiwan
+config/sources.json              # 來源與主題關鍵字
+scripts/update_reports.py        # metadata 更新器
+data/reports.json                # 網站主要資料庫
+data/reports.csv                 # CSV 匯出
+site/                            # 無框架靜態前端
+.github/workflows/update-reports.yml
+.github/workflows/pages.yml
 ```
 
-### 對 AI 下指令
+## 本機測試
 
-```text
-請搜尋這個 repo 中與 AI、半導體、能源、製造業有關的顧問研究。
-優先官方來源與 2025-2026 的內容。
-輸出：已知事實、顧問觀點、我的推論、待驗證項目、原始來源。
+```bash
+pip install -r requirements.txt
+python scripts/update_reports.py
 ```
 
-或：
+若要模擬 GitHub Pages：
 
-```text
-比較 McKinsey、BCG、Deloitte、PwC 對 AI 企業導入的觀點，
-列出共識、分歧、數據證據與來源日期。
+```bash
+rm -rf _site
+mkdir -p _site/data
+cp -R site/. _site/
+cp data/reports.json data/reports.csv _site/data/
+python -m http.server 8000 --directory _site
 ```
 
-## 收錄原則
+## GitHub Pages
 
-- 優先官方網站與第一手報告。
-- 不把顧問公司的付費 / 受版權保護全文直接複製進 repo。
-- 保存 URL、標題、日期、類型、主題、摘要、重要數據與自己的分析。
-- 重要數字必須能追溯到原始來源。
-- 過期研究不要刪除，但標記日期，避免把歷史觀點當成現況。
+workflow 使用 GitHub Pages 官方 deployment actions。若 repository 尚未啟用 Pages，請在：
 
-## 初始狀態
+`Settings → Pages → Build and deployment → Source` 選擇 **GitHub Actions**。
 
-2026-08-09 建立第一版骨架，先放入四家顧問公司的官方研究入口，其中 McKinsey 收錄較完整的公開研究分類。
+預期網站網址：
+
+`https://linwuyen.github.io/Consultant_System/`
