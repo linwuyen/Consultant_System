@@ -7,6 +7,10 @@
 - Deloitte
 - PwC
 
+## Website
+
+**Consultant System：** https://linwuyen.github.io/Consultant_System/
+
 ## 架構
 
 ```text
@@ -76,10 +80,6 @@ python -m http.server 8000 --directory _site
 
 ## GitHub Pages
 
-workflow 使用 GitHub Pages 官方 deployment actions。若 repository 尚未啟用 Pages，請在：
+GitHub Pages 使用官方 deployment actions 部署，正式網站：
 
-`Settings → Pages → Build and deployment → Source` 選擇 **GitHub Actions**。
-
-預期網站網址：
-
-`https://linwuyen.github.io/Consultant_System/`
+https://linwuyen.github.io/Consultant_System/
