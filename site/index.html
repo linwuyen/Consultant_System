@@ -8,40 +8,108 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <p class="eyebrow">CONSULTANT SYSTEM</p>
-      <h1>顧問研究資料庫</h1>
-      <p class="sub">McKinsey · BCG · Deloitte · PwC 公開研究索引，自動更新，只保存 metadata、摘要與官方原始連結。</p>
-      <div class="stats" id="stats"></div>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <div>
+        <p class="eyebrow">CONSULTANT SYSTEM</p>
+        <h1>Research Database</h1>
+        <p class="subtitle">McKinsey · BCG · Deloitte · PwC 公開研究索引</p>
+      </div>
+      <nav class="top-actions" aria-label="資料入口">
+        <a class="button ghost" href="./data/reports.json">JSON</a>
+        <a class="button ghost" href="./data/reports.csv">CSV</a>
+        <a class="button" href="https://github.com/linwuyen/Consultant_System" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
     </div>
   </header>
 
-  <main class="wrap">
-    <section class="toolbar" aria-label="搜尋與篩選">
-      <input id="q" type="search" placeholder="搜尋 AI、半導體、能源、製造、供應鏈…" autocomplete="off" />
-      <select id="company"><option value="">所有公司</option></select>
-      <select id="topic"><option value="">所有主題</option></select>
-      <select id="year"><option value="">所有年份</option></select>
-      <select id="sort">
-        <option value="date-desc">日期：新 → 舊</option>
-        <option value="date-asc">日期：舊 → 新</option>
-        <option value="company">公司</option>
-      </select>
+  <main class="shell main-grid">
+    <section class="dashboard" aria-labelledby="db-overview-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">DATABASE OVERVIEW</p>
+          <h2 id="db-overview-title">資料庫狀態</h2>
+        </div>
+        <div class="freshness" id="freshness"><span class="dot"></span><span>載入中</span></div>
+      </div>
+
+      <div class="kpi-grid" id="kpis">
+        <div class="kpi skeleton"></div><div class="kpi skeleton"></div><div class="kpi skeleton"></div><div class="kpi skeleton"></div>
+      </div>
+
+      <div class="coverage-panel">
+        <div class="panel-title-row">
+          <div>
+            <h3>四家公司 Coverage</h3>
+            <p>以資料量、日期完整度與最新研究日期判斷目前索引健康度。</p>
+          </div>
+          <span class="muted" id="updatedAt"></span>
+        </div>
+        <div class="coverage-grid" id="coverage"></div>
+      </div>
     </section>
 
-    <div class="status-row">
-      <span id="resultCount">載入中…</span>
-      <span id="updatedAt"></span>
-    </div>
+    <section class="database" aria-labelledby="database-title">
+      <div class="section-heading db-heading">
+        <div>
+          <p class="section-kicker">RESEARCH RECORDS</p>
+          <h2 id="database-title">研究資料表</h2>
+        </div>
+        <div class="view-toggle" aria-label="顯示模式">
+          <button id="tableViewBtn" class="toggle active" type="button">表格</button>
+          <button id="cardViewBtn" class="toggle" type="button">卡片</button>
+        </div>
+      </div>
 
-    <section id="results" class="results" aria-live="polite"></section>
-    <div id="empty" class="empty" hidden>沒有符合條件的研究。</div>
+      <div class="filter-panel">
+        <label class="search-field">
+          <span>全文搜尋</span>
+          <input id="q" type="search" placeholder="AI、semiconductor、energy、supply chain…" autocomplete="off" />
+        </label>
+        <label><span>公司</span><select id="company"><option value="">全部</option></select></label>
+        <label><span>主題</span><select id="topic"><option value="">全部</option></select></label>
+        <label><span>年份</span><select id="year"><option value="">全部</option></select></label>
+        <label><span>排序</span><select id="sort"><option value="date-desc">最新發布</option><option value="date-asc">最早發布</option><option value="company">公司</option><option value="title">標題 A–Z</option></select></label>
+        <label><span>每頁</span><select id="pageSize"><option>25</option><option selected>50</option><option>100</option></select></label>
+        <button id="clearFilters" class="clear-button" type="button">清除篩選</button>
+      </div>
+
+      <div class="query-status">
+        <div><strong id="resultCount">載入中…</strong><span id="activeFilters"></span></div>
+        <div class="quality-inline" id="qualityInline"></div>
+      </div>
+
+      <div id="tableView" class="table-wrap">
+        <table class="research-table">
+          <thead>
+            <tr>
+              <th class="col-date">發布日期</th>
+              <th class="col-company">公司</th>
+              <th>研究 / 摘要</th>
+              <th class="col-topic">主題</th>
+              <th class="col-source">來源</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+
+      <section id="cardView" class="card-grid" hidden aria-live="polite"></section>
+      <div id="empty" class="empty" hidden>沒有符合目前條件的研究。</div>
+
+      <div class="pagination" id="pagination">
+        <span id="pageInfo"></span>
+        <div>
+          <button id="prevPage" class="page-button" type="button">← 上一頁</button>
+          <button id="nextPage" class="page-button" type="button">下一頁 →</button>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="wrap footer">
-    <p>資料來源均為各顧問公司公開頁面。本站不鏡像付費或受版權保護全文；請以原始來源為準。</p>
-    <p><a href="./data/reports.json">JSON</a> · <a href="./data/reports.csv">CSV</a> · <a href="https://github.com/linwuyen/Consultant_System">GitHub</a></p>
+  <footer class="shell footer">
+    <p>資料為各顧問公司公開頁面的 metadata、摘要與原始連結；不鏡像文章全文。研究結論與數字請回到官方原始來源驗證。</p>
+    <p>自動更新排程：每日 09:17（Asia/Taipei）。</p>
   </footer>
 
   <script src="./app.js" defer></script>
