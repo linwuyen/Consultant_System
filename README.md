@@ -1,85 +1,144 @@
 # Consultant System
 
-自動更新的顧問研究資料庫與 GitHub Pages 網站，追蹤：
+真正有後端的顧問研究資料庫網站，追蹤：
 
 - McKinsey & Company
 - Boston Consulting Group (BCG)
 - Deloitte
 - PwC
 
-## Website
+## Current website
 
-**Consultant System：** https://linwuyen.github.io/Consultant_System/
+GitHub Pages fallback：
 
-## 架構
+https://linwuyen.github.io/Consultant_System/
+
+Cloudflare Worker 部署後，同一份前端會自動切換到 Cloudflare D1 API；GitHub Pages 則保留 JSON fallback，因此切換期間不會中斷。
+
+## Production architecture
 
 ```text
-官方公開研究頁
-      ↓
-scripts/update_reports.py
-      ↓
-data/reports.json + reports.csv
-      ↓
-GitHub Pages 靜態網站
+McKinsey / BCG / Deloitte / PwC
+              ↓
+Cloudflare Worker scheduled crawler
+              ↓
+Cloudflare D1 (SQLite)
+  ├─ reports
+  ├─ sources
+  ├─ crawl_runs
+  └─ schema_meta
+              ↓
+Worker API
+  ├─ GET /api/health
+  ├─ GET /api/stats
+  ├─ GET /api/filters
+  ├─ GET /api/reports
+  └─ POST /api/refresh   (ADMIN_TOKEN protected)
+              ↓
+Static assets / database web UI
 ```
 
-GitHub Actions 每天 09:17（Asia/Taipei）自動更新一次，也可手動執行 `Update consultant database` workflow。
+Cloudflare cron：每天 `01:17 UTC`，即台灣時間 `09:17`。
 
-## 網站功能
+## Database behavior
 
-- 關鍵字搜尋
+`/api/reports` 直接查 Cloudflare D1，不會把整份資料下載到瀏覽器再搜尋。
+
+支援：
+
+- 關鍵字 SQL 查詢
 - 公司篩選
 - 主題篩選
 - 年份篩選
-- 日期排序
-- 原始官方來源連結
-- JSON / CSV 資料匯出
+- 發布日期 / 公司 / 標題排序
+- Server-side pagination
+- 每頁 25 / 50 / 100
+- Coverage dashboard
+- 最新研究日期
+- D1 crawl run 狀態
 
-## 資料政策
+第一次 D1 是空資料庫時，Worker 會把 repository 現有 `data/reports.json` 當一次性 seed 匯入；之後 D1 成為正式資料源。
 
-本 repository **不鏡像顧問公司的全文**，只保存公開頁面的：
+## Cloudflare files
+
+```text
+wrangler.jsonc                    # Worker / D1 / assets / cron
+worker/index.js                   # API + crawler + scheduled handler
+migrations/0001_init.sql          # D1 schema
+site/                             # 前端
+.github/workflows/cloudflare-worker.yml
+```
+
+D1 binding 使用 Cloudflare Wrangler automatic resource provisioning：`wrangler.jsonc` 不硬編碼 account-specific database ID，第一次 deploy 時 Wrangler 可自動建立並綁定 D1。
+
+## GitHub Pages compatibility
+
+GitHub Pages 仍保留：
+
+```text
+scripts/update_reports.py
+data/reports.json
+data/reports.csv
+.github/workflows/pages.yml
+```
+
+前端啟動時會先測試 `/api/health`：
+
+- API 可用 → Cloudflare D1 mode
+- API 不可用 → GitHub JSON fallback mode
+
+因此 Cloudflare migration 不會讓原網站直接失效。
+
+## Cloudflare deployment
+
+GitHub Actions workflow 已建立。需要 repository secrets：
+
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
+
+兩個 secrets 存在後，push `worker/**`、`site/**`、`migrations/**`、`wrangler.jsonc` 或 `package.json` 會自動執行：
+
+```bash
+npm install
+npx wrangler deploy --dry-run
+npx wrangler deploy
+```
+
+也可手動執行 `Deploy Cloudflare Worker` workflow。
+
+## D1 schema
+
+核心表：
+
+```sql
+reports(
+  id,
+  company,
+  title,
+  published_at,
+  url,
+  description,
+  topics_json,
+  source_name,
+  discovered_at,
+  last_seen_at,
+  active
+)
+```
+
+另外保存 `sources` 與 `crawl_runs`，因此可以追蹤來源健康度與每次更新結果，而不只是存文章列表。
+
+## Data policy
+
+本 repository / D1 不鏡像顧問公司的付費或受版權保護全文，只保存公開頁面的 metadata：
 
 - 標題
-- 發布日期（若官方頁面可取得）
+- 發布日期
 - 摘要 / meta description
 - 公司
 - 主題標籤
 - 原始 URL
-- 發現時間與最後確認時間
+- 發現時間
+- 最後確認時間
 
-更新器會讀取各站 `robots.txt`，被禁止抓取的頁面會略過。任何數字與結論仍應回到原始來源驗證。
-
-## 主要檔案
-
-```text
-config/sources.json              # 來源與主題關鍵字
-scripts/update_reports.py        # metadata 更新器
-data/reports.json                # 網站主要資料庫
-data/reports.csv                 # CSV 匯出
-site/                            # 無框架靜態前端
-.github/workflows/update-reports.yml
-.github/workflows/pages.yml
-```
-
-## 本機測試
-
-```bash
-pip install -r requirements.txt
-python scripts/update_reports.py
-```
-
-若要模擬 GitHub Pages：
-
-```bash
-rm -rf _site
-mkdir -p _site/data
-cp -R site/. _site/
-cp data/reports.json data/reports.csv _site/data/
-python -m http.server 8000 --directory _site
-```
-
-## GitHub Pages
-
-GitHub Pages 使用官方 deployment actions 部署，正式網站：
-
-https://linwuyen.github.io/Consultant_System/
+研究結論與數字仍應回到官方原始來源驗證。
