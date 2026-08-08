@@ -23,22 +23,32 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "sources.json"
 JSON_PATH = ROOT / "data" / "reports.json"
 CSV_PATH = ROOT / "data" / "reports.csv"
-USER_AGENT = "ConsultantSystemBot/1.0 (+https://github.com/linwuyen/Consultant_System; metadata-only research index)"
-MAX_LINKS_PER_SOURCE = 50
+USER_AGENT = "ConsultantSystemBot/1.1 (+https://github.com/linwuyen/Consultant_System; metadata-only research index)"
+MAX_LINKS_PER_SOURCE = 60
 MAX_REPORTS = 2000
 REQUEST_DELAY_SECONDS = 0.25
 TIMEOUT = 20
 
 EXCLUDE_PARTS = (
-    "/careers", "/about", "/contact", "/locations", "/people", "/alumni",
+    "/careers", "/about/people", "/contact", "/locations", "/people/", "/alumni",
     "/privacy", "/terms", "/cookies", "/events", "/search", "/login",
-    "/subscribe", "/newsletter", "/sitemap",
+    "/subscribe", "/newsletter", "/sitemap", "/userprofile", "/subscription",
 )
 
-DATE_PATTERNS = [
-    re.compile(r"\b(20\d{2})[-/](0?[1-9]|1[0-2])[-/](0?[1-9]|[12]\d|3[01])\b"),
-    re.compile(r"\b(20\d{2})\b"),
-]
+GENERIC_LINK_TEXT = {
+    "", "learn more", "read more", "view more", "visit page", "see all",
+    "more", "menu", "explore", "view all", "download", "home",
+}
+
+MONTHS = {
+    "january": 1, "february": 2, "march": 3, "april": 4,
+    "may": 5, "june": 6, "july": 7, "august": 8,
+    "september": 9, "october": 10, "november": 11, "december": 12,
+}
+MONTH_RE = "|".join(name.title() for name in MONTHS)
+NUMERIC_DATE_RE = re.compile(r"\b(20\d{2})[-/](0?[1-9]|1[0-2])[-/](0?[1-9]|[12]\d|3[01])\b")
+MDY_DATE_RE = re.compile(rf"\b({MONTH_RE})\s+(\d{{1,2}}),\s*(20\d{{2}})\b", re.I)
+DMY_DATE_RE = re.compile(rf"\b(\d{{1,2}})\s+({MONTH_RE})\s+(20\d{{2}})\b", re.I)
 
 @dataclass
 class Source:
@@ -129,27 +139,110 @@ def looks_like_report(url: str, source: Source) -> bool:
         return False
     if source.allowed_path_prefixes and not any(path.startswith(x.lower()) for x in source.allowed_path_prefixes):
         return False
-    if path in ("", "/") or path.endswith((".jpg", ".jpeg", ".png", ".gif", ".svg", ".zip", ".mp4")):
+    if path in ("", "/") or path.endswith((".jpg", ".jpeg", ".png", ".gif", ".svg", ".zip", ".mp4", ".pdf")):
         return False
     return len(path.strip("/").split("/")) >= 2
 
 
+def normalize_date(raw: str) -> str:
+    raw = re.sub(r"\s+", " ", raw or "").strip()
+    if not raw:
+        return ""
+
+    if len(raw) <= 40:
+        try:
+            value = raw.replace("Z", "+00:00")
+            dt = datetime.fromisoformat(value)
+            return dt.date().isoformat()
+        except ValueError:
+            pass
+
+    m = NUMERIC_DATE_RE.search(raw)
+    if m:
+        y, mo, d = map(int, m.groups())
+        try:
+            return datetime(y, mo, d).date().isoformat()
+        except ValueError:
+            return ""
+
+    m = MDY_DATE_RE.search(raw)
+    if m:
+        month, day, year = m.groups()
+        try:
+            return datetime(int(year), MONTHS[month.lower()], int(day)).date().isoformat()
+        except (ValueError, KeyError):
+            return ""
+
+    m = DMY_DATE_RE.search(raw)
+    if m:
+        day, month, year = m.groups()
+        try:
+            return datetime(int(year), MONTHS[month.lower()], int(day)).date().isoformat()
+        except (ValueError, KeyError):
+            return ""
+
+    return ""
+
+
+def anchor_context(a: Any) -> str:
+    parent = a.parent
+    if parent is None:
+        return a.get_text(" ", strip=True)
+    text = parent.get_text(" ", strip=True)
+    return re.sub(r"\s+", " ", text)[:700]
+
+
+def candidate_score(a: Any, url: str) -> int:
+    path = urlparse(url).path.lower()
+    label = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
+    context = anchor_context(a)
+    score = 0
+
+    if normalize_date(context):
+        score += 20
+    if re.search(r"/20\d{2}/", path):
+        score += 12
+    for marker, weight in (
+        ("/our-insights/", 10),
+        ("/publications/", 9),
+        ("/research-insights/", 9),
+        ("/the-leadership-agenda/", 8),
+        ("/mgi/our-research/", 8),
+        ("/insights/", 5),
+        ("/issues/", 4),
+    ):
+        if marker in path:
+            score += weight
+
+    if len(label) >= 24:
+        score += 4
+    if label.lower() in GENERIC_LINK_TEXT:
+        score -= 10
+    return score
+
+
 def discover_links(html: str, source: Source) -> list[str]:
     soup = BeautifulSoup(html, "html.parser")
-    links: list[str] = []
-    seen: set[str] = set()
-    for a in soup.find_all("a", href=True):
+    scope = soup.find("main") or soup
+    candidates: dict[str, tuple[int, int]] = {}
+
+    for order, a in enumerate(scope.find_all("a", href=True)):
+        if a.find_parent(["nav", "header", "footer"]):
+            continue
         raw = a.get("href", "").strip()
         if not raw or raw.startswith(("#", "mailto:", "javascript:")):
             continue
+
         url = canonicalize(urljoin(source.url, raw))
-        if url in seen or not looks_like_report(url, source):
+        if not looks_like_report(url, source):
             continue
-        seen.add(url)
-        links.append(url)
-        if len(links) >= MAX_LINKS_PER_SOURCE:
-            break
-    return links
+
+        scored = (candidate_score(a, url), -order)
+        if url not in candidates or scored > candidates[url]:
+            candidates[url] = scored
+
+    ordered = sorted(candidates, key=lambda u: candidates[u], reverse=True)
+    return ordered[:MAX_LINKS_PER_SOURCE]
 
 
 def jsonld_objects(soup: BeautifulSoup) -> list[dict[str, Any]]:
@@ -178,29 +271,41 @@ def meta_content(soup: BeautifulSoup, *selectors: tuple[str, str]) -> str:
 
 def clean_title(title: str, company: str) -> str:
     title = re.sub(r"\s+", " ", title).strip()
-    for suffix in (f" | {company}", f" - {company}", " | McKinsey & Company", " | BCG", " | Deloitte", " | PwC"):
+    for suffix in (
+        f" | {company}", f" - {company}", " | McKinsey & Company",
+        " | BCG", " | Deloitte", " | PwC",
+    ):
         if title.endswith(suffix):
             title = title[: -len(suffix)].strip()
     return title[:300]
 
 
-def normalize_date(raw: str) -> str:
-    raw = raw.strip()
-    if not raw:
-        return ""
-    try:
-        value = raw.replace("Z", "+00:00")
-        dt = datetime.fromisoformat(value)
-        return dt.date().isoformat()
-    except ValueError:
-        pass
-    m = DATE_PATTERNS[0].search(raw)
-    if m:
-        y, mo, d = map(int, m.groups())
-        try:
-            return datetime(y, mo, d).date().isoformat()
-        except ValueError:
-            return ""
+def visible_date(soup: BeautifulSoup) -> str:
+    h1 = soup.find("h1")
+    if h1:
+        parts: list[str] = []
+        chars = 0
+        for node in h1.find_all_next(string=True):
+            parent_name = getattr(getattr(node, "parent", None), "name", "")
+            if parent_name in {"script", "style", "noscript"}:
+                continue
+            text = re.sub(r"\s+", " ", str(node)).strip()
+            if not text:
+                continue
+            parts.append(text)
+            chars += len(text)
+            if chars >= 1800:
+                break
+        found = normalize_date(" ".join(parts))
+        if found:
+            return found
+
+    main = soup.find("main")
+    if main:
+        found = normalize_date(main.get_text(" ", strip=True)[:2200])
+        if found:
+            return found
+
     return ""
 
 
@@ -210,7 +315,13 @@ def infer_topics(text: str, topic_keywords: dict[str, list[str]]) -> list[str]:
     return topics[:6]
 
 
-def extract_report(html: str, url: str, source: Source, topic_keywords: dict[str, list[str]], now: str) -> dict[str, Any] | None:
+def extract_report(
+    html: str,
+    url: str,
+    source: Source,
+    topic_keywords: dict[str, list[str]],
+    now: str,
+) -> dict[str, Any] | None:
     soup = BeautifulSoup(html, "html.parser")
     objects = jsonld_objects(soup)
 
@@ -224,22 +335,42 @@ def extract_report(html: str, url: str, source: Source, topic_keywords: dict[str
     if not title or len(title) < 5:
         return None
 
-    description = meta_content(soup, ("property", "og:description"), ("name", "description"), ("name", "twitter:description"))
+    description = meta_content(
+        soup,
+        ("property", "og:description"),
+        ("name", "description"),
+        ("name", "twitter:description"),
+    )
     description = re.sub(r"\s+", " ", description).strip()[:700]
 
-    date = meta_content(soup, ("property", "article:published_time"), ("name", "date"), ("name", "publish-date"), ("name", "publication_date"))
+    date = visible_date(soup)
+
     for obj in objects:
         if not date and obj.get("datePublished"):
-            date = str(obj["datePublished"])
+            date = normalize_date(str(obj["datePublished"]))
         if not description and obj.get("description"):
             description = re.sub(r"\s+", " ", str(obj["description"])).strip()[:700]
         if not title and obj.get("headline"):
             title = clean_title(str(obj["headline"]), source.company)
+
     if not date:
-        t = soup.find("time")
-        if t:
-            date = str(t.get("datetime") or t.get_text(" ", strip=True))
-    date = normalize_date(date)
+        raw_meta_date = meta_content(
+            soup,
+            ("property", "article:published_time"),
+            ("name", "date"),
+            ("name", "publish-date"),
+            ("name", "publication_date"),
+        )
+        date = normalize_date(raw_meta_date)
+
+    if not date:
+        for tag in soup.find_all("time"):
+            date = normalize_date(str(tag.get("datetime") or tag.get_text(" ", strip=True)))
+            if date:
+                break
+
+    if not date:
+        return None
 
     text_for_topics = f"{title} {description}"
     topics = infer_topics(text_for_topics, topic_keywords)
@@ -264,7 +395,11 @@ def load_existing() -> dict[str, dict[str, Any]]:
         return {}
     try:
         payload = json.loads(JSON_PATH.read_text(encoding="utf-8"))
-        return {item["url"]: item for item in payload.get("reports", []) if item.get("url")}
+        return {
+            item["url"]: item
+            for item in payload.get("reports", [])
+            if item.get("url") and item.get("date")
+        }
     except (json.JSONDecodeError, OSError):
         return {}
 
@@ -288,9 +423,12 @@ def main() -> int:
         listing = fetch_html(session, source.url, robots_cache)
         if not listing:
             continue
+
         successful_sources += 1
         links = discover_links(listing, source)
-        print(f"  discovered {len(links)} candidate links")
+        accepted = 0
+        print(f"  discovered {len(links)} ranked candidate links")
+
         for url in links:
             html = fetch_html(session, url, robots_cache)
             if not html:
@@ -298,10 +436,14 @@ def main() -> int:
             item = extract_report(html, url, source, topic_keywords, now)
             if not item:
                 continue
+
             old = reports.get(url)
             if old:
                 item["discovered_at"] = old.get("discovered_at", now)
             reports[url] = item
+            accepted += 1
+
+        print(f"  accepted {accepted} dated research items")
 
     if successful_sources == 0:
         print("ERROR: no source listing could be fetched; preserving previous database", file=sys.stderr)
@@ -309,9 +451,15 @@ def main() -> int:
 
     ordered = sorted(reports.values(), key=date_sort_key, reverse=True)[:MAX_REPORTS]
     JSON_PATH.parent.mkdir(parents=True, exist_ok=True)
-    JSON_PATH.write_text(json.dumps({"updated_at": now, "reports": ordered}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    JSON_PATH.write_text(
+        json.dumps({"updated_at": now, "reports": ordered}, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
-    fields = ["id", "company", "title", "date", "url", "description", "topics", "source_name", "discovered_at", "last_seen_at"]
+    fields = [
+        "id", "company", "title", "date", "url", "description", "topics",
+        "source_name", "discovered_at", "last_seen_at",
+    ]
     with CSV_PATH.open("w", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fields)
         writer.writeheader()
