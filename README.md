@@ -91,17 +91,30 @@ data/reports.csv
 
 ## Cloudflare deployment
 
-GitHub Actions workflow 已建立。需要 repository secrets：
+GitHub Actions workflow 已建立。唯一必需的 repository secret：
 
 - `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
 
-兩個 secrets 存在後，push `worker/**`、`site/**`、`migrations/**`、`wrangler.jsonc` 或 `package.json` 會自動執行：
+`CLOUDFLARE_ACCOUNT_ID` 是可選的。若未設定，workflow 會先用 Cloudflare API token 嘗試自動解析 Account ID；若無法解析，Wrangler 仍會依 token context 嘗試推斷 account。
 
-```bash
+push `worker/**`、`site/**`、`migrations/**`、`wrangler.jsonc`、`package.json` 或 deployment workflow 本身時，會自動執行：
+
+```text
+Verify API token
+↓
+Resolve Cloudflare account when possible
+↓
 npm install
-npx wrangler deploy --dry-run
-npx wrangler deploy
+↓
+wrangler whoami
+↓
+wrangler deploy --dry-run
+↓
+wrangler deploy
+↓
+D1 automatic provisioning
+↓
+GET /api/health
 ```
 
 也可手動執行 `Deploy Cloudflare Worker` workflow。
