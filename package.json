@@ -3,9 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "check": "wrangler deploy --dry-run",
+    "generate:config": "node scripts/generate_worker_config.mjs",
+    "check:syntax": "node --check worker/index.js && node --check worker/config.generated.js && node --check site/app.js",
+    "dev": "npm run generate:config && wrangler dev",
+    "deploy": "npm run generate:config && wrangler deploy",
+    "check": "npm run generate:config && npm run check:syntax && wrangler deploy --dry-run",
     "migrate:local": "wrangler d1 migrations apply DB --local",
     "migrate:remote": "wrangler d1 migrations apply DB --remote"
   },
