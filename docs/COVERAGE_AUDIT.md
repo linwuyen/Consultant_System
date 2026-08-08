@@ -1,94 +1,95 @@
 # Four-firm Coverage Audit
 
-Audit date: 2026-08-09 (Asia/Taipei)
+Audit baseline date: 2026-08-09 (Asia/Taipei)
 
-Scope: McKinsey & Company, BCG, Deloitte, PwC public research metadata collected by `scripts/update_reports.py`.
+Scope: McKinsey & Company, BCG, Deloitte, PwC public research metadata.
 
 ## Baseline before crawler quality fixes
 
-Database snapshot: `2026-08-08T17:09:53Z` (2026-08-09 01:09:53 Asia/Taipei)
+Initial JSON snapshot: `2026-08-08T17:09:53Z`.
 
 | Company | Rows | Usable dated research | Baseline verdict | Main finding |
 |---|---:|---:|---|---|
 | McKinsey | 0 | 0 | FAIL | Current official Insights/MGI pages had recent research, but discovery returned no stored records. |
 | BCG | 6 | 6 | PARTIAL | Article URLs were valid, but publication dates were parsed incorrectly. |
-| Deloitte | 50 | ~6 | FAIL | The first-link cap was consumed by topic/industry/research-center navigation pages. |
-| PwC | 49 | 0 | FAIL | Almost all stored rows were service/category pages rather than dated research. |
+| Deloitte | 50 | ~6 | FAIL | Topic/industry/research-center navigation pages consumed the discovery budget. |
+| PwC | 49 | 0 | FAIL | Service/category pages dominated instead of dated research. |
 
-## External spot checks used for the audit
+## Production audit path
 
-### McKinsey
+The production system no longer treats the legacy JSON audit as the authoritative gate.
 
-Official Insights and MGI pages showed current material including:
+Cloudflare Worker refresh now performs:
 
-- `Escaping the pilot trap: Building HR for the agentic era` — 2026-08-04
-- `How do we reach universal prosperity by 2100?` — 2026-08-05
-- `The global balance sheet 2026: Imbalance and divergence` — 2026-07-23
+```text
+official source pages
+↓
+robots.txt check
+↓
+ranked article discovery
+↓
+valid publication-date extraction
+↓
+D1 upsert
+↓
+limited stale URL revalidation
+↓
+D1 four-firm coverage audit
+↓
+coverage_audits history
+```
 
-Baseline database contained no McKinsey rows.
+Current endpoint:
 
-### BCG
+```text
+GET /api/coverage
+```
 
-Official `Most Recent Insights` showed:
+## Acceptance criteria
 
-- `AI-First Procurement: How Autonomous Agents Drive Competitive Advantage` — 2026-08-07
-- `The Unexpected Ways GLP-1s Are Transforming Consumer Behavior` — 2026-08-06
-- `Do You Own Your Enterprise Cortex?` — 2026-08-06
-- `The AI-First Asset Manager` — 2026-08-06
-- `How CEOs Can Make the Most of Their Time After Leaving the Corner Office` — 2026-08-05
-- `Entrepreneurial Capitalism Will Be Built City by City` — 2026-08-05
+Per company:
 
-The baseline database had these article URLs, but dates were several days earlier, proving that page metadata date selection was unreliable.
+- `PASS`
+  - at least 3 active records;
+  - every active record included in the aggregate has a publication date;
+  - latest report is no older than 60 days.
+- `PARTIAL`
+  - at least one dated active record;
+  - latest report is no older than 120 days.
+- `FAIL`
+  - no usable recent coverage.
 
-### Deloitte
+Production workflow behavior:
 
-Official Deloitte Insights currently highlights real articles such as:
+- any company `FAIL` → final workflow quality gate fails;
+- `PARTIAL` → warning, deployment and fallback snapshot remain available;
+- all `PASS` → full coverage pass.
 
-- `2026 Deloitte Back-to-School Survey`
-- `AI adoption to adaptation`
-- `Rewiring the enterprise operating model for AI scale`
+The audit is intentionally a minimum quality gate, not proof of exhaustive indexing.
 
-The baseline database instead contained many undated hub pages such as `Industry`, `Operations`, `Strategy`, `Technology management`, and research-center landing pages.
+## Source-of-truth policy
 
-### PwC
+Canonical source configuration is:
 
-Official PwC pages expose dated research such as:
+```text
+config/sources.json
+```
 
-- `The AI advantage hiding in risk management` — 2026-07-20
-- `Where to play in the increasingly diverse data centre economy` — 2026-07-14
-- Energy, utilities & resources publications with 2026-06/07 items
-- Public Sector Research Centre with 2026 research items
+`scripts/generate_worker_config.mjs` generates the Worker deployment config from it. This prevents the Python fallback crawler and the Cloudflare Worker from drifting into different source lists.
 
-The baseline database contained 49 PwC rows, almost all undated service pages such as `Consulting services`, `Deals`, `Global tax services`, and `Workforce`.
+## Data-quality protections now implemented
 
-## Root causes
+- `<main>`-first discovery and ranked links instead of first-N DOM order.
+- Research/article-like path scoring.
+- Publication date required before a discovered page enters D1.
+- Visible `<time>` date preferred before JSON-LD/meta fallback.
+- Metadata-only storage; no full article mirroring.
+- robots.txt enforcement before listing/article fetches.
+- 404/410 revalidation marks stale records inactive.
+- `last_checked_at`, `failure_count`, and `last_http_status` stored in D1.
+- Coverage history stored in `coverage_audits`.
+- D1 JSON/CSV exports are used to keep GitHub Pages fallback snapshots synchronized.
 
-1. Discovery scanned document links in DOM order and stopped after 50 candidates, allowing site-wide navigation to consume the budget.
-2. `looks_like_report()` only validated URL paths; it did not distinguish a research article from a service/category landing page.
-3. Date parsing handled ISO/numeric dates but not common English publication labels such as `August 7, 2026` or `09 July 2026`.
-4. Date extraction trusted page metadata before the visible publication date. BCG exposed a concrete counterexample where this produced wrong dates.
-5. Legacy undated false positives were preserved forever because the database merge never pruned them.
-6. PwC's global site mixes research, issues, industries, and services heavily, so one generic landing page is insufficient for useful coverage.
+## Legacy audit
 
-## Fixes deployed
-
-- Search inside `<main>` first and skip links inside `nav/header/footer`.
-- Rank all candidate links before applying the per-source cap instead of stopping at the first links encountered.
-- Boost article-like paths and links whose surrounding card text contains a publication date.
-- Parse both `Month DD, YYYY` and `DD Month YYYY` publication formats.
-- Prefer a visible date near the article H1 over potentially stale metadata dates.
-- Require a valid publication date before a page can enter the research database.
-- Purge legacy undated rows on the next successful refresh while preserving dated historical research.
-- Expand PwC sources to Today’s Issues, C-suite Insights, Energy Publications, and the Public Sector Research Centre.
-- Add `scripts/audit_coverage.py` for repeatable four-company quality checks.
-
-## Automated acceptance criteria
-
-`python scripts/audit_coverage.py` returns PASS only when:
-
-- all four companies have at least 3 dated rows;
-- each company's latest stored report is no older than 60 days;
-- there are no undated rows;
-- there are no duplicate URLs.
-
-The automated gate is intentionally a minimum coverage test, not proof of exhaustive indexing. Periodic external spot checks against each firm's official latest page remain necessary when site structures change.
+`scripts/audit_coverage.py` remains useful only for the manual emergency JSON fallback workflow. It is no longer the production source of truth.
