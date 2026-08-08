@@ -1,6 +1,13 @@
 name: Update consultant database
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/**"
+      - "config/**"
+      - "requirements.txt"
+      - ".github/workflows/update-reports.yml"
   workflow_dispatch:
   schedule:
     - cron: "17 1 * * *" # 09:17 Asia/Taipei
