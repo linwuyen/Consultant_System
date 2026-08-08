@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="McKinsey、BCG、Deloitte、PwC 公開研究自動更新資料庫" />
+  <title>Consultant Research Database</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">CONSULTANT SYSTEM</p>
+      <h1>顧問研究資料庫</h1>
+      <p class="sub">McKinsey · BCG · Deloitte · PwC 公開研究索引，自動更新，只保存 metadata、摘要與官方原始連結。</p>
+      <div class="stats" id="stats"></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="toolbar" aria-label="搜尋與篩選">
+      <input id="q" type="search" placeholder="搜尋 AI、半導體、能源、製造、供應鏈…" autocomplete="off" />
+      <select id="company"><option value="">所有公司</option></select>
+      <select id="topic"><option value="">所有主題</option></select>
+      <select id="year"><option value="">所有年份</option></select>
+      <select id="sort">
+        <option value="date-desc">日期：新 → 舊</option>
+        <option value="date-asc">日期：舊 → 新</option>
+        <option value="company">公司</option>
+      </select>
+    </section>
+
+    <div class="status-row">
+      <span id="resultCount">載入中…</span>
+      <span id="updatedAt"></span>
+    </div>
+
+    <section id="results" class="results" aria-live="polite"></section>
+    <div id="empty" class="empty" hidden>沒有符合條件的研究。</div>
+  </main>
+
+  <footer class="wrap footer">
+    <p>資料來源均為各顧問公司公開頁面。本站不鏡像付費或受版權保護全文；請以原始來源為準。</p>
+    <p><a href="./data/reports.json">JSON</a> · <a href="./data/reports.csv">CSV</a> · <a href="https://github.com/linwuyen/Consultant_System">GitHub</a></p>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
