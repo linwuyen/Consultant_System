@@ -162,14 +162,13 @@ jobs:
         run: |
           curl --fail --silent --show-error "$WORKER_URL/api/coverage" -o /tmp/coverage.json
           python - <<'PY'
-          import json, sys
+          import json
           data = json.load(open('/tmp/coverage.json', encoding='utf-8'))
           print(json.dumps(data, ensure_ascii=False, indent=2))
           failures = [x['company'] for x in data.get('companies', []) if x.get('status') == 'FAIL']
           partial = [x['company'] for x in data.get('companies', []) if x.get('status') == 'PARTIAL']
           if failures:
-              print('::error::Coverage FAIL: ' + ', '.join(failures))
-              sys.exit(1)
+              print('::warning::Coverage FAIL will be enforced after snapshot sync: ' + ', '.join(failures))
           if partial:
               print('::warning::Coverage PARTIAL: ' + ', '.join(partial))
           PY
@@ -208,10 +207,23 @@ jobs:
         run: |
           if git diff --quiet -- data/reports.json data/reports.csv README.md; then
             echo "No snapshot changes"
-            exit 0
+          else
+            git config user.name "consultant-system-bot"
+            git config user.email "consultant-system-bot@users.noreply.github.com"
+            git add data/reports.json data/reports.csv README.md
+            git commit -m "chore: sync D1 production snapshot"
+            git push
           fi
-          git config user.name "consultant-system-bot"
-          git config user.email "consultant-system-bot@users.noreply.github.com"
-          git add data/reports.json data/reports.csv README.md
-          git commit -m "chore: sync D1 production snapshot"
-          git push
+
+      - name: Enforce final coverage gate
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, sys
+          data = json.load(open('/tmp/coverage.json', encoding='utf-8'))
+          failures = [x['company'] for x in data.get('companies', []) if x.get('status') == 'FAIL']
+          if failures:
+              print('::error::Coverage FAIL: ' + ', '.join(failures))
+              sys.exit(1)
+          print('Coverage gate PASS/PARTIAL: no company is at FAIL.')
+          PY
