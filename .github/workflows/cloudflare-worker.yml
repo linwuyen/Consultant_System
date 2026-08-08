@@ -7,20 +7,26 @@ on:
     paths:
       - "worker/**"
       - "site/**"
+      - "config/**"
+      - "scripts/generate_worker_config.mjs"
       - "migrations/**"
       - "wrangler.jsonc"
       - "package.json"
       - ".github/workflows/cloudflare-worker.yml"
 
+permissions:
+  contents: write
+
+concurrency:
+  group: cloudflare-production
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
+    timeout-minutes: 30
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      # Optional. If this secret is absent, the workflow resolves it from the
-      # token when possible; Wrangler can also infer it for a single account.
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
 
     steps:
@@ -33,50 +39,38 @@ jobs:
             echo "::error::Missing GitHub Actions secret: CLOUDFLARE_API_TOKEN"
             exit 1
           fi
-          echo "Cloudflare API token is configured."
 
       - name: Resolve Cloudflare account ID
         shell: bash
         run: |
           if [[ -n "$CLOUDFLARE_ACCOUNT_ID" ]]; then
-            echo "Using CLOUDFLARE_ACCOUNT_ID already configured in GitHub Secrets."
+            echo "Using configured account ID."
             exit 0
           fi
-
-          echo "No account ID secret configured; attempting discovery from the API token..."
           set +e
           HTTP_BODY=$(curl --silent --show-error --fail \
             "https://api.cloudflare.com/client/v4/accounts?per_page=50" \
             -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
             -H "Content-Type: application/json")
-          CURL_STATUS=$?
+          STATUS=$?
           set -e
-
-          if [[ "$CURL_STATUS" -ne 0 || -z "$HTTP_BODY" ]]; then
-            echo "::warning::Account discovery API was unavailable. Wrangler will infer the account from the token."
+          if [[ "$STATUS" -ne 0 || -z "$HTTP_BODY" ]]; then
+            echo "::warning::Could not resolve account ID through API; Wrangler will attempt inference."
             exit 0
           fi
-
           export HTTP_BODY
           python - <<'PY'
           import json, os
-          from pathlib import Path
-
-          payload = json.loads(os.environ["HTTP_BODY"])
-          accounts = payload.get("result") or []
-          if len(accounts) == 1:
-              account = accounts[0]
-              account_id = account.get("id", "")
-              account_name = account.get("name", "Cloudflare account")
-              if account_id:
-                  with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
-                      f.write(f"CLOUDFLARE_ACCOUNT_ID={account_id}\n")
-                  print(f"Resolved Cloudflare account: {account_name}")
-          elif len(accounts) == 0:
-              print("::warning::No accounts returned by the API. Wrangler will attempt account inference.")
+          payload = json.loads(os.environ['HTTP_BODY'])
+          accounts = payload.get('result') or []
+          if len(accounts) == 1 and accounts[0].get('id'):
+              with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as f:
+                  f.write(f"CLOUDFLARE_ACCOUNT_ID={accounts[0]['id']}\n")
+              print(f"Resolved account: {accounts[0].get('name', 'Cloudflare account')}")
+          elif len(accounts) > 1:
+              print('::warning::Multiple accounts available; Wrangler will infer from token context.')
           else:
-              names = ", ".join(str(a.get("name", "unnamed")) for a in accounts)
-              print(f"::warning::Multiple Cloudflare accounts are accessible ({names}). Wrangler will select/infer according to the token context.")
+              print('::warning::No account returned; Wrangler will attempt inference.')
           PY
 
       - uses: actions/setup-node@v4
@@ -86,40 +80,138 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Generate canonical Worker config
+        run: npm run generate:config
+
+      - name: Syntax checks
+        run: npm run check:syntax
+
       - name: Show Wrangler identity
         run: npx wrangler whoami
 
-      - name: Validate Worker
+      - name: Validate Worker bundle
         run: npx wrangler deploy --dry-run
 
-      - name: Deploy Worker and auto-provision D1
+      - name: Provision resources and deploy Worker
         id: deploy
         shell: bash
         run: |
           set -o pipefail
           npx wrangler deploy 2>&1 | tee /tmp/wrangler-deploy.log
-
           WORKER_URL=$(grep -Eo 'https://[^ ]+\.workers\.dev[^ ]*' /tmp/wrangler-deploy.log | tail -1 | sed 's/[[:punct:]]$//' || true)
-          if [[ -n "$WORKER_URL" ]]; then
-            echo "worker_url=$WORKER_URL" >> "$GITHUB_OUTPUT"
-            echo "Deployed URL: $WORKER_URL"
-          else
-            echo "No workers.dev URL parsed from Wrangler output; deploy itself completed successfully."
+          if [[ -z "$WORKER_URL" ]]; then
+            echo "::error::Deployment completed but workers.dev URL could not be determined."
+            cat /tmp/wrangler-deploy.log
+            exit 1
           fi
+          echo "worker_url=$WORKER_URL" >> "$GITHUB_OUTPUT"
+          echo "WORKER_URL=$WORKER_URL" >> "$GITHUB_ENV"
+          echo "Deployed URL: $WORKER_URL"
 
-      - name: Verify deployed API
-        if: ${{ steps.deploy.outputs.worker_url != '' }}
+      - name: Apply D1 migrations
+        run: npx wrangler d1 migrations apply DB --remote
+
+      - name: Install rotating refresh secret
         shell: bash
         run: |
-          URL="${{ steps.deploy.outputs.worker_url }}/api/health"
-          echo "Checking $URL"
+          ADMIN_TOKEN=$(openssl rand -hex 32)
+          echo "ADMIN_TOKEN=$ADMIN_TOKEN" >> "$GITHUB_ENV"
+          printf '%s' "$ADMIN_TOKEN" | npx wrangler secret put ADMIN_TOKEN
+
+      - name: Verify D1 health
+        shell: bash
+        run: |
+          URL="$WORKER_URL/api/health"
           for attempt in 1 2 3 4 5; do
-            if curl --fail --silent --show-error "$URL"; then
-              echo
-              echo "Cloudflare Worker health check passed."
-              exit 0
+            BODY=$(curl --fail --silent --show-error "$URL" || true)
+            if [[ -n "$BODY" ]]; then
+              export BODY
+              if python - <<'PY'
+          import json, os, sys
+          data = json.loads(os.environ['BODY'])
+          if data.get('ok') is True and str(data.get('schema_version')) == '2':
+              print('Health PASS:', json.dumps(data, ensure_ascii=False))
+              sys.exit(0)
+          print('Health not ready:', data)
+          sys.exit(1)
+          PY
+              then
+                exit 0
+              fi
             fi
             sleep 3
           done
-          echo "::error::Worker deployed but /api/health did not become healthy."
+          echo "::error::D1 health check failed or schema_version is not 2."
           exit 1
+
+      - name: Run production refresh
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --max-time 240 \
+            -X POST "$WORKER_URL/api/refresh" \
+            -H "x-admin-token: $ADMIN_TOKEN" \
+            -o /tmp/refresh.json
+          python - <<'PY'
+          import json
+          data = json.load(open('/tmp/refresh.json', encoding='utf-8'))
+          print(json.dumps(data, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Audit four-firm D1 coverage
+        shell: bash
+        run: |
+          curl --fail --silent --show-error "$WORKER_URL/api/coverage" -o /tmp/coverage.json
+          python - <<'PY'
+          import json, sys
+          data = json.load(open('/tmp/coverage.json', encoding='utf-8'))
+          print(json.dumps(data, ensure_ascii=False, indent=2))
+          failures = [x['company'] for x in data.get('companies', []) if x.get('status') == 'FAIL']
+          partial = [x['company'] for x in data.get('companies', []) if x.get('status') == 'PARTIAL']
+          if failures:
+              print('::error::Coverage FAIL: ' + ', '.join(failures))
+              sys.exit(1)
+          if partial:
+              print('::warning::Coverage PARTIAL: ' + ', '.join(partial))
+          PY
+
+      - name: Sync D1 fallback snapshots
+        shell: bash
+        run: |
+          mkdir -p data
+          curl --fail --silent --show-error "$WORKER_URL/api/export.json" -o data/reports.json
+          curl --fail --silent --show-error "$WORKER_URL/api/export.csv" -o data/reports.csv
+
+      - name: Record production URL in README
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, re
+          from pathlib import Path
+          path = Path('README.md')
+          text = path.read_text(encoding='utf-8')
+          url = os.environ['WORKER_URL']
+          block = f"<!-- PRODUCTION_URL_START -->\n**Production:** {url}\n\n**GitHub Pages fallback:** https://linwuyen.github.io/Consultant_System/\n<!-- PRODUCTION_URL_END -->"
+          pattern = r'<!-- PRODUCTION_URL_START -->[\s\S]*?<!-- PRODUCTION_URL_END -->'
+          if re.search(pattern, text):
+              text = re.sub(pattern, block, text)
+          else:
+              marker = '## Website\n'
+              if marker in text:
+                  text = text.replace(marker, marker + '\n' + block + '\n', 1)
+              else:
+                  text = block + '\n\n' + text
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Commit production snapshot
+        shell: bash
+        run: |
+          if git diff --quiet -- data/reports.json data/reports.csv README.md; then
+            echo "No snapshot changes"
+            exit 0
+          fi
+          git config user.name "consultant-system-bot"
+          git config user.email "consultant-system-bot@users.noreply.github.com"
+          git add data/reports.json data/reports.csv README.md
+          git commit -m "chore: sync D1 production snapshot"
+          git push
