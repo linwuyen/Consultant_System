@@ -6,6 +6,7 @@
     "generate:config": "node scripts/generate_worker_config.mjs",
     "check:syntax": "node --check worker/index.js && node --check worker/config.generated.js && node --check site/app.js",
     "whoami": "wrangler whoami --json",
+    "ci:cloudflare": "bash scripts/cloudflare-ci.sh",
     "dev": "npm run generate:config && wrangler dev",
     "deploy": "npm run generate:config && wrangler deploy",
     "check": "npm run generate:config && npm run check:syntax && wrangler deploy --dry-run",
