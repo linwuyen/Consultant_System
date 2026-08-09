@@ -20,14 +20,18 @@ for _ in range(3):
     s = s.strip().strip('"\'').strip()
     if s == old:
         break
-if not re.fullmatch(r'[A-Za-z0-9_-]{40,80}', s):
-    candidates = re.findall(r'(?<![A-Za-z0-9_-])([A-Za-z0-9_-]{40,80})(?![A-Za-z0-9_-])', raw)
+# Cloudflare token values are 40-80 characters. Current credentials may use
+# scannable prefixes/checksums, so only reject whitespace/control characters.
+def valid(value):
+    return 40 <= len(value) <= 80 and not re.search(r'\s', value)
+if not valid(s):
+    candidates = [x for x in re.findall(r'[^\s"\']{40,80}', raw) if valid(x)]
     if len(candidates) == 1:
         s = candidates[0]
-print(s if re.fullmatch(r'[A-Za-z0-9_-]{40,80}', s) else 'INVALID', end='')
+print(s if valid(s) else 'INVALID', end='')
 PY
 )
-[[ "$NORMALIZED_TOKEN" != "INVALID" ]] || fail "CLOUDFLARE_API_TOKEN is not a valid raw Cloudflare API token after normalization."
+[[ "$NORMALIZED_TOKEN" != "INVALID" ]] || fail "CLOUDFLARE_API_TOKEN is not a valid Cloudflare API token after normalization."
 export CLOUDFLARE_API_TOKEN="$NORMALIZED_TOKEN"
 echo "::add-mask::$CLOUDFLARE_API_TOKEN"
 unset RAW_TOKEN NORMALIZED_TOKEN
