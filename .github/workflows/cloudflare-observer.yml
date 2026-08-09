@@ -1,0 +1,80 @@
+name: Observe Cloudflare deployment
+
+on:
+  workflow_run:
+    workflows: ["Deploy Cloudflare Worker"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  record-failure:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Capture failed run diagnostics
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          EVENT_NAME: ${{ github.event.workflow_run.event }}
+        shell: bash
+        run: |
+          mkdir -p ops
+          gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log-failed > /tmp/cloudflare-failure.log 2>&1 || true
+          tail -n 250 /tmp/cloudflare-failure.log > ops/cloudflare-deploy-failure.log
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          log = Path('ops/cloudflare-deploy-failure.log').read_text(encoding='utf-8', errors='replace')
+          lowered = log.lower()
+          if 'whoami' in lowered or 'account id' in lowered or 'account_id' in lowered:
+              phase = 'cloudflare-account-auth'
+          elif 'migrations apply' in lowered or 'migration' in lowered:
+              phase = 'd1-migration'
+          elif '/api/health' in lowered or 'health' in lowered:
+              phase = 'health-check'
+          elif '/api/refresh' in lowered or 'production refresh' in lowered:
+              phase = 'production-refresh'
+          elif 'coverage' in lowered:
+              phase = 'coverage-gate'
+          elif 'wrangler deploy' in lowered or 'deploy worker' in lowered:
+              phase = 'worker-deploy'
+          else:
+              phase = 'unknown'
+
+          status = {
+              'recorded_at': datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace('+00:00', 'Z'),
+              'workflow': 'Deploy Cloudflare Worker',
+              'run_id': int(os.environ['RUN_ID']),
+              'run_url': os.environ['RUN_URL'],
+              'head_sha': os.environ['HEAD_SHA'],
+              'event': os.environ['EVENT_NAME'],
+              'conclusion': 'failure',
+              'inferred_phase': phase,
+              'log_file': 'ops/cloudflare-deploy-failure.log'
+          }
+          Path('ops/cloudflare-deploy-status.json').write_text(json.dumps(status, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Commit failure diagnostics
+        shell: bash
+        run: |
+          git config user.name "consultant-system-bot"
+          git config user.email "consultant-system-bot@users.noreply.github.com"
+          git add ops/cloudflare-deploy-status.json ops/cloudflare-deploy-failure.log
+          if git diff --cached --quiet; then
+            echo "No diagnostic changes"
+            exit 0
+          fi
+          git commit -m "chore: record Cloudflare deployment failure"
+          git push
