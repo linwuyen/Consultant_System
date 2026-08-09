@@ -28,8 +28,8 @@ jobs:
         shell: bash
         run: |
           mkdir -p ops
-          gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log-failed > /tmp/cloudflare-failure.log 2>&1 || true
-          tail -n 250 /tmp/cloudflare-failure.log > ops/cloudflare-deploy-failure.log
+          gh run view "$RUN_ID" --repo "$GITHUB_REPOSITORY" --log > /tmp/cloudflare-failure.log 2>&1 || true
+          tail -n 500 /tmp/cloudflare-failure.log > ops/cloudflare-deploy-failure.log
           python - <<'PY'
           import json, os
           from datetime import datetime, timezone
@@ -37,7 +37,7 @@ jobs:
 
           log = Path('ops/cloudflare-deploy-failure.log').read_text(encoding='utf-8', errors='replace')
           lowered = log.lower()
-          if 'whoami' in lowered or 'account id' in lowered or 'account_id' in lowered:
+          if 'whoami' in lowered or 'account id' in lowered or 'account_id' in lowered or 'api token' in lowered:
               phase = 'cloudflare-account-auth'
           elif 'migrations apply' in lowered or 'migration' in lowered:
               phase = 'd1-migration'
