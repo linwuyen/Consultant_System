@@ -34,6 +34,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - name: Diagnose Cloudflare secret shape safely
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os, re
+          raw = os.environ.get('CLOUDFLARE_API_TOKEN', '')
+          stripped = raw.strip()
+          print('raw_length=' + str(len(raw)))
+          print('stripped_length=' + str(len(stripped)))
+          print('contains_whitespace=' + str(bool(re.search(r'\s', stripped))))
+          print('contains_bearer=' + str(bool(re.search(r'bearer', stripped, re.I))))
+          print('contains_assignment=' + str('=' in stripped))
+          print('looks_like_account_id=' + str(bool(re.fullmatch(r'[0-9a-fA-F]{32}', stripped))))
+          print('has_scannable_prefix=' + str(bool(re.match(r'^cf(?:ut|at|k)_', stripped))))
+          PY
       - name: Deploy, migrate, refresh, audit and snapshot
         shell: bash
         run: bash scripts/cloudflare-ci.sh
