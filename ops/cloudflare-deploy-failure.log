@@ -1,0 +1,92 @@
+deploy	Resolve Cloudflare account ID with Wrangler	﻿2026-08-09T16:12:23.5712275Z ##[group]Run if [[ -n "$***" ]]; then
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5713248Z ^[[36;1mif [[ -n "$***" ]]; then^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5713885Z ^[[36;1m  echo "Using *** from GitHub Secrets."^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5714463Z ^[[36;1m  exit 0^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5714892Z ^[[36;1mfi^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5715176Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5715987Z ^[[36;1mecho "No account ID secret found; resolving from authenticated Wrangler identity..."^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5716547Z ^[[36;1mset +e^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5717001Z ^[[36;1mnpx wrangler whoami --json > /tmp/whoami.json 2> /tmp/whoami.err^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5717450Z ^[[36;1mWHOAMI_STATUS=$?^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5717772Z ^[[36;1mset -e^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5718083Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5718413Z ^[[36;1mif [[ "$WHOAMI_STATUS" -ne 0 ]]; then^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5718801Z ^[[36;1m  cat /tmp/whoami.err || true^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5719277Z ^[[36;1m  echo "::error::Wrangler could not read account membership from this API token."^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5720116Z ^[[36;1m  echo "The token must be scoped to the target account and include the standard Edit Cloudflare Workers template permissions."^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5721091Z ^[[36;1m  exit 1^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5721418Z ^[[36;1mfi^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5721689Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5721987Z ^[[36;1mpython - <<'PY'^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5722307Z ^[[36;1mimport json, os, re, sys^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5722635Z ^[[36;1mfrom pathlib import Path^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5723077Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5723474Z ^[[36;1mdata = json.loads(Path('/tmp/whoami.json').read_text(encoding='utf-8'))^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5723999Z ^[[36;1maccounts = data.get('accounts') or []^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5724366Z ^[[36;1mcandidates = []^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5724683Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5725014Z ^[[36;1mif isinstance(accounts, dict):^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5725365Z ^[[36;1m    accounts = [accounts]^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5725694Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5725984Z ^[[36;1mfor account in accounts:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5726354Z ^[[36;1m    if not isinstance(account, dict):^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5726747Z ^[[36;1m        continue^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5727208Z ^[[36;1m    account_id = account.get('id') or account.get('account_id') or account.get('accountId')^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5727810Z ^[[36;1m    if isinstance(account_id, str) and re.fullmatch(r'[0-9a-fA-F]{32}', account_id):^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5728513Z ^[[36;1m        candidates.append((account_id.lower(), str(account.get('name') or 'Cloudflare account')))^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5729007Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5729325Z ^[[36;1mif not candidates:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5729666Z ^[[36;1m    def walk(value, path=()):^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5730009Z ^[[36;1m        if isinstance(value, dict):^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5730425Z ^[[36;1m            for key, child in value.items():^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5731050Z ^[[36;1m                new_path = path + (str(key).lower(),)^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5731748Z ^[[36;1m                if isinstance(child, str) and re.fullmatch(r'[0-9a-fA-F]{32}', child) and any('account' in p for p in new_path):^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5732468Z ^[[36;1m                    candidates.append((child.lower(), '/'.join(new_path)))^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5732971Z ^[[36;1m                walk(child, new_path)^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5733404Z ^[[36;1m        elif isinstance(value, list):^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5733809Z ^[[36;1m            for child in value:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5734197Z ^[[36;1m                walk(child, path)^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5734562Z ^[[36;1m    walk(data)^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5734875Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5735189Z ^[[36;1munique = []^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5735510Z ^[[36;1mseen = set()^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5735851Z ^[[36;1mfor account_id, name in candidates:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5736268Z ^[[36;1m    if account_id not in seen:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5736641Z ^[[36;1m        seen.add(account_id)^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5737072Z ^[[36;1m        unique.append((account_id, name))^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5737596Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5737906Z ^[[36;1mif len(unique) == 0:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5738406Z ^[[36;1m    print('::error::Authenticated, but Wrangler returned no usable account ID.')^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5738973Z ^[[36;1m    print('whoami keys:', ', '.join(sorted(data.keys())))^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5739410Z ^[[36;1m    sys.exit(1)^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5739784Z ^[[36;1mif len(unique) > 1:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5740422Z ^[[36;1m    print('::error::Multiple Cloudflare accounts are available; refusing to deploy to an arbitrary account.')^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5741307Z ^[[36;1m    for account_id, name in unique:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5741721Z ^[[36;1m        print(f'  {name}: {account_id}')^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5742100Z ^[[36;1m    sys.exit(1)^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5742425Z ^[[36;1m^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5742756Z ^[[36;1maccount_id, name = unique[0]^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5743226Z ^[[36;1mwith open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as f:^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5743862Z ^[[36;1m    f.write(f'***={account_id}\n')^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5744290Z ^[[36;1mprint(f'Resolved Cloudflare account: {name} ({account_id})')^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5744865Z ^[[36;1mPY^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5778078Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5778608Z env:
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5779120Z   CLOUDFLARE_API_TOKEN: ***
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5779532Z   ***: 
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5779856Z ##[endgroup]
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:23.5841001Z No account ID secret found; resolving from authenticated Wrangler identity...
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0778402Z ^[[31m✘ ^[[41;31m[^[[41;97mERROR^[[41;31m]^[[0m ^[[1mA request to the Cloudflare API (/user/tokens/verify) failed.^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0778951Z 
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0779220Z   Invalid request headers [code: 6003]
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0779554Z   
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0779982Z   - Invalid format for Authorization header [code: 6111]
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0780329Z 
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0780441Z   
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0782341Z   If you think this is a bug, please open an issue at: ^[[4mhttps://github.com/cloudflare/workers-sdk/issues/new/choose^[[0m
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0782843Z 
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0782855Z 
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0783396Z 🪵  Logs were written to "/home/runner/.config/.wrangler/logs/wrangler-2026-08-09_16-12-24_453.log"
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0803322Z ##[error]Wrangler could not read account membership from this API token.
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0809978Z The token must be scoped to the target account and include the standard Edit Cloudflare Workers template permissions.
+deploy	Resolve Cloudflare account ID with Wrangler	2026-08-09T16:12:25.0812862Z ##[error]Process completed with exit code 1.
