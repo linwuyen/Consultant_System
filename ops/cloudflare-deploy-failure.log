@@ -1,11 +1,11 @@
-deploy	Deploy, migrate, refresh, audit and snapshot	﻿2026-08-09T16:16:49.0886897Z ##[group]Run bash scripts/cloudflare-ci.sh
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.0887397Z ^[[36;1mbash scripts/cloudflare-ci.sh^[[0m
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1025346Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1025804Z env:
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1026568Z   CLOUDFLARE_API_TOKEN: ***
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1026920Z   ***: 
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1027161Z ##[endgroup]
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1200002Z 
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1204766Z ==> Normalize Cloudflare API token
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1435313Z ##[error]CLOUDFLARE_API_TOKEN is not a valid raw Cloudflare API token after normalization.
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:16:49.1446427Z ##[error]Process completed with exit code 1.
+deploy	Deploy, migrate, refresh, audit and snapshot	﻿2026-08-09T16:18:36.4246888Z ##[group]Run bash scripts/cloudflare-ci.sh
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4248461Z ^[[36;1mbash scripts/cloudflare-ci.sh^[[0m
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4285913Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4287421Z env:
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4288901Z   CLOUDFLARE_API_TOKEN: ***
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4289978Z   ***: 
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4290804Z ##[endgroup]
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4381481Z 
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4386297Z ==> Normalize Cloudflare API token
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4574038Z ##[error]CLOUDFLARE_API_TOKEN is not a valid Cloudflare API token after normalization.
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-09T16:18:36.4585293Z ##[error]Process completed with exit code 1.
