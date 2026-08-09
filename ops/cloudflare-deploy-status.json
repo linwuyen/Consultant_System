@@ -1,11 +1,11 @@
 {
-  "recorded_at": "2026-08-09T16:20:18Z",
+  "recorded_at": "2026-08-09T16:21:30Z",
   "workflow": "Deploy Cloudflare Worker",
-  "run_id": 31323504614,
-  "run_url": "https://github.com/linwuyen/Consultant_System/actions/runs/31323504614",
-  "head_sha": "4aade31915f5e1c4122e472177ca883e7f0e45e9",
+  "run_id": 31323557791,
+  "run_url": "https://github.com/linwuyen/Consultant_System/actions/runs/31323557791",
+  "head_sha": "097730cd690d4d70c148009c0f6f7a9ba5298019",
   "event": "push",
   "conclusion": "failure",
-  "inferred_phase": "unknown",
+  "inferred_phase": "cloudflare-account-auth",
   "log_file": "ops/cloudflare-deploy-failure.log"
 }
