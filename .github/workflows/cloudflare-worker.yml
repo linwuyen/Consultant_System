@@ -32,31 +32,96 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify Cloudflare CI credentials
-        shell: bash
-        run: |
-          missing=0
-          if [[ -z "$CLOUDFLARE_API_TOKEN" ]]; then
-            echo "::error::Missing GitHub Actions secret: CLOUDFLARE_API_TOKEN"
-            missing=1
-          fi
-          if [[ -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
-            echo "::error::Missing GitHub Actions secret: CLOUDFLARE_ACCOUNT_ID"
-            missing=1
-          fi
-          if [[ "$missing" -ne 0 ]]; then
-            echo "Cloudflare Workers CI requires both API token and account ID."
-            echo "Add the missing repository secret under Settings > Secrets and variables > Actions."
-            exit 1
-          fi
-          echo "Cloudflare CI credentials are configured."
-
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
 
+      - name: Verify Cloudflare API token
+        shell: bash
+        run: |
+          if [[ -z "$CLOUDFLARE_API_TOKEN" ]]; then
+            echo "::error::Missing GitHub Actions secret: CLOUDFLARE_API_TOKEN"
+            exit 1
+          fi
+          echo "Cloudflare API token is configured."
+
       - name: Install dependencies
         run: npm install
+
+      - name: Resolve Cloudflare account ID with Wrangler
+        shell: bash
+        run: |
+          if [[ -n "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo "Using CLOUDFLARE_ACCOUNT_ID from GitHub Secrets."
+            exit 0
+          fi
+
+          echo "No account ID secret found; resolving from authenticated Wrangler identity..."
+          set +e
+          npx wrangler whoami --json > /tmp/whoami.json 2> /tmp/whoami.err
+          WHOAMI_STATUS=$?
+          set -e
+
+          if [[ "$WHOAMI_STATUS" -ne 0 ]]; then
+            cat /tmp/whoami.err || true
+            echo "::error::Wrangler could not read account membership from this API token."
+            echo "The token must be scoped to the target account and include the standard Edit Cloudflare Workers template permissions."
+            exit 1
+          fi
+
+          python - <<'PY'
+          import json, os, re, sys
+          from pathlib import Path
+
+          data = json.loads(Path('/tmp/whoami.json').read_text(encoding='utf-8'))
+          accounts = data.get('accounts') or []
+          candidates = []
+
+          if isinstance(accounts, dict):
+              accounts = [accounts]
+
+          for account in accounts:
+              if not isinstance(account, dict):
+                  continue
+              account_id = account.get('id') or account.get('account_id') or account.get('accountId')
+              if isinstance(account_id, str) and re.fullmatch(r'[0-9a-fA-F]{32}', account_id):
+                  candidates.append((account_id.lower(), str(account.get('name') or 'Cloudflare account')))
+
+          if not candidates:
+              def walk(value, path=()):
+                  if isinstance(value, dict):
+                      for key, child in value.items():
+                          new_path = path + (str(key).lower(),)
+                          if isinstance(child, str) and re.fullmatch(r'[0-9a-fA-F]{32}', child) and any('account' in p for p in new_path):
+                              candidates.append((child.lower(), '/'.join(new_path)))
+                          walk(child, new_path)
+                  elif isinstance(value, list):
+                      for child in value:
+                          walk(child, path)
+              walk(data)
+
+          unique = []
+          seen = set()
+          for account_id, name in candidates:
+              if account_id not in seen:
+                  seen.add(account_id)
+                  unique.append((account_id, name))
+
+          if len(unique) == 0:
+              print('::error::Authenticated, but Wrangler returned no usable account ID.')
+              print('whoami keys:', ', '.join(sorted(data.keys())))
+              sys.exit(1)
+          if len(unique) > 1:
+              print('::error::Multiple Cloudflare accounts are available; refusing to deploy to an arbitrary account.')
+              for account_id, name in unique:
+                  print(f'  {name}: {account_id}')
+              sys.exit(1)
+
+          account_id, name = unique[0]
+          with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as f:
+              f.write(f'CLOUDFLARE_ACCOUNT_ID={account_id}\n')
+          print(f'Resolved Cloudflare account: {name} ({account_id})')
+          PY
 
       - name: Generate canonical Worker config
         run: npm run generate:config
@@ -65,7 +130,7 @@ jobs:
         run: npm run check:syntax
 
       - name: Show Wrangler identity
-        run: npx wrangler whoami
+        run: npx wrangler whoami --account "$CLOUDFLARE_ACCOUNT_ID"
 
       - name: Validate Worker bundle
         run: npx wrangler deploy --dry-run
@@ -73,12 +138,38 @@ jobs:
       - name: Provision resources and deploy Worker
         id: deploy
         shell: bash
+        env:
+          WRANGLER_OUTPUT_FILE_PATH: /tmp/wrangler-output.jsonl
         run: |
           set -o pipefail
           npx wrangler deploy 2>&1 | tee /tmp/wrangler-deploy.log
-          WORKER_URL=$(grep -Eo 'https://[^ ]+\.workers\.dev[^ ]*' /tmp/wrangler-deploy.log | tail -1 | sed 's/[[:punct:]]$//' || true)
+
+          WORKER_URL=$(python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('/tmp/wrangler-output.jsonl')
+          target = ''
+          if path.exists():
+              for raw in path.read_text(encoding='utf-8').splitlines():
+                  try:
+                      item = json.loads(raw)
+                  except Exception:
+                      continue
+                  if item.get('type') == 'deploy':
+                      targets = item.get('targets') or []
+                      for value in targets:
+                          if isinstance(value, str) and value.startswith('https://'):
+                              target = value.rstrip('/')
+                              break
+          print(target)
+          PY
+          )
+
           if [[ -z "$WORKER_URL" ]]; then
-            echo "::error::Deployment completed but workers.dev URL could not be determined."
+            WORKER_URL=$(grep -Eo 'https://[^ ]+\.workers\.dev[^ ]*' /tmp/wrangler-deploy.log | tail -1 | sed 's/[[:punct:]]$//' || true)
+          fi
+          if [[ -z "$WORKER_URL" ]]; then
+            echo "::error::Deployment completed but Worker URL could not be determined."
             cat /tmp/wrangler-deploy.log
             exit 1
           fi
