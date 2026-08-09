@@ -32,46 +32,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify Cloudflare API token
+      - name: Verify Cloudflare CI credentials
         shell: bash
         run: |
+          missing=0
           if [[ -z "$CLOUDFLARE_API_TOKEN" ]]; then
             echo "::error::Missing GitHub Actions secret: CLOUDFLARE_API_TOKEN"
+            missing=1
+          fi
+          if [[ -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            echo "::error::Missing GitHub Actions secret: CLOUDFLARE_ACCOUNT_ID"
+            missing=1
+          fi
+          if [[ "$missing" -ne 0 ]]; then
+            echo "Cloudflare Workers CI requires both API token and account ID."
+            echo "Add the missing repository secret under Settings > Secrets and variables > Actions."
             exit 1
           fi
-
-      - name: Resolve Cloudflare account ID
-        shell: bash
-        run: |
-          if [[ -n "$CLOUDFLARE_ACCOUNT_ID" ]]; then
-            echo "Using configured account ID."
-            exit 0
-          fi
-          set +e
-          HTTP_BODY=$(curl --silent --show-error --fail \
-            "https://api.cloudflare.com/client/v4/accounts?per_page=50" \
-            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            -H "Content-Type: application/json")
-          STATUS=$?
-          set -e
-          if [[ "$STATUS" -ne 0 || -z "$HTTP_BODY" ]]; then
-            echo "::warning::Could not resolve account ID through API; Wrangler will attempt inference."
-            exit 0
-          fi
-          export HTTP_BODY
-          python - <<'PY'
-          import json, os
-          payload = json.loads(os.environ['HTTP_BODY'])
-          accounts = payload.get('result') or []
-          if len(accounts) == 1 and accounts[0].get('id'):
-              with open(os.environ['GITHUB_ENV'], 'a', encoding='utf-8') as f:
-                  f.write(f"CLOUDFLARE_ACCOUNT_ID={accounts[0]['id']}\n")
-              print(f"Resolved account: {accounts[0].get('name', 'Cloudflare account')}")
-          elif len(accounts) > 1:
-              print('::warning::Multiple accounts available; Wrangler will infer from token context.')
-          else:
-              print('::warning::No account returned; Wrangler will attempt inference.')
-          PY
+          echo "Cloudflare CI credentials are configured."
 
       - uses: actions/setup-node@v4
         with:
