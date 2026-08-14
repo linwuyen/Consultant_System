@@ -125,7 +125,8 @@ def main() -> None:
                 [(report_id, topic) for topic in topics],
             )
 
-        for source in config.get("sources") or []:
+        all_sources = [*(config.get("sources") or []), *(config.get("fallback_sources") or [])]
+        for source in all_sources:
             con.execute(
                 "INSERT OR REPLACE INTO sources(url,company,name) VALUES(?,?,?)",
                 (str(source.get("url") or ""), str(source.get("company") or ""), str(source.get("name") or "")),
