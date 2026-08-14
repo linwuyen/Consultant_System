@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - "scripts/update_reports.py"
+      - "scripts/update_reader_fallback.py"
       - "scripts/build_sqlite.py"
       - "scripts/audit_coverage.py"
       - "config/sources.json"
@@ -36,10 +37,13 @@ jobs:
       - run: pip install -r requirements.txt
 
       - name: Syntax check crawler
-        run: python -m py_compile scripts/update_reports.py scripts/build_sqlite.py scripts/audit_coverage.py
+        run: python -m py_compile scripts/update_reports.py scripts/update_reader_fallback.py scripts/build_sqlite.py scripts/audit_coverage.py
 
-      - name: Refresh research metadata
+      - name: Refresh directly reachable research metadata
         run: python scripts/update_reports.py
+
+      - name: Refresh blocked-publisher metadata fallback
+        run: python scripts/update_reader_fallback.py
 
       - name: Audit four-firm coverage
         run: python scripts/audit_coverage.py
