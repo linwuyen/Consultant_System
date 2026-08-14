@@ -1,6 +1,85 @@
 {
-  "updated_at": "2026-08-08T17:09:53Z",
+  "updated_at": "2026-08-14T04:04:54Z",
   "reports": [
+    {
+      "id": "16775921a5bedece",
+      "company": "BCG",
+      "title": "The Next-Gen Strategist in the Age of AI",
+      "date": "2026-08-13",
+      "url": "https://www.bcg.com/publications/2026/how-strategy-leaders-adapt-to-ai",
+      "description": "As AI commoditizes analytical thinking, strategists must foster new modes of thinking—and select the right one to tackle the challenges faced by their firm.",
+      "topics": [],
+      "source_name": "BCG Publications",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "39f0a96642dffeef",
+      "company": "BCG",
+      "title": "What CEOs Should Know About China’s Business Ambitions",
+      "date": "2026-08-13",
+      "url": "https://www.bcg.com/publications/2026/chinas-15th-five-year-plan-ceos",
+      "description": "The 15th Five-Year Plan reveals the country’s economic goals. We highlight those ambitions and the constraints on achieving them.",
+      "topics": [
+        "Economics"
+      ],
+      "source_name": "BCG Publications",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "2ebd55010827a52f",
+      "company": "BCG",
+      "title": "Who Will Win as AI Rewrites Competitive Advantage?",
+      "date": "2026-08-13",
+      "url": "https://www.bcg.com/publications/2026/which-companies-capture-value-from-ai",
+      "description": "AI is driving a historic reallocation of capital and a shift in profit pools, forcing leaders to rethink where defensible returns will come from.",
+      "topics": [],
+      "source_name": "BCG Publications",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "8170d5288ded54a3",
+      "company": "BCG",
+      "title": "Consumer Spending in Canada Is Shifting, Just Not How You’d Expect",
+      "date": "2026-08-12",
+      "url": "https://www.bcg.com/publications/2026/consumer-spending-in-canada-is-shifting-just-not-how-you-expect",
+      "description": "As household budgets tighten, retail categories are starting to pull apart. The retailers that recognize those shifts first will be best positioned to grow.",
+      "topics": [],
+      "source_name": "BCG Publications",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "097f00bd91c61706",
+      "company": "Deloitte",
+      "title": "What’s happening this week in economics?",
+      "date": "2026-08-11",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html",
+      "description": "What’s happening this week in economics? Deloitte’s team of economists examines news and trends from around the world.",
+      "topics": [
+        "Economics"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-08T17:09:53Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "a333523ae675b16d",
+      "company": "Deloitte",
+      "title": "European CFOs are more pessimistic in 2026 than at any point since the 2022 energy crisis",
+      "date": "2026-08-06",
+      "url": "https://www.deloitte.com/us/en/insights/topics/business-strategy-growth/european-cfo-survey-spring-2026.html",
+      "description": "CFOs are prioritizing cost discipline, resilience, and scenario planning as geopolitical risk intensifies",
+      "topics": [
+        "Energy",
+        "Supply Chain"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
     {
       "id": "e2b69ea7f89a4715",
       "company": "BCG",
@@ -43,20 +122,6 @@
       "last_seen_at": "2026-08-08T17:09:53Z"
     },
     {
-      "id": "097f00bd91c61706",
-      "company": "Deloitte",
-      "title": "What’s happening this week in economics?",
-      "date": "2026-08-03",
-      "url": "https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html",
-      "description": "What’s happening this week in economics? Deloitte’s team of economists examines news and trends from around the world.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
       "id": "1b2c6a3f3f843c8c",
       "company": "BCG",
       "title": "How CEOs Can Make the Most of Their Time After Leaving the Corner Office",
@@ -83,6 +148,18 @@
       "last_seen_at": "2026-08-08T17:09:53Z"
     },
     {
+      "id": "5928c908d17618ff",
+      "company": "Deloitte",
+      "title": "North American CFOs express concerns about AI governance and risk management",
+      "date": "2026-07-22",
+      "url": "https://www.deloitte.com/us/en/insights/topics/business-strategy-growth/2q-2026-cfo-signals-survey.html",
+      "description": "Respondents to the second-quarter 2026 CFO Signals survey on AI governance are most concerned about cost uncertainty, transparency, and managing risks",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
       "id": "2529db3a5e73ef1b",
       "company": "BCG",
       "title": "The AI-First Asset Manager",
@@ -97,6 +174,98 @@
       "last_seen_at": "2026-08-08T17:09:53Z"
     },
     {
+      "id": "c3658431b8e0fb11",
+      "company": "Deloitte",
+      "title": "Four futures for technology infrastructure: Which one are you building toward?",
+      "date": "2026-07-14",
+      "url": "https://www.deloitte.com/us/en/insights/topics/technology-management/future-enterprise-architecture.html",
+      "description": "Explore the future of enterprise architecture through four potential infrastructure scenarios, and learn how leaders can build resilience and optionality now",
+      "topics": [
+        "Supply Chain"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "ac5990bf51045549",
+      "company": "Deloitte",
+      "title": "AI adoption to adaptation: How a new change approach can build the human behaviors needed for AI",
+      "date": "2026-07-09",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/ai-adoption-to-ai-adaptation.html",
+      "description": "AI adoption is easy to prove and easy to fake. But these three behaviors show whether workers are actually adapting to AI—changing how they think, decide, and work.",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "e47eb28e4c2dfa7d",
+      "company": "Deloitte",
+      "title": "2026 Deloitte Back-to-School Survey",
+      "date": "2026-07-08",
+      "url": "https://www.deloitte.com/us/en/insights/industry/retail-distribution/back-to-school-survey.html",
+      "description": "Deloitte's 19th Back-to-School Survey finds parents seeking value in their shopping journey amid persistently high inflation and weak consumer sentiment",
+      "topics": [
+        "Economics"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "5848a6a1dbb019d7",
+      "company": "Deloitte",
+      "title": "Rewiring the enterprise operating model for AI scale",
+      "date": "2026-06-28",
+      "url": "https://www.deloitte.com/us/en/insights/topics/technology-management/rewiring-ai-operating-model.html",
+      "description": "Enterprise AI strategy is entering a new phase, requiring operating models built for faster decisions, dynamic funding, and coordinated work",
+      "topics": [
+        "Strategy"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "8f24658dbeb4fc08",
+      "company": "PwC",
+      "title": "The rise of everyday health",
+      "date": "2026-06-23",
+      "url": "https://www.pwc.com/gx/en/issues/c-suite-insights/voice-of-the-consumer-survey.html",
+      "description": "How consumer health habits and occasions are reshaping growth across consumer markets and healthcare.",
+      "topics": [
+        "Strategy"
+      ],
+      "source_name": "PwC C-suite Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "7ef96ec92c83213c",
+      "company": "Deloitte",
+      "title": "The $9 trillion knowledge exodus: How organizations can turn baby boomer retirements into a competitive advantage",
+      "date": "2026-06-18",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/knowledge-management-plan.html",
+      "description": "A so-called ‘silver tsunami’ could drain decades of organizational knowledge. This five-step process can help leaders capture institutional knowledge before it walks out the door.",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "54cb9bb79d916e0f",
+      "company": "Deloitte",
+      "title": "3 actions top executives and board leaders can take to help safeguard data credibility",
+      "date": "2026-05-27",
+      "url": "https://www.deloitte.com/us/en/insights/topics/business-strategy-growth/data-governance.html",
+      "description": "Scenario planning and agile governance are only as strong as the data underpinning them. How can leaders discern if the information they use can be trusted?",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
       "id": "1ed2516bd044da0b",
       "company": "Deloitte",
       "title": "FSI Predictions 2026",
@@ -107,6 +276,21 @@
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
       "last_seen_at": "2026-08-08T17:09:53Z"
+    },
+    {
+      "id": "2dd1c8868505cac4",
+      "company": "Deloitte",
+      "title": "Rethinking operating models for humans with agents",
+      "date": "2026-04-02",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/operating-models-for-humans-ai-agents.html",
+      "description": "It’s still early days for AI agents and multi-agent systems, but leaders will soon face questions about how to design work for a changing workforce",
+      "topics": [
+        "AI",
+        "Workforce"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
       "id": "c1a5398f75752317",
@@ -121,6 +305,80 @@
       "last_seen_at": "2026-08-08T17:09:53Z"
     },
     {
+      "id": "dfb26f948df3f955",
+      "company": "Deloitte",
+      "title": "Have organizational functions outlived their function?",
+      "date": "2026-03-04",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/modernizing-corporate-functions.html",
+      "description": "The time has come to question the usefulness of traditional organizational pillars",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "949fb4b8836f9fce",
+      "company": "Deloitte",
+      "title": "Getting human and machine relationships right",
+      "date": "2026-03-04",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/human-ai-interaction-design.html",
+      "description": "To multiply human potential with AI, organizations can deliberately design human and machine interactions",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "ba2440e7f1f075bc",
+      "company": "Deloitte",
+      "title": "Fact or fabrication? AI is blurring the line when it comes to people and work",
+      "date": "2026-03-04",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/managing-disinformation-at-scale.html",
+      "description": "In the age of generative AI, it’s getting more difficult to know what is true, relevant, or meaningful about people and work. How can we manage disinformation at scale?",
+      "topics": [
+        "AI"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "2d3badc239c8bc1d",
+      "company": "Deloitte",
+      "title": "Dealing with AI’s cultural debt",
+      "date": "2026-03-04",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/ai-cultural-debt.html",
+      "description": "AI may be creating an unnoticed, steady accumulation of negative cultural behaviors. How do we manage it so culture can be an advantage in the age of AI?",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "eb559f4d0cbfa96a",
+      "company": "Deloitte",
+      "title": "The orchestration advantage",
+      "date": "2026-03-04",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/orchestrating-for-agility.html",
+      "description": "AI can enable quick intent-to-action. But turning speed into competitive advantage will likely come from learning to orchestrate capabilities and capacity in real time.",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "00acadde477c01dc",
+      "company": "Deloitte",
+      "title": "Decisions that echo",
+      "date": "2026-03-04",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/decisions-that-echo.html",
+      "description": "Amid eroding trust and accelerating technology, board decisions reverberate beyond the organization. The question is whether those decisions will strengthen society—or strain it.",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
       "id": "df2a13b8384b1ca4",
       "company": "Deloitte",
       "title": "2026 Global Human Capital Trends",
@@ -132,7 +390,77 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "9e0204dc7a5ffdbf",
+      "company": "Deloitte",
+      "title": "AI and the future of human decision-making",
+      "date": "2026-03-03",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/decision-making-with-ai.html",
+      "description": "As AI transforms decision-making, how can organizations make quality decisions, anchored in human agency and trust?",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "87185b35b773a568",
+      "company": "Deloitte",
+      "title": "Staying relevant in a world that won’t sit still",
+      "date": "2026-03-03",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/creating-an-adaptable-workforce.html",
+      "description": "Real-time adaptability is emerging as a competitive differentiator. How can organizations build worker resilience on the fly?",
+      "topics": [
+        "Supply Chain"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "3774d328d4ef5679",
+      "company": "PwC",
+      "title": "PwC’s 29th Global CEO Survey: Leading through uncertainty in the age of AI",
+      "date": "2026-01-19",
+      "url": "https://www.pwc.com/gx/en/issues/c-suite-insights/ceo-survey.html",
+      "description": "CEOs are reinventing their companies with technology and seeking growth opportunities in new sectors, even as they see elevated threats ahead.",
+      "topics": [
+        "Strategy"
+      ],
+      "source_name": "PwC C-suite Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "2bfe1f12116916b2",
+      "company": "Deloitte",
+      "title": "A shrinking workforce may thwart US manufacturing ambitions",
+      "date": "2025-12-22",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/spotlight/us-manufacturing-labor-impact.html",
+      "description": "The December 2025 Economics Insider explores trends in the US manufacturing workforce and the factors shaping those trends",
+      "topics": [
+        "Manufacturing",
+        "Economics",
+        "Workforce"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "d6c298cff1d6122b",
+      "company": "Deloitte",
+      "title": "2026 Global Health Care Outlook",
+      "date": "2025-12-11",
+      "url": "https://www.deloitte.com/us/en/insights/industry/health-care/life-sciences-and-health-care-industry-outlooks/2026-global-health-care-outlook.html",
+      "description": "Discover how AI, workforce shifts, and new care models are transforming health care. Find out what changes are ahead for global organizations.",
+      "topics": [
+        "Workforce"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
       "id": "872b3208c9832cef",
@@ -147,6 +475,32 @@
       "last_seen_at": "2026-08-08T17:09:53Z"
     },
     {
+      "id": "28221fb09f627173",
+      "company": "PwC",
+      "title": "Global Investor Survey 2025",
+      "date": "2025-12-08",
+      "url": "https://www.pwc.com/gx/en/issues/c-suite-insights/global-investor-survey.html",
+      "description": "Resilience, AI adoption, and business model reinvention are shaping investor expectations as disruption and uncertainty loom in the year ahead.",
+      "topics": [
+        "Supply Chain"
+      ],
+      "source_name": "PwC C-suite Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "5ae1e35e3c890cc9",
+      "company": "Deloitte",
+      "title": "A new era of self-reliance: Navigating technology sovereignty",
+      "date": "2025-11-18",
+      "url": "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/tech-sovereignty.html",
+      "description": "Countries and regional blocs are racing to build their own sovereign tech and AI infrastructures. What are the implications? How can global businesses prepare?",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
       "id": "599e8bfd1357816e",
       "company": "Deloitte",
       "title": "TMT Predictions 2026: The AI gap narrows but persists",
@@ -159,1218 +513,179 @@
       "last_seen_at": "2026-08-08T17:09:53Z"
     },
     {
-      "id": "5deeb73f130a4470",
+      "id": "74ce71692b5a6571",
       "company": "Deloitte",
-      "title": "Deloitte Global Economics Research Center",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/topics/economy.html",
-      "description": "Economic forces shape our personal, business, and political situations, and they can be viewed through a variety of lenses—from population and income through industry and geography. Deloitte Global Economists cover all these and more.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "c3fe63520a47bca2",
-      "company": "Deloitte",
-      "title": "Environmental, Social & Governance",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/topics/environmental-social-governance.html",
-      "description": "Your company’s environmental, social, and governance programs demonstrate your commitment to effective risk management and long-term resiliency. Read on for fresh ideas on managing climate change, meeting stakeholder expectations, and evolving your organization to meet the challenges ahead.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "29d952df653c8160",
-      "company": "Deloitte",
-      "title": "Industry",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry.html",
-      "description": "Explore research and insights for your industry.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "62b8a4bbd194ca5f",
-      "company": "Deloitte",
-      "title": "Operations",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/topics/operations.html",
-      "description": "What differentiates leading organizations from their less successful rivals? Often it comes down to the how they manage their operations. No matter how great the business strategy, operations management can ultimately determine who comes out ahead.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "063a1dcfb6dea454",
-      "company": "Deloitte",
-      "title": "Strategy",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/topics/business-strategy-growth.html",
-      "description": "Strategy is an organization’s growth blueprint. It provides direction, sets priorities, and guides decisions. To set a winning strategy, leaders need to understand their competition, mitigate risks, and make hard choices about change and innovation.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "d5599314ac1d8d20",
-      "company": "Deloitte",
-      "title": "Technology management",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/topics/technology-management.html",
-      "description": "The global economy is driven by and dependent on rapidly evolving technologies. Keeping up, however, doesn’t always mean chasing the latest tech. Do you have the tools you need to put strategy before gadgetry to both enable and drive your organization’s future success?",
-      "topics": [
-        "Economics",
-        "Strategy"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "c6022a580e379a29",
-      "company": "Deloitte",
-      "title": "Talent",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/topics/talent.html",
-      "description": "We’re operating in a world where work is no longer defined by jobs, the workplace is no longer a specific place, many workers are no longer traditional employees. With the rise of AI in the workplace, the future of work has never been more of a question mark, and organizations are rethinking everything from talent strategies to the role of human resources to how to optimize human performance in a tech-driven world.",
+      "title": "From jobs to skills to outcomes: Rethinking how work gets done",
+      "date": "2025-10-28",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/future-of-workforce-planning/planning-work-outcomes.html",
+      "description": "Workforce planning is moving toward a future where outcomes define the work. How can organizations embrace task and skills-based planning now, while preparing for what comes next?",
       "topics": [
         "Workforce"
       ],
       "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
-      "id": "82e468e6686632e0",
+      "id": "0121f3cf2f038405",
       "company": "Deloitte",
-      "title": "Deloitte Insights Magazine, issue 33",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/deloitte-insights-magazine.html",
-      "description": "Deloitte’s latest proprietary research and insights to help move the AI conversation forward, offering fresh perspectives and foresight on what those organizational and economic impacts might be",
+      "title": "Forecasting the rise of push payment scams—the fraud consumers are tricked into authorizing",
+      "date": "2025-10-09",
+      "url": "https://www.deloitte.com/us/en/insights/industry/financial-services/authorized-push-payment-fraud.html",
+      "description": "Deloitte estimates US losses from authorized push payment fraud could surge to nearly $15 billion by 2028. Who’s most vulnerable, and how can banks shore up their defenses?",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "c18d5cb35c9bdc63",
+      "company": "Deloitte",
+      "title": "In the gen AI economy, consumers want innovation they can trust",
+      "date": "2025-09-24",
+      "url": "https://www.deloitte.com/us/en/insights/industry/telecommunications/connectivity-mobile-trends-survey.html",
+      "description": "By pairing strong data responsibility with bold innovation, tech companies can win greater trust, loyalty, and spending",
       "topics": [
+        "AI",
         "Economics"
       ],
       "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
-      "id": "8d2716f7db163cbc",
+      "id": "abe999dc7078d77d",
       "company": "Deloitte",
-      "title": "Top 10 most-read business insights",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/top-10-business-insights.html",
-      "description": "Explore top thought leadership insights our readers find most engaging. This quarterly, peer-recommended list addresses today's most important business issues.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "a494bd40fbb5a0a9",
-      "company": "Deloitte",
-      "title": "Videos | Deloitte Insights",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/multimedia/videos.html",
-      "description": "Our videos bring our research and insights to life, illustrating what our articles explore in greater depth.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "6bcf9bc4198eb82f",
-      "company": "Deloitte",
-      "title": "Deloitte Consumer Industry Center",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/consumer-industry-center.html",
-      "description": "The Deloitte Consumer Industry Center delivers insights that help leaders in the automotive, consumer products, retail, transportation, hospitality, and services sectors better understand their business environment and where it’s heading.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "466e075e3dc7999e",
-      "company": "Deloitte",
-      "title": "Automotive",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/automotive.html",
-      "description": "Explore research and insights for the automotive sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "68fe9d5cb3876067",
-      "company": "Deloitte",
-      "title": "Consumer Products",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/consumer-products.html",
-      "description": "Explore research and insights for the consumer sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "09b8ad5957aca08e",
-      "company": "Deloitte",
-      "title": "Hospitality",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/consumer-industry-center/hospitality.html",
-      "description": "Explore research and insights for the hospitality sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "4bad213ae024b0a5",
-      "company": "Deloitte",
-      "title": "Retail distribution",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/retail-distribution.html",
-      "description": "Explore research and insights for retail distribution sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "5d1ec705d1ce6e97",
-      "company": "Deloitte",
-      "title": "Transportation",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/transportation.html",
-      "description": "Explore research and insights for the transportation sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "2bc261f6d729c6b3",
-      "company": "Deloitte",
-      "title": "Deloitte Center for Integrated Research",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/center-for-integrated-research.html",
-      "description": "The Deloitte Center for Integrated Research offers rigorously researched and data-driven perspectives on critical issues affecting businesses today.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "4e1793cbdcb9ca99",
-      "company": "Deloitte",
-      "title": "Enterprise Growth & Innovation",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/center-for-integrated-research/enterprise-growth-and-innovation.html",
-      "description": "Explore research and insights for the enterprise growth & innovation sector.",
+      "title": "2025 Smart Manufacturing and Operations Survey: Navigating challenges to implementation",
+      "date": "2025-05-01",
+      "url": "https://www.deloitte.com/us/en/insights/industry/manufacturing-industrial-products/2025-smart-manufacturing-survey.html",
+      "description": "Deloitte’s survey of 600 executives shows that as factories and operations get smarter, manufacturers work to overcome obstacles in talent acquisition, manage complex transformations, and mitigate operational risk",
       "topics": [
-        "Strategy"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "e623eb45fa47fb46",
-      "company": "Deloitte",
-      "title": "Environmental & Societal Issues",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/center-for-integrated-research/environmental-and-social-issues.html",
-      "description": "Explore research and insights for the environmental & societal issues sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "f58d8cd2aed159fc",
-      "company": "Deloitte",
-      "title": "Technology & Transformation",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/center-for-integrated-research/technology-and-transformation.html",
-      "description": "Explore research and insights for the technology & transformation sector.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "601736aa3a87abc9",
-      "company": "Deloitte",
-      "title": "Workforce Trends",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/center-for-integrated-research/workforce-trends.html",
-      "description": "Explore research and insights for the workforce trends sector.",
-      "topics": [
-        "Workforce"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "db1a5cf62121bb81",
-      "company": "Deloitte",
-      "title": "Deloitte Global Economics Research Center",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/economics.html",
-      "description": "Economic forces shape our personal, business, and political situations, and they can be viewed through a variety of lenses—from population and income through industry and geography. Deloitte Global Economists cover all these and more.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "685367d5f272c531",
-      "company": "Deloitte",
-      "title": "Business investment | Deloitte Insights",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/economics/business-investment.html",
-      "description": "Explore research and insights for the business investment sector.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "c83ae0866bfc0d69",
-      "company": "Deloitte",
-      "title": "Consumer spending",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/economics/consumer-spending.html",
-      "description": "Explore research and insights for the consumer spending sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "f5d35191d256af8d",
-      "company": "Deloitte",
-      "title": "Fiscal and monetary policy",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/economics/fiscal-and-monetary-policy.html",
-      "description": "Explore research and insights for the fiscal and monetary policy sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "8a2ae00b9986742f",
-      "company": "Deloitte",
-      "title": "Globalization and international trade",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/economics/globalization-and-international-trade.html",
-      "description": "Explore research and insights for the globalization and international trade sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "a4c8fdcc62207dca",
-      "company": "Deloitte",
-      "title": "Housing",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/economics/housing.html",
-      "description": "Explore research and insights for the housing sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "cfbcdf9ca9b2418a",
-      "company": "Deloitte",
-      "title": "Labor markets",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/economics/labor-markets.html",
-      "description": "Explore research and insights for the labor markets sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "e083f67337be817a",
-      "company": "Deloitte",
-      "title": "Prices and Inflation",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/economics/prices-and-inflation.html",
-      "description": "Explore research and insights for prices and inflation sector.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "7f45cadec1d1cb32",
-      "company": "Deloitte",
-      "title": "Deloitte Research Center for Energy & Industrials",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/center-energy-industrials.html",
-      "description": "The Deloitte Research Center for Energy & Industrials combines rigorous research with industry-specific knowledge and practice-led experience to deliver compelling insights that can drive business impact.",
-      "topics": [
-        "Energy",
-        "Manufacturing"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "92bac581162e6d57",
-      "company": "Deloitte",
-      "title": "Aerospace & Defense",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/aerospace-defense.html",
-      "description": "Explore research and insights for the aerospace & defense sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "6a464177f4df26b3",
-      "company": "Deloitte",
-      "title": "Chemicals and Specialty Materials",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/chemicals-and-specialty-materials.html",
-      "description": "Explore research and insights for the chemicals & specialty materials sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "61685526e96f8627",
-      "company": "Deloitte",
-      "title": "Engineering and Construction",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/engineering-and-construction.html",
-      "description": "Explore research and insights for the engineering & construction sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "0b6a25d4ed9291ac",
-      "company": "Deloitte",
-      "title": "Manufacturing industrial products",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/manufacturing-industrial-products.html",
-      "description": "Kate Hardin is the executive director for the Deloitte Research Center for Energy &amp; Industrials. In tandem with Deloitte’s energy, resources, and industrials leadership, she drives energy research initiatives and manages the execution of the center’s strategy as well as its eminence and thought leadership.",
-      "topics": [
-        "Energy",
         "Manufacturing",
-        "Strategy"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "7050a0f5ce835afa",
-      "company": "Deloitte",
-      "title": "Mining & Metals",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/mining-metals.html",
-      "description": "Explore research and insights for the mining & metals sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "c70e944661e4d4e1",
-      "company": "Deloitte",
-      "title": "Oil & Gas",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/oil-and-gas.html",
-      "description": "Explore research and insights for the oil & gas sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "17a0ad2b1f05e159",
-      "company": "Deloitte",
-      "title": "Power & Utilities",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/power-and-utilities.html",
-      "description": "Explore research and insights for the power & utilities sector.",
-      "topics": [
-        "Energy"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "eebd4683f363f6d7",
-      "company": "Deloitte",
-      "title": "Renewable Energy",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/renewable-energy.html",
-      "description": "Explore research and insights for the renewable energy sector.",
-      "topics": [
-        "Energy"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "70e1981429dab1d9",
-      "company": "Deloitte",
-      "title": "Deloitte Center for Financial Services",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/research-centers/center-for-financial-services.html",
-      "description": "The Deloitte Center for Financial Services provides timely insights on the most pressing issues facing the industry, helping keep your organization a step ahead.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "983d2098e9716938",
-      "company": "Deloitte",
-      "title": "Banking & Capital Markets",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/banking-and-capital-markets.html",
-      "description": "Explore research and insights for the banking & capital markets sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "58572dfa6706f91a",
-      "company": "Deloitte",
-      "title": "Real Estate",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/real-estate.html",
-      "description": "Explore research and insights for the real estate sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "96c3e82710e6cd49",
-      "company": "Deloitte",
-      "title": "Insurance",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/insurance.html",
-      "description": "Explore research and insights for the insurance sector.",
-      "topics": [],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "9b7948aa7f69bcbc",
-      "company": "Deloitte",
-      "title": "Investment Management",
-      "date": "",
-      "url": "https://www.deloitte.com/us/en/insights/industry/investment-management.html",
-      "description": "Explore research and insights for the investment management sector.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "f7d355fd92936d59",
-      "company": "PwC",
-      "title": "Alliances",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/alliances.html",
-      "description": "Join forces with tech’s titans and trailblazers to deliver real results for your business, your people, and your customers.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "a68e24e136073ab8",
-      "company": "PwC",
-      "title": "AI consulting services and solutions",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/ai.html",
-      "description": "PwC’s AI-powered services help businesses unlock insights, reduce costs, and innovate with speed and precision.",
-      "topics": [
-        "Energy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "e09fce8f7b96b4bc",
-      "company": "PwC",
-      "title": "Audit and Assurance services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance.html",
-      "description": "To help you build trust, manage risk and strengthen resilience, we provide audit and assurance services with data-driven insights and industry expertise.",
-      "topics": [
-        "Supply Chain"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "668c59a0953a4281",
-      "company": "PwC",
-      "title": "Reinvention services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/business-model-reinvention.html",
-      "description": "We turn reinvention into reality​ so you can​ unlock opportunity and grow.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "43dcc2aa04145499",
-      "company": "PwC",
-      "title": "Business transformation services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/transformation.html",
-      "description": "Get ahead of disruption with transformation for the future. Leverage tech, AI and industry insights to adapt and scale growth in a changing world.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "981528ba09c9643d",
-      "company": "PwC",
-      "title": "Consulting services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/consulting.html",
-      "description": "Bold ideas, AI-powered solutions and deep expertise—together we transform challenges into lasting value that creates market advantage. Spark what’s next.",
-      "topics": [
-        "Energy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "ee5b390bfe709dd2",
-      "company": "PwC",
-      "title": "Global Centre for Crisis and Resilience",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/issues/crisis-solutions.html",
-      "description": "At PwC’s Global Centre for Crisis and Resilience, we help clients prepare for, respond to, and emerge stronger from crises.",
-      "topics": [
-        "Supply Chain"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "68932246bee24b79",
-      "company": "PwC",
-      "title": "Deals",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/deals.html",
-      "description": "PwC’s AI-powered deals drive growth. From acquisitions to IPOs, we help you create value, navigate change and seize opportunities.",
-      "topics": [
-        "Energy",
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "592735b17a2a79db",
-      "company": "PwC",
-      "title": "Global Economics - From insights to impact",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/global-economics.html",
-      "description": "We use economic analysis to help public and private sector organisations tackle their most important challenges.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "3a5663b71fec152d",
-      "company": "PwC",
-      "title": "Family business services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/family-business.html",
-      "description": "A successful family business are those with a good balance between professional management, responsible business ownership. Build lasting value with PwC.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "51e46f6bd3845a37",
-      "company": "PwC",
-      "title": "Forensic services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/forensics.html",
-      "description": "Forensic services will help your business emerge stronger from a crisis. Whether you're facing corruption scandals or data breaches PwC can help.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "68953327851fd9e2",
-      "company": "PwC",
-      "title": "Legal business solutions",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/legal-business-solutions.html",
-      "description": "PwC legal business solutions use bold strategies and innovative tech to help with everything from asset management to corporate and commercial challenges.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "90154eb963cf6cf7",
-      "company": "PwC",
-      "title": "Managed services | Global Business Managed Services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/managed-services.html",
-      "description": "PwC’s managed services solutions expands across a network of 58,000 industry experts that are trusted to manage and accelerate outcomes.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "e0c7c0c6784e3bcf",
-      "company": "PwC",
-      "title": "PwC Private",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/pwc-private.html",
-      "description": "We offer a full range of services to support private companies and individuals globally, including assurance, tax and advisory services.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "60d529bcb9881708",
-      "company": "PwC",
-      "title": "Global risk services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/risk.html",
-      "description": "Discover how to see risk clearly, take risk strategically and manage risk proactively to protect value and power growth.",
-      "topics": [
-        "Energy",
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "7e0cec9f1c7f575d",
-      "company": "PwC",
-      "title": "Sustainability services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/sustainability.html",
-      "description": "PwC provides sustainability consulting and climate change solutions that enhance business strategy, reduce risk, and drive business resilience and growth.",
-      "topics": [
-        "Supply Chain",
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "48e3817952d79cc4",
-      "company": "PwC",
-      "title": "Global tax services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/tax.html",
-      "description": "Our tax professionals have the knowledge and technology needed to help you reimagine your tax strategy to cut through complexity and stay compliant.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "53f6480bc8dbef0d",
-      "company": "PwC",
-      "title": "Global trust services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/trust-services.html",
-      "description": "Enhance trust with PwC’s global business trust services and deep technical knowledge for sustainable business growth. Get in touch today.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "b1321fa18617787c",
-      "company": "PwC",
-      "title": "Future-ready workforce",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/workforce.html",
-      "description": "At PwC we build tailored workforce solutions, helping businesses become more adaptable, resilient, and future-ready.",
-      "topics": [
-        "Workforce"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "24552a8410f70a2e",
-      "company": "PwC",
-      "title": "Accounting advisory services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance/accounting-advisory.html",
-      "description": "When business change happens a company will often find itself facing a bewildering array of complex, time-sensitive accounting issues.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "14c1424cffe8bddd",
-      "company": "PwC",
-      "title": "Capital markets",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance/capital-market.html",
-      "description": "Helping you gain value at every stage of your transaction.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "e739f7a9885e5ae5",
-      "company": "PwC",
-      "title": "Corporate reporting",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance/corporate-reporting.html",
-      "description": "PwC's Corporate reporting site provides publications that provide insights into integrated reporting, governance, narrative reporting, managing and board reporting, as well as sustainability reporting and remuneration and tax reporting.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "34d5e63e3ef10491",
-      "company": "PwC",
-      "title": "Financial statement audit services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance/financial.html",
-      "description": "Our financial statement audit services are people-led with exceptional, tech-powered teams that bring together broad business understanding, deep industry and technical experience.",
-      "topics": [
-        "Energy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "fadcfb567bb110fc",
-      "company": "PwC",
-      "title": "IFRS® reporting",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance/ifrs-reporting.html",
-      "description": "Our professionals bring you clear insights and fresh perspectives to help you navigate the financial reporting world with confidence.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "1513d07022d8d9cf",
-      "company": "PwC",
-      "title": "Internal audit",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance/internal-audit.html",
-      "description": "We can help you enhance your internal audit capabilities—see risk differently and move with confidence in a world full of uncertainty.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "3a14c25f0e53b5a2",
-      "company": "PwC",
-      "title": "Risk assurance",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance/risk-assurance.html",
-      "description": "PwC risk professionals can help your business stay resilient by anticipating, addressing and safeguarding against potential business risks you may face.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "c3d46f0f3a936c39",
-      "company": "PwC",
-      "title": "Sustainability assurance services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/audit-assurance/sustainability-reporting-assurance-services.html",
-      "description": "PwC’s sustainability assurance services are built on trust. Our flexible approach helps you to report on the esg issues that matter most to your stakeholders.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "16dcaeced72583a5",
-      "company": "PwC",
-      "title": "Cloud Transformation",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/consulting/cloud-transformation.html",
-      "description": "Your cloud journey involves more than just evolving your IT. It’s about transforming your business — everything from your technology, to your processes, to your people.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "0acff9e718660a45",
-      "company": "PwC",
-      "title": "The future of finance is now",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/consulting/finance-transformation.html",
-      "description": "PwC solutions help you accelerate your finance transformation. Now is the time to embrace technology and digital innovation. This is modern finance.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "f1411c53341d0553",
-      "company": "PwC",
-      "title": "Front Office Transformation",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/consulting/front-office-transformation.html",
-      "description": "Our portfolio of front office transformation Solutions will help you rethink the way people interact, transact and engage with your company. We offer an advanced service platform that delivers a connected, customer-centric experience through seamless engagement.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "de8618f3d1c93d64",
-      "company": "PwC",
-      "title": "HR technology and transformation services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/consulting/hr-transformation.html",
-      "description": "The people function now transcends traditional HR roles to help build agile and resilient organisations. Transform your workforce strategy with PwC.",
-      "topics": [
         "Strategy",
         "Workforce"
       ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
-      "id": "41a452ca311296a3",
+      "id": "851be29de49b9718",
       "company": "PwC",
-      "title": "See risk, take risk, manage risk",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/issues/risk-regulation.html",
-      "description": "Seeing risk isn’t enough anymore—you need to act on it intelligently to drive your business forward while building the resilience to protect it.",
-      "topics": [
-        "Supply Chain"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "2eabbc6b24ee5581",
-      "company": "PwC",
-      "title": "Technology services and consulting",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/consulting/technology.html",
-      "description": "Accelerate transformation with PwC technology consulting. Harness AI, cloud, and data to drive efficiency, innovation, and growth in a digital-first world.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "67d2819539494aab",
-      "company": "PwC",
-      "title": "Acquisitions",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/deals/acquisitions.html",
-      "description": "Create a roadmap today. Grow value for tomorrow.",
+      "title": "The leader’s guide to value in motion",
+      "date": "2025-04-29",
+      "url": "https://www.pwc.com/gx/en/issues/value-in-motion/leader-guide-value-in-motion.html",
+      "description": "Get ready for AI, climate change and other megatrends to shift value pools, reconfigure industries and redefine the top management agenda.",
       "topics": [],
       "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
-      "id": "00421c40fc3b618a",
-      "company": "PwC",
-      "title": "Capital markets and IPOs",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/deals/capital-markets-ipo.html",
-      "description": "Whether you’re looking at IPO financing, executing a debt offering or managing ongoing regulatory reporting, we can work together and identify new ways to access capital or focus investment where it matters most.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "ec85f946bd9b1c81",
-      "company": "PwC",
-      "title": "Corporate finance",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/deals/corporate-finance.html",
-      "description": "Our global Corporate Finance business is made up of teams who can offer extensive industry capabilities and local market knowledge.",
+      "id": "f9ac4415b76b0f42",
+      "company": "Deloitte",
+      "title": "Has the CISO finally been accepted as a key strategic player?",
+      "date": "2025-02-27",
+      "url": "https://www.deloitte.com/us/en/insights/topics/business-strategy-growth/ciso-and-cybersecurity-strategy.html",
+      "description": "Why was there a surge in CISOs' strategic involvement in business-critical technology conversations last year?",
       "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
-      "id": "9fa0d7ec45c94e81",
-      "company": "PwC",
-      "title": "Deals strategy",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/deals/deal-strategy.html",
-      "description": "PwC Deals Strategy helps companies transform their business through deals: mergers, acquisitions, divestitures, alliances, private equity, and more.",
+      "id": "1ddfc7ea93a3c93b",
+      "company": "Deloitte",
+      "title": "Benfica scores big with AI and spatial data",
+      "date": "2024-10-24",
+      "url": "https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2024/artificial-intelligence-in-sports.html",
+      "description": "The Portuguese pro football team is using artificial intelligence and analytics to develop young talent into high-caliber athletes",
       "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "b3e2d1ed58664ea2",
-      "company": "PwC",
-      "title": "Joint ventures and strategic alliances",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/deals/joint-ventures-and-alliances.html",
-      "description": "Our experts can help your business strategically partner and form alliances to strengthen core capabilities and outperform competitors.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "8b86160b3e76c54d",
-      "company": "PwC",
-      "title": "Mergers and acquisitions (M&A) tax services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/tax/mergers-and-acquisitions.html",
-      "description": "Planning M&A activity? Global or local, PwC will help you to create and protect value, through pragmatic transaction solutions and efficient M&A tax strategies.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "03341e9981281a5d",
-      "company": "PwC",
-      "title": "Performance and Restructuring​",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/deals/performance-and-restructuring.html",
-      "description": "Performance and Restructuring professionals help to unlock and enhance the value trapped in underperforming business. They look at cash flows, debts, bankruptcy issues, liquidation, financial difficulties, company restructure looking to deliver value, recovery and turnaround strategies.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "5f44ec4d3625d737",
-      "company": "PwC",
-      "title": "Employment law",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/legal-business-solutions/employment.html",
-      "description": "Your people strategy is inextricably linked to your growth strategy. That's why it makes sense to work with PwC’s global legal network, whose employment law service is embedded within the capabilities, sector exposure, and footprint of a global business services leader.",
-      "topics": [
-        "Strategy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "3570e3d82ff2ab35",
-      "company": "PwC",
-      "title": "Entity governance and compliance",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/legal-business-solutions/entity-governance-compliance.html",
-      "description": "With global scrutiny rising, managing legal entity governance and compliance obligations has moved up the board agenda. PwC Legal can help you manage the risks.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "1aa6b24a2899c3ee",
-      "company": "PwC",
-      "title": "International business reorganisations",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/legal-business-solutions/corporate-and-commercial.html",
-      "description": "As you compete in an increasingly volatile global marketplace, a corporate re-organisation of some kind may be in your sights. PwC’s Legal Services network provide a seamless, powerful, integrated, global solution.",
-      "topics": [
-        "Energy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "7ba400b0eba51997",
-      "company": "PwC",
-      "title": "Mergers and acquisitions (M&A) legal solutions",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/legal-business-solutions/mergers-and-acquisitions.html",
-      "description": "From letter of intent to the closing of your transaction, PwC's M&A lawyers maintain a rigorous focus on the successful execution of every aspect of your deal, and capturing the maximum value for your organisation.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "5a0614e88748ba74",
-      "company": "PwC",
-      "title": "NewLaw",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/legal-business-solutions/new-law.html",
-      "description": "Tech-enabled & business-minded lawyers, with vast global reach.",
-      "topics": [],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "f61324fd1479d572",
-      "company": "PwC",
-      "title": "Climate risk, resilience and adaptation services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/sustainability/climate-risk-resilience-adaptation.html",
-      "description": "As sustainability and climate consequences emerge, companies are looking for ways to mitigate risk and build more resilient businesses. See how PwC can help.",
-      "topics": [
-        "Supply Chain"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "8e643475a1010486",
-      "company": "PwC",
-      "title": "Energy solutions services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/sustainability/energy-solutions.html",
-      "description": "Energy solutions services drives business value by creating opportunities and additional revenue streams, and supporting cost reduction.",
-      "topics": [
-        "Energy"
-      ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
-    },
-    {
-      "id": "b9f9dadcd23bb27a",
-      "company": "PwC",
-      "title": "Legal and sustainability services",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/legal-business-solutions/esg-legal.html",
-      "description": "Navigate sustainability's legal landscape with PwC's guidance in due diligence, climate regulations, and workforce compliance to unlock opportunities and mitigate risks.",
-      "topics": [
+        "AI",
         "Workforce"
       ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
-      "id": "1868213cfcaba2c3",
-      "company": "PwC",
-      "title": "Transition planning",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/sustainability/transition-planning.html",
-      "description": "Navigate change with confidence. PwC's transition planning services help you adapt swiftly, ensuring a seamless shift to new opportunities and growth.",
+      "id": "492aab51b12b768f",
+      "company": "Deloitte",
+      "title": "Ownership unbound: Reinventing intellectual property in the open innovation age",
+      "date": "2024-10-08",
+      "url": "https://www.deloitte.com/us/en/insights/topics/innovation/rethinking-intellectual-property-in-age-of-open-innovation.html",
+      "description": "Emerging tech, open innovation, and changing consumer demands are disrupting IP models. How can organizations balance IP protection with collaboration?",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "c362437eb62e5cea",
+      "company": "Deloitte",
+      "title": "How Eastman used its data and analytics experience to get started with generative AI",
+      "date": "2024-04-08",
+      "url": "https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2024/eastman-gen-ai-use-cases-in-manufacturing.html",
+      "description": "Rather than trying to add gen AI to all its operations areas, Eastman is looking for manufacturing use cases using its previous technical experience.",
       "topics": [
-        "Strategy"
+        "AI",
+        "Manufacturing"
       ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     },
     {
-      "id": "202465adf908574b",
+      "id": "dc91a624c4b29856",
       "company": "PwC",
-      "title": "Sustainability in deals",
-      "date": "",
-      "url": "https://www.pwc.com/gx/en/services/sustainability/sustainability-in-deals.html",
-      "description": "PwC can help you weave ESG considerations into investment decisions and capital allocations to deliver near-term outcomes and create value over time.",
+      "title": "PwC’s Global NextGen Survey 2024: Success and succession in an AI world",
+      "date": "2024-03-13",
+      "url": "https://www.pwc.com/gx/en/issues/c-suite-insights/nextgen.html",
+      "description": "By dynamically fusing leadership transition and generative AI, family enterprises create opportunities for the next generation.",
+      "topics": [
+        "AI"
+      ],
+      "source_name": "PwC C-suite Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "69b7a6331a8a588e",
+      "company": "Deloitte",
+      "title": "Data point: Quantifying the value of tech companies’ “trusted actions”",
+      "date": "2024-02-20",
+      "url": "https://www.deloitte.com/us/en/insights/multimedia/videos/consumer-trust-in-tech-companies.html",
+      "description": "Customers might reward brands for taking specific trusted actions, but they are more likely to punish those that fall short.",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "9705c684602bb9c0",
+      "company": "Deloitte",
+      "title": "As human performance takes center stage, are traditional productivity metrics enough?",
+      "date": "2024-02-04",
+      "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2024/human-performance-is-the-new-way-to-measure-productivity.html",
+      "description": "As human performance takes center stage, new sources of data and AI can help organizations shift from measuring productivity to measuring human performance.",
       "topics": [
         "Economics"
       ],
-      "source_name": "PwC Today's Issues",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "e4d8bf785dfdb2da",
+      "company": "Deloitte",
+      "title": "Tech companies have a trust gap to overcome—especially with women",
+      "date": "2023-11-07",
+      "url": "https://www.deloitte.com/us/en/insights/industry/technology/bridge-data-privacy-concerns-in-women-with-technology.html",
+      "description": "Women are more wary than men about how their personal data is used and protected—particularly sensitive health data—and that may prevent them from maximizing future tech benefits.",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-14T04:04:54Z",
+      "last_seen_at": "2026-08-14T04:04:54Z"
     }
   ]
 }
