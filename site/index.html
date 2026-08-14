@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="McKinsey、BCG、Deloitte、PwC 公開研究自動更新資料庫" />
+  <meta name="description" content="McKinsey、BCG、Deloitte、PwC 公開研究 SQLite 資料庫" />
   <title>Consultant Research Database</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
@@ -11,13 +11,14 @@
   <header class="topbar">
     <div class="shell topbar-inner">
       <div>
-        <p class="eyebrow">CONSULTANT SYSTEM</p>
+        <p class="eyebrow">CONSULTANT SYSTEM · SQLITE</p>
         <h1>Research Database</h1>
-        <p class="subtitle">McKinsey · BCG · Deloitte · PwC 公開研究索引</p>
+        <p class="subtitle">McKinsey · BCG · Deloitte · PwC 公開研究索引 · Browser SQL</p>
       </div>
       <nav class="top-actions" aria-label="資料入口">
-        <a id="jsonExport" class="button ghost" href="./data/reports.json">JSON</a>
-        <a id="csvExport" class="button ghost" href="./data/reports.csv">CSV</a>
+        <a class="button ghost" href="./data/consultant.db">SQLite</a>
+        <a class="button ghost" href="./data/reports.json">JSON</a>
+        <a class="button ghost" href="./data/reports.csv">CSV</a>
         <a class="button" href="https://github.com/linwuyen/Consultant_System" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       </nav>
     </div>
@@ -28,7 +29,7 @@
       <div class="section-heading">
         <div>
           <p class="section-kicker">DATABASE OVERVIEW</p>
-          <h2 id="db-overview-title">資料庫狀態</h2>
+          <h2 id="db-overview-title">SQLite 資料庫狀態</h2>
         </div>
         <div class="freshness" id="freshness"><span class="dot"></span><span>載入中</span></div>
       </div>
@@ -41,7 +42,7 @@
         <div class="panel-title-row">
           <div>
             <h3>四家公司 Coverage</h3>
-            <p>以資料量、日期完整度與最新研究日期判斷目前索引健康度。</p>
+            <p>直接由 consultant.db 聚合資料量、日期完整度與最新研究。</p>
           </div>
           <span class="muted" id="updatedAt"></span>
         </div>
@@ -105,13 +106,35 @@
         </div>
       </div>
     </section>
+
+    <section class="sql-panel" aria-labelledby="sql-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">SQL CONSOLE</p>
+          <h2 id="sql-title">直接查 consultant.db</h2>
+        </div>
+        <span class="muted">唯讀 · SQLite WASM</span>
+      </div>
+      <div class="sql-console">
+        <textarea id="sqlInput" spellcheck="false">SELECT company, COUNT(*) AS reports, MAX(published_at) AS latest
+FROM reports
+GROUP BY company
+ORDER BY reports DESC;</textarea>
+        <div class="sql-actions">
+          <button id="runSql" class="button" type="button">Run SQL</button>
+          <span id="sqlStatus" class="muted">資料庫載入後即可執行</span>
+        </div>
+        <div id="sqlResult" class="sql-result"></div>
+      </div>
+    </section>
   </main>
 
   <footer class="shell footer">
-    <p>資料為各顧問公司公開頁面的 metadata、摘要與原始連結；不鏡像文章全文。研究結論與數字請回到官方原始來源驗證。</p>
-    <p>自動更新排程：每日 09:17（Asia/Taipei）。</p>
+    <p>資料為各顧問公司公開頁面的 metadata、摘要與原始連結；不鏡像文章全文。研究結論與數字請回官方來源驗證。</p>
+    <p>GitHub Actions 每日 09:17（Asia/Taipei）更新 SQLite。</p>
   </footer>
 
+  <script src="./vendor/sql-wasm.js"></script>
   <script src="./app.js" defer></script>
 </body>
 </html>
