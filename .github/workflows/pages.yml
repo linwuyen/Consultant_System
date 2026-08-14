@@ -6,6 +6,9 @@ on:
     paths:
       - "site/**"
       - "data/**"
+      - "scripts/build_sqlite.py"
+      - "config/sources.json"
+      - "package.json"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -26,12 +29,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install browser SQLite runtime
+        run: npm install
+      - name: Build SQLite from current research snapshot
+        run: python scripts/build_sqlite.py
+      - name: Validate JavaScript
+        run: npm run check:syntax
       - uses: actions/configure-pages@v5
-      - name: Assemble static site
+      - name: Assemble static SQLite site
         run: |
-          mkdir -p _site/data
+          mkdir -p _site/data _site/vendor
           cp -R site/. _site/
-          cp data/reports.json data/reports.csv _site/data/
+          cp data/consultant.db data/reports.json data/reports.csv _site/data/
+          cp node_modules/sql.js/dist/sql-wasm.js _site/vendor/
+          cp node_modules/sql.js/dist/sql-wasm.wasm _site/vendor/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
