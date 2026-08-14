@@ -2,15 +2,31 @@
   "sources": [
     {
       "company": "McKinsey",
-      "name": "McKinsey Featured Insights",
-      "url": "https://www.mckinsey.com/featured-insights/en",
-      "allowed_path_prefixes": ["/featured-insights/", "/capabilities/", "/industries/", "/mgi/"]
+      "name": "McKinsey Tech & AI Insights",
+      "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/en",
+      "allowed_path_prefixes": ["/capabilities/tech-and-ai/", "/featured-insights/", "/industries/"],
+      "listing_only": true
     },
     {
       "company": "McKinsey",
-      "name": "McKinsey Insights Store",
-      "url": "https://www.mckinsey.com/featured-insights/insights-store",
-      "allowed_path_prefixes": ["/featured-insights/", "/capabilities/", "/industries/", "/mgi/"]
+      "name": "McKinsey Semiconductor Insights",
+      "url": "https://www.mckinsey.com/industries/semiconductors/our-insights",
+      "allowed_path_prefixes": ["/industries/semiconductors/", "/capabilities/", "/featured-insights/"],
+      "listing_only": true
+    },
+    {
+      "company": "McKinsey",
+      "name": "McKinsey Strategy Insights",
+      "url": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights",
+      "allowed_path_prefixes": ["/capabilities/strategy-and-corporate-finance/", "/featured-insights/", "/industries/"],
+      "listing_only": true
+    },
+    {
+      "company": "McKinsey",
+      "name": "McKinsey Monthly Highlights",
+      "url": "https://www.mckinsey.com/featured-insights/monthly-highlights",
+      "allowed_path_prefixes": ["/featured-insights/", "/capabilities/", "/industries/", "/mgi/"],
+      "listing_only": true
     },
     {
       "company": "BCG",
@@ -50,14 +66,14 @@
     }
   ],
   "topic_keywords": {
-    "AI": ["artificial intelligence", "generative ai", "gen ai", "agentic", "ai agent", "machine learning"],
-    "Semiconductor": ["semiconductor", "chip", "wafer", "foundry"],
+    "AI": ["artificial intelligence", "generative ai", "gen ai", "agentic", "ai agent", "machine learning", "AI"],
+    "Semiconductor": ["semiconductor", "chip", "wafer", "foundry", "advanced packaging"],
     "Energy": ["energy", "power", "electricity", "grid", "renewable", "battery"],
     "Manufacturing": ["manufacturing", "factory", "industrial", "automation"],
     "Supply Chain": ["supply chain", "logistics", "procurement", "resilience"],
-    "Data Center": ["data center", "data centre", "datacenter", "cloud infrastructure"],
-    "Economics": ["economy", "economic", "inflation", "productivity", "gdp", "investment"],
-    "Strategy": ["strategy", "growth", "portfolio", "transformation", "value creation"],
+    "Data Center": ["data center", "data centre", "datacenter", "cloud infrastructure", "compute infrastructure"],
+    "Economics": ["economy", "economic", "inflation", "productivity", "gdp", "investment", "capital spending", "capex"],
+    "Strategy": ["strategy", "growth", "portfolio", "transformation", "value creation", "competitive advantage"],
     "Workforce": ["workforce", "talent", "jobs", "skills", "human capital"]
   }
 }
