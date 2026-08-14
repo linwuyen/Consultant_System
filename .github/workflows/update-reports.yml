@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: sqlite-research-refresh
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   refresh:
@@ -27,6 +27,8 @@ jobs:
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -61,6 +63,7 @@ jobs:
           PY
 
       - name: Commit refreshed database
+        shell: bash
         run: |
           if git diff --quiet -- data/reports.json data/reports.csv data/consultant.db; then
             echo "No database changes"
@@ -70,4 +73,5 @@ jobs:
           git config user.email "consultant-system-bot@users.noreply.github.com"
           git add data/reports.json data/reports.csv data/consultant.db
           git commit -m "chore: refresh SQLite research database"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
