@@ -1,40 +1,6 @@
 {
   "sources": [
     {
-      "company": "McKinsey",
-      "name": "McKinsey Tech & AI Insights",
-      "url": "https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/en",
-      "allowed_path_prefixes": ["/capabilities/tech-and-ai/", "/featured-insights/", "/industries/"],
-      "listing_only": true
-    },
-    {
-      "company": "McKinsey",
-      "name": "McKinsey Semiconductor Insights",
-      "url": "https://www.mckinsey.com/industries/semiconductors/our-insights",
-      "allowed_path_prefixes": ["/industries/semiconductors/", "/capabilities/", "/featured-insights/"],
-      "listing_only": true
-    },
-    {
-      "company": "McKinsey",
-      "name": "McKinsey Strategy Insights",
-      "url": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights",
-      "allowed_path_prefixes": ["/capabilities/strategy-and-corporate-finance/", "/featured-insights/", "/industries/"],
-      "listing_only": true
-    },
-    {
-      "company": "McKinsey",
-      "name": "McKinsey Monthly Highlights",
-      "url": "https://www.mckinsey.com/featured-insights/monthly-highlights",
-      "allowed_path_prefixes": ["/featured-insights/", "/capabilities/", "/industries/", "/mgi/"],
-      "listing_only": true
-    },
-    {
-      "company": "BCG",
-      "name": "BCG Publications",
-      "url": "https://www.bcg.com/publications",
-      "allowed_path_prefixes": ["/publications/"]
-    },
-    {
       "company": "Deloitte",
       "name": "Deloitte Insights",
       "url": "https://www.deloitte.com/us/en/insights.html?site=global-en",
@@ -65,8 +31,28 @@
       "allowed_path_prefixes": ["/gx/en/industries/government-public-sector/", "/gx/en/issues/", "/gx/en/research-insights/"]
     }
   ],
+  "fallback_sources": [
+    {
+      "company": "McKinsey",
+      "name": "McKinsey Semiconductor Insights",
+      "url": "https://www.mckinsey.com/industries/semiconductors/our-insights",
+      "allowed_path_prefixes": ["/industries/semiconductors/", "/mgi/our-research/", "/capabilities/", "/featured-insights/"]
+    },
+    {
+      "company": "McKinsey",
+      "name": "McKinsey Featured Insights",
+      "url": "https://www.mckinsey.com/featured-insights/en",
+      "allowed_path_prefixes": ["/featured-insights/", "/mgi/our-research/", "/capabilities/", "/industries/"]
+    },
+    {
+      "company": "BCG",
+      "name": "BCG Publications",
+      "url": "https://www.bcg.com/publications",
+      "allowed_path_prefixes": ["/publications/"]
+    }
+  ],
   "topic_keywords": {
-    "AI": ["artificial intelligence", "generative ai", "gen ai", "agentic", "ai agent", "machine learning", "AI"],
+    "AI": ["artificial intelligence", "generative ai", "gen ai", "agentic", "ai agent", "machine learning", " AI "],
     "Semiconductor": ["semiconductor", "chip", "wafer", "foundry", "advanced packaging"],
     "Energy": ["energy", "power", "electricity", "grid", "renewable", "battery"],
     "Manufacturing": ["manufacturing", "factory", "industrial", "automation"],
