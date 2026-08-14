@@ -35,11 +35,13 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
 
+      - name: Syntax check crawler
+        run: python -m py_compile scripts/update_reports.py scripts/build_sqlite.py scripts/audit_coverage.py
+
       - name: Refresh research metadata
         run: python scripts/update_reports.py
 
       - name: Audit four-firm coverage
-        continue-on-error: true
         run: python scripts/audit_coverage.py
 
       - name: Build SQLite database
@@ -56,6 +58,7 @@ jobs:
           assert required <= tables, (required, tables)
           total = con.execute('SELECT COUNT(*) FROM reports').fetchone()[0]
           companies = dict(con.execute('SELECT company, COUNT(*) FROM reports GROUP BY company'))
+          assert all(companies.get(c, 0) >= 3 for c in ('McKinsey', 'BCG', 'Deloitte', 'PwC')), companies
           print('SQLite integrity PASS')
           print('reports =', total)
           print('companies =', companies)
