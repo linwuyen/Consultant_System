@@ -1,17 +1,61 @@
 {
-  "updated_at": "2026-08-14T04:04:54Z",
+  "updated_at": "2026-08-14T20:25:05Z",
   "reports": [
+    {
+      "id": "f67e3531ca3e50d2",
+      "company": "BCG",
+      "title": "Enterprise AI Control Plane: The CIO’s Guide to Governing and Accelerating AI Agents",
+      "date": "2026-08-14",
+      "url": "https://www.bcg.com/publications/2026/how-cios-govern-ai-agents-at-scale",
+      "description": "A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2Fbc%2F46%2F7043b79a4fd3a22a096f09733534%2Fenterprise-ai-control-plane-the-cios-guide-to-governing-and-accelerating-ai-agents.gif) AI Agents Article August 14, 2026   AI agents are scaling faster than enterprise governance, making centralized control critical for organizations seeking to accelerate AI adoption without increasing risk. Learn More !Image 52 Artificial Intelligence Article August 14,",
+      "topics": [
+        "AI"
+      ],
+      "source_name": "BCG Publications",
+      "discovered_at": "2026-08-14T20:25:05Z",
+      "last_seen_at": "2026-08-14T20:25:05Z"
+    },
+    {
+      "id": "b2410c38496bdd14",
+      "company": "BCG",
+      "title": "How CEOs Should Manage Escalating Cybersecurity Risks in the Age of AI",
+      "date": "2026-08-14",
+      "url": "https://www.bcg.com/publications/2026/how-ceos-manage-ai-cybersecurity-risks",
+      "description": "l=http%3A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2F90%2F79%2F15a5cdc84256a962419bfc64b844%2Fhow-ceos-should-manage-escalating-cybersecurity-risks-in-the-age-of-ai.gif) Artificial Intelligence Article August 14, 2026   As AI expands current and future threat levels, cross-functional ownership of cybersecurity is essential. CEOs are uniquely positioned to lead that effort. Learn More !Image 53 International Business Articl",
+      "topics": [
+        "AI"
+      ],
+      "source_name": "BCG Publications",
+      "discovered_at": "2026-08-14T20:25:05Z",
+      "last_seen_at": "2026-08-14T20:25:05Z"
+    },
+    {
+      "id": "b23ad749503a9913",
+      "company": "BCG",
+      "title": "Making Tech-Industry Partnerships Work in the Agentic Era",
+      "date": "2026-08-14",
+      "url": "https://www.bcg.com/publications/2026/how-executives-fix-failing-tech-ai-partnerships",
+      "description": "nsulting-group-brightspot.s3.amazonaws.com%2F80%2Fa3%2Ff8e11c70433cbfdcb48db96650e5%2Fbeyond-the-vendor-model-building-tech-industry-partnerships-for-the-agentic-ai-era-hero.jpg) International Business Article August 14, 2026   Agentic AI raises the stakes for tech-industry partnerships, yet success rates remain poor. To improve the odds, company leaders should select the right archetype and avoid six common pitfalls. Learn More !Image 54 Artificial Intelligence Ar",
+      "topics": [
+        "AI"
+      ],
+      "source_name": "BCG Publications",
+      "discovered_at": "2026-08-14T20:25:05Z",
+      "last_seen_at": "2026-08-14T20:25:05Z"
+    },
     {
       "id": "16775921a5bedece",
       "company": "BCG",
       "title": "The Next-Gen Strategist in the Age of AI",
       "date": "2026-08-13",
       "url": "https://www.bcg.com/publications/2026/how-strategy-leaders-adapt-to-ai",
-      "description": "As AI commoditizes analytical thinking, strategists must foster new modes of thinking—and select the right one to tackle the challenges faced by their firm.",
-      "topics": [],
+      "description": "/webp/quality/80/?url=http%3A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2Fe4%2F29%2F38068b624fbd9a607321bb7bb20e%2Fthe-next-gen-strategist-in-the-age-of-ai-rectangle.jpg) Artificial Intelligence Article August 13, 2026   As AI commoditizes analytical thinking, strategists must foster new modes of thinking—and select the right one to tackle the challenges faced by their firm. Learn More !Image 55 International Business Article August 13, 2026 [What CEOs Should",
+      "topics": [
+        "AI"
+      ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:25:05Z"
     },
     {
       "id": "39f0a96642dffeef",
@@ -19,13 +63,15 @@
       "title": "What CEOs Should Know About China’s Business Ambitions",
       "date": "2026-08-13",
       "url": "https://www.bcg.com/publications/2026/chinas-15th-five-year-plan-ceos",
-      "description": "The 15th Five-Year Plan reveals the country’s economic goals. We highlight those ambitions and the constraints on achieving them.",
+      "description": "ity/80/?url=http%3A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2F4b%2F30%2F266a00ea45a08ca77ccce1ce61fe%2Fwhat-ceos-should-know-about-chinas-business-ambitions.gif) International Business Article August 13, 2026   The 15th Five-Year Plan reveals the country’s economic goals. We highlight those ambitions and the constraints on achieving them. Learn More !Image 56 Corporate Finance and Strategy Article August 13, 2026 [Who Will Win as AI Rewrites Competiti",
       "topics": [
-        "Economics"
+        "AI",
+        "Economics",
+        "Strategy"
       ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:25:05Z"
     },
     {
       "id": "2ebd55010827a52f",
@@ -33,11 +79,14 @@
       "title": "Who Will Win as AI Rewrites Competitive Advantage?",
       "date": "2026-08-13",
       "url": "https://www.bcg.com/publications/2026/which-companies-capture-value-from-ai",
-      "description": "AI is driving a historic reallocation of capital and a shift in profit pools, forcing leaders to rethink where defensible returns will come from.",
-      "topics": [],
+      "description": "url=http%3A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2F18%2F33%2F82d7ad7e47909ee5d30314361574%2Fwho-will-win-as-ai-rewrites-competitive-advantage.jpg) Corporate Finance and Strategy Article August 13, 2026   AI is driving a historic reallocation of capital and a shift in profit pools, forcing leaders to rethink where defensible returns will come from. Learn More !Image 57 To view this video content, you must consent to all cookies Modify Cookie Settings ![Image 58](https://web-assets.bcg.com/dims4/default/90a4b4d/2147483647/strip/true/crop/599x800+404+0/re",
+      "topics": [
+        "AI",
+        "Strategy"
+      ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:25:05Z"
     },
     {
       "id": "8170d5288ded54a3",
@@ -63,7 +112,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "a333523ae675b16d",
@@ -78,7 +127,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "e2b69ea7f89a4715",
@@ -154,10 +203,12 @@
       "date": "2026-07-22",
       "url": "https://www.deloitte.com/us/en/insights/topics/business-strategy-growth/2q-2026-cfo-signals-survey.html",
       "description": "Respondents to the second-quarter 2026 CFO Signals survey on AI governance are most concerned about cost uncertainty, transparency, and managing risks",
-      "topics": [],
+      "topics": [
+        "AI"
+      ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "2529db3a5e73ef1b",
@@ -185,7 +236,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "ac5990bf51045549",
@@ -194,10 +245,12 @@
       "date": "2026-07-09",
       "url": "https://www.deloitte.com/us/en/insights/topics/talent/ai-adoption-to-ai-adaptation.html",
       "description": "AI adoption is easy to prove and easy to fake. But these three behaviors show whether workers are actually adapting to AI—changing how they think, decide, and work.",
-      "topics": [],
+      "topics": [
+        "AI"
+      ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "e47eb28e4c2dfa7d",
@@ -211,7 +264,22 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
+    },
+    {
+      "id": "b824819b8a1f3d87",
+      "company": "McKinsey",
+      "title": "Semiconductors: Etching the new map of strategic supply",
+      "date": "2026-06-30",
+      "url": "https://www.mckinsey.com/mgi/our-research/semiconductors-etching-the-new-map-of-strategic-supply",
+      "description": "As geopolitics shift, more countries are wooing semiconductor manufacturers to enhance resilience while demand for advanced semiconductors continues to grow.",
+      "topics": [
+        "Semiconductor",
+        "Supply Chain"
+      ],
+      "source_name": "McKinsey official verified bootstrap",
+      "discovered_at": "2026-08-14T20:25:05Z",
+      "last_seen_at": "2026-08-14T20:25:05Z"
     },
     {
       "id": "5848a6a1dbb019d7",
@@ -221,11 +289,28 @@
       "url": "https://www.deloitte.com/us/en/insights/topics/technology-management/rewiring-ai-operating-model.html",
       "description": "Enterprise AI strategy is entering a new phase, requiring operating models built for faster decisions, dynamic funding, and coordinated work",
       "topics": [
+        "AI",
         "Strategy"
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
+    },
+    {
+      "id": "2f5872bc8c3af628",
+      "company": "McKinsey",
+      "title": "Frontiers of compute: The technologies to reduce AI inference costs",
+      "date": "2026-06-25",
+      "url": "https://www.mckinsey.com/industries/semiconductors/our-insights/frontiers-of-compute-the-technologies-to-reduce-ai-inference-costs",
+      "description": "AI infrastructure investment is creating sustained demand across the semiconductor value chain as compute becomes a strategic asset.",
+      "topics": [
+        "AI",
+        "Semiconductor",
+        "Economics"
+      ],
+      "source_name": "McKinsey official verified bootstrap",
+      "discovered_at": "2026-08-14T20:25:05Z",
+      "last_seen_at": "2026-08-14T20:25:05Z"
     },
     {
       "id": "8f24658dbeb4fc08",
@@ -239,7 +324,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "7ef96ec92c83213c",
@@ -248,10 +333,12 @@
       "date": "2026-06-18",
       "url": "https://www.deloitte.com/us/en/insights/topics/talent/knowledge-management-plan.html",
       "description": "A so-called ‘silver tsunami’ could drain decades of organizational knowledge. This five-step process can help leaders capture institutional knowledge before it walks out the door.",
-      "topics": [],
+      "topics": [
+        "Strategy"
+      ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "54cb9bb79d916e0f",
@@ -263,7 +350,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "1ed2516bd044da0b",
@@ -290,7 +377,24 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
+    },
+    {
+      "id": "ed81e95a173915e9",
+      "company": "McKinsey",
+      "title": "The next era of semiconductor value creation",
+      "date": "2026-03-30",
+      "url": "https://www.mckinsey.com/industries/semiconductors/our-insights/the-next-era-of-semiconductor-value-creation",
+      "description": "The AI boom and data center buildout are driving semiconductor demand and changing the industry value-creation agenda.",
+      "topics": [
+        "AI",
+        "Semiconductor",
+        "Data Center",
+        "Strategy"
+      ],
+      "source_name": "McKinsey official verified bootstrap",
+      "discovered_at": "2026-08-14T20:25:05Z",
+      "last_seen_at": "2026-08-14T20:25:05Z"
     },
     {
       "id": "c1a5398f75752317",
@@ -314,7 +418,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "949fb4b8836f9fce",
@@ -326,7 +430,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "ba2440e7f1f075bc",
@@ -340,7 +444,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "2d3badc239c8bc1d",
@@ -349,10 +453,12 @@
       "date": "2026-03-04",
       "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/ai-cultural-debt.html",
       "description": "AI may be creating an unnoticed, steady accumulation of negative cultural behaviors. How do we manage it so culture can be an advantage in the age of AI?",
-      "topics": [],
+      "topics": [
+        "AI"
+      ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "eb559f4d0cbfa96a",
@@ -361,10 +467,13 @@
       "date": "2026-03-04",
       "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/orchestrating-for-agility.html",
       "description": "AI can enable quick intent-to-action. But turning speed into competitive advantage will likely come from learning to orchestrate capabilities and capacity in real time.",
-      "topics": [],
+      "topics": [
+        "AI",
+        "Strategy"
+      ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "00acadde477c01dc",
@@ -376,7 +485,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "df2a13b8384b1ca4",
@@ -390,7 +499,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "9e0204dc7a5ffdbf",
@@ -399,10 +508,12 @@
       "date": "2026-03-03",
       "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2026/decision-making-with-ai.html",
       "description": "As AI transforms decision-making, how can organizations make quality decisions, anchored in human agency and trust?",
-      "topics": [],
+      "topics": [
+        "AI"
+      ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "87185b35b773a568",
@@ -416,7 +527,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "3774d328d4ef5679",
@@ -426,11 +537,30 @@
       "url": "https://www.pwc.com/gx/en/issues/c-suite-insights/ceo-survey.html",
       "description": "CEOs are reinventing their companies with technology and seeking growth opportunities in new sectors, even as they see elevated threats ahead.",
       "topics": [
+        "AI",
         "Strategy"
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
+    },
+    {
+      "id": "1e10e453046b2b5c",
+      "company": "McKinsey",
+      "title": "Hiding in plain sight: The underestimated size of the semiconductor industry",
+      "date": "2026-01-15",
+      "url": "https://www.mckinsey.com/industries/semiconductors/our-insights/hiding-in-plain-sight-the-underestimated-size-of-the-semiconductor-industry",
+      "description": "McKinsey analysis examines semiconductor market growth, segment economics, and demand driven by AI and data centers.",
+      "topics": [
+        "AI",
+        "Semiconductor",
+        "Data Center",
+        "Economics",
+        "Strategy"
+      ],
+      "source_name": "McKinsey official verified bootstrap",
+      "discovered_at": "2026-08-14T20:25:05Z",
+      "last_seen_at": "2026-08-14T20:25:05Z"
     },
     {
       "id": "2bfe1f12116916b2",
@@ -446,7 +576,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "d6c298cff1d6122b",
@@ -460,7 +590,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "872b3208c9832cef",
@@ -482,11 +612,12 @@
       "url": "https://www.pwc.com/gx/en/issues/c-suite-insights/global-investor-survey.html",
       "description": "Resilience, AI adoption, and business model reinvention are shaping investor expectations as disruption and uncertainty loom in the year ahead.",
       "topics": [
+        "AI",
         "Supply Chain"
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "5ae1e35e3c890cc9",
@@ -495,10 +626,12 @@
       "date": "2025-11-18",
       "url": "https://www.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2026/tech-sovereignty.html",
       "description": "Countries and regional blocs are racing to build their own sovereign tech and AI infrastructures. What are the implications? How can global businesses prepare?",
-      "topics": [],
+      "topics": [
+        "AI"
+      ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "599e8bfd1357816e",
@@ -524,7 +657,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "0121f3cf2f038405",
@@ -536,7 +669,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "c18d5cb35c9bdc63",
@@ -551,7 +684,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "abe999dc7078d77d",
@@ -567,7 +700,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "851be29de49b9718",
@@ -579,7 +712,7 @@
       "topics": [],
       "source_name": "PwC Today's Issues",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "f9ac4415b76b0f42",
@@ -591,7 +724,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "1ddfc7ea93a3c93b",
@@ -606,7 +739,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "492aab51b12b768f",
@@ -618,7 +751,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "c362437eb62e5cea",
@@ -633,7 +766,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "dc91a624c4b29856",
@@ -647,7 +780,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "69b7a6331a8a588e",
@@ -659,7 +792,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "9705c684602bb9c0",
@@ -669,11 +802,12 @@
       "url": "https://www.deloitte.com/us/en/insights/topics/talent/human-capital-trends/2024/human-performance-is-the-new-way-to-measure-productivity.html",
       "description": "As human performance takes center stage, new sources of data and AI can help organizations shift from measuring productivity to measuring human performance.",
       "topics": [
+        "AI",
         "Economics"
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     },
     {
       "id": "e4d8bf785dfdb2da",
@@ -685,7 +819,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T04:04:54Z"
+      "last_seen_at": "2026-08-14T20:22:31Z"
     }
   ]
 }
