@@ -2,15 +2,15 @@
   "sources": [
     {
       "company": "McKinsey",
-      "name": "McKinsey Insights",
-      "url": "https://www.mckinsey.com/insights/en",
-      "allowed_path_prefixes": ["/capabilities/", "/industries/", "/mgi/", "/featured-insights/"]
+      "name": "McKinsey Featured Insights",
+      "url": "https://www.mckinsey.com/featured-insights/en",
+      "allowed_path_prefixes": ["/featured-insights/", "/capabilities/", "/industries/", "/mgi/"]
     },
     {
       "company": "McKinsey",
-      "name": "McKinsey Global Institute",
-      "url": "https://www.mckinsey.com/mgi/overview",
-      "allowed_path_prefixes": ["/mgi/"]
+      "name": "McKinsey Insights Store",
+      "url": "https://www.mckinsey.com/featured-insights/insights-store",
+      "allowed_path_prefixes": ["/featured-insights/", "/capabilities/", "/industries/", "/mgi/"]
     },
     {
       "company": "BCG",
