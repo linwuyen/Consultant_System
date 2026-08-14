@@ -1,180 +1,180 @@
-deploy	Set up job	﻿2026-08-14T03:58:39.6213188Z Current runner version: '2.336.0'
-deploy	Set up job	2026-08-14T03:58:39.6238858Z ##[group]Runner Image Provisioner
-deploy	Set up job	2026-08-14T03:58:39.6239836Z Hosted Compute Agent
-deploy	Set up job	2026-08-14T03:58:39.6240466Z Version: 20260729.566
-deploy	Set up job	2026-08-14T03:58:39.6241420Z Commit: cf7153fe6e25b664e8693c24944bf2b00355d109
-deploy	Set up job	2026-08-14T03:58:39.6242178Z Build Date: 2026-07-29T19:17:02Z
-deploy	Set up job	2026-08-14T03:58:39.6242856Z Worker ID: {a2db5338-7492-40c1-a437-c33dc1a3228a}
-deploy	Set up job	2026-08-14T03:58:39.6243695Z Azure Region: westus
-deploy	Set up job	2026-08-14T03:58:39.6244274Z ##[endgroup]
-deploy	Set up job	2026-08-14T03:58:39.6245817Z ##[group]Operating System
-deploy	Set up job	2026-08-14T03:58:39.6246583Z Ubuntu
-deploy	Set up job	2026-08-14T03:58:39.6247104Z 24.04.4
-deploy	Set up job	2026-08-14T03:58:39.6247668Z LTS
-deploy	Set up job	2026-08-14T03:58:39.6248192Z ##[endgroup]
-deploy	Set up job	2026-08-14T03:58:39.6248730Z ##[group]Runner Image
-deploy	Set up job	2026-08-14T03:58:39.6249453Z Image: ubuntu-24.04
-deploy	Set up job	2026-08-14T03:58:39.6250018Z Version: 20260810.271.1
-deploy	Set up job	2026-08-14T03:58:39.6251433Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260810.271/images/ubuntu/Ubuntu2404-Readme.md
-deploy	Set up job	2026-08-14T03:58:39.6253147Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260810.271
-deploy	Set up job	2026-08-14T03:58:39.6254306Z ##[endgroup]
-deploy	Set up job	2026-08-14T03:58:39.6255705Z ##[group]GITHUB_TOKEN Permissions
-deploy	Set up job	2026-08-14T03:58:39.6257931Z Contents: write
-deploy	Set up job	2026-08-14T03:58:39.6258574Z Metadata: read
-deploy	Set up job	2026-08-14T03:58:39.6259248Z ##[endgroup]
-deploy	Set up job	2026-08-14T03:58:39.6261584Z Secret source: Actions
-deploy	Set up job	2026-08-14T03:58:39.6262697Z Prepare workflow directory
-deploy	Set up job	2026-08-14T03:58:39.6804117Z Prepare all required actions
-deploy	Set up job	2026-08-14T03:58:39.6851509Z Getting action download info
-deploy	Set up job	2026-08-14T03:58:39.9965144Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
-deploy	Set up job	2026-08-14T03:58:40.1402715Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
-deploy	Set up job	2026-08-14T03:58:40.3156829Z Complete job name: deploy
-deploy	Run actions/checkout@v4	﻿2026-08-14T03:58:40.3865403Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3874447Z ##[group]Run actions/checkout@v4
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3875216Z with:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3875692Z   repository: linwuyen/Consultant_System
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3879814Z   token: ***
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3880253Z   ssh-strict: true
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3880905Z   ssh-user: git
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3881365Z   persist-credentials: true
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3881858Z   clean: true
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3882307Z   sparse-checkout-cone-mode: true
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3882832Z   fetch-depth: 1
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3883263Z   fetch-tags: false
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3883709Z   show-progress: true
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3884156Z   lfs: false
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3884571Z   submodules: false
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3885078Z   set-safe-directory: true
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3885581Z   allow-unsafe-pr-checkout: false
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3886412Z env:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3886936Z   CLOUDFLARE_API_TOKEN: ***
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3887519Z   ***: 
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.3887923Z ##[endgroup]
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.4912755Z Syncing repository: linwuyen/Consultant_System
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.4915397Z ##[group]Getting Git version info
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.4916707Z Working directory is '/home/runner/work/Consultant_System/Consultant_System'
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.4918537Z [command]/usr/bin/git version
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.4981970Z git version 2.54.0
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5038598Z ##[endgroup]
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5058273Z Temporarily overriding HOME='/home/runner/work/_temp/ebb88802-7ac5-4baa-a254-6c6e228148a6' before making global git config changes
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5061453Z Adding repository directory to the temporary git global config as a safe directory
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5067429Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Consultant_System/Consultant_System
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5120596Z Deleting the contents of '/home/runner/work/Consultant_System/Consultant_System'
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5127162Z ##[group]Initializing the repository
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5135507Z [command]/usr/bin/git init /home/runner/work/Consultant_System/Consultant_System
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5234193Z hint: Using 'master' as the name for the initial branch. This default branch name
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5235904Z hint: will change to "main" in Git 3.0. To configure the initial branch name
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5237476Z hint: to use in all of your new repositories, which will suppress this warning,
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5238658Z hint: call:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5239286Z hint:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5240076Z hint: 	git config --global init.defaultBranch <name>
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5241401Z hint:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5242391Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5243891Z hint: 'development'. The just-created branch can be renamed via this command:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5245236Z hint:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5245923Z hint: 	git branch -m <name>
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5246757Z hint:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5247817Z hint: Disable this message with "git config set advice.defaultBranchName false"
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5249615Z Initialized empty Git repository in /home/runner/work/Consultant_System/Consultant_System/.git/
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5258464Z [command]/usr/bin/git remote add origin https://github.com/linwuyen/Consultant_System
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5303830Z ##[endgroup]
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5305045Z ##[group]Disabling automatic garbage collection
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5307761Z [command]/usr/bin/git config --local gc.auto 0
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5340226Z ##[endgroup]
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5341613Z ##[group]Setting up auth
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5348424Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5385956Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5758772Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.5802829Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.6044331Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.6080222Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.6307934Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.6348179Z ##[endgroup]
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.6349633Z ##[group]Fetching the repository
-deploy	Run actions/checkout@v4	2026-08-14T03:58:40.6359440Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +417435bd43e530587baa4fb3bd05abe5234d3d61:refs/remotes/origin/main
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0577900Z From https://github.com/linwuyen/Consultant_System
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0579465Z  * [new ref]         417435bd43e530587baa4fb3bd05abe5234d3d61 -> origin/main
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0617164Z ##[endgroup]
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0618492Z ##[group]Determining the checkout info
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0620978Z ##[endgroup]
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0627976Z [command]/usr/bin/git sparse-checkout disable
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0677905Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0708825Z ##[group]Checking out the ref
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0713685Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0796762Z Switched to a new branch 'main'
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0800202Z branch 'main' set up to track 'origin/main'.
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0806731Z ##[endgroup]
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0849998Z [command]/usr/bin/git log -1 --format=%H
-deploy	Run actions/checkout@v4	2026-08-14T03:58:41.0877323Z 417435bd43e530587baa4fb3bd05abe5234d3d61
-deploy	Run actions/setup-node@v4	﻿2026-08-14T03:58:41.1151151Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1153867Z ##[group]Run actions/setup-node@v4
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1154391Z with:
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1154789Z   node-version: 22
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1155227Z   always-auth: false
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1155675Z   check-latest: false
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1159637Z   token: ***
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1160041Z env:
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1160504Z   CLOUDFLARE_API_TOKEN: ***
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1161183Z   ***: 
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.1161573Z ##[endgroup]
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.2643313Z Found in cache @ /opt/hostedtoolcache/node/22.23.2/x64
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.2647832Z (node:2121) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.2649174Z (Use `node --trace-deprecation ...` to show where the warning was created)
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.2651447Z ##[group]Environment details
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.6494232Z node: v22.23.2
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.6495181Z npm: 10.9.8
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.6495925Z yarn: 1.22.22
-deploy	Run actions/setup-node@v4	2026-08-14T03:58:41.6497460Z ##[endgroup]
-deploy	Diagnose Cloudflare secret shape safely	﻿2026-08-14T03:58:41.6661573Z ##[group]Run python - <<'PY'
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6662509Z ^[[36;1mpython - <<'PY'^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6663213Z ^[[36;1mimport os, re^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6664115Z ^[[36;1mraw = os.environ.get('CLOUDFLARE_API_TOKEN', '')^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6665177Z ^[[36;1mstripped = raw.strip()^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6665985Z ^[[36;1mprint('raw_length=' + str(len(raw)))^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6667060Z ^[[36;1mprint('stripped_length=' + str(len(stripped)))^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6668510Z ^[[36;1mprint('contains_whitespace=' + str(bool(re.search(r'\s', stripped))))^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6670358Z ^[[36;1mprint('contains_bearer=' + str(bool(re.search(r'bearer', stripped, re.I))))^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6672161Z ^[[36;1mprint('contains_assignment=' + str('=' in stripped))^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6673877Z ^[[36;1mprint('looks_like_account_id=' + str(bool(re.fullmatch(r'[0-9a-fA-F]{32}', stripped))))^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6675978Z ^[[36;1mprint('has_scannable_prefix=' + str(bool(re.match(r'^cf(?:ut|at|k)_', stripped))))^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6742104Z ^[[36;1mPY^[[0m
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6795514Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6796605Z env:
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6797399Z   CLOUDFLARE_API_TOKEN: ***
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6798122Z   ***: 
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.6798564Z ##[endgroup]
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.7069186Z raw_length=21
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.7070032Z stripped_length=21
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.7071012Z contains_whitespace=False
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.7071778Z contains_bearer=False
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.7072461Z contains_assignment=False
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.7073180Z looks_like_account_id=False
-deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:58:41.7073923Z has_scannable_prefix=False
-deploy	Deploy, migrate, refresh, audit and snapshot	﻿2026-08-14T03:58:41.7161294Z ##[group]Run bash scripts/cloudflare-ci.sh
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7162326Z ^[[36;1mbash scripts/cloudflare-ci.sh^[[0m
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7201631Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7202611Z env:
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7203267Z   CLOUDFLARE_API_TOKEN: ***
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7203950Z   ***: 
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7204372Z ##[endgroup]
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7287043Z 
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7287945Z ==> Normalize Cloudflare API token
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7527834Z ##[error]CLOUDFLARE_API_TOKEN is not a valid Cloudflare API token after normalization.
-deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:58:41.7540075Z ##[error]Process completed with exit code 1.
-deploy	Post Run actions/checkout@v4	﻿2026-08-14T03:58:41.7773577Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.7777498Z Post job cleanup.
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.8634509Z [command]/usr/bin/git version
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.8678039Z git version 2.54.0
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.8720339Z Temporarily overriding HOME='/home/runner/work/_temp/24b16ab1-d339-4862-827c-1897b320c899' before making global git config changes
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.8725101Z Adding repository directory to the temporary git global config as a safe directory
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.8728272Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Consultant_System/Consultant_System
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.8772453Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.8815129Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.9079231Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.9108971Z http.https://github.com/.extraheader
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.9122104Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.9159673Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.9429373Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
-deploy	Post Run actions/checkout@v4	2026-08-14T03:58:41.9474546Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
-deploy	Complete job	﻿2026-08-14T03:58:42.0020415Z Cleaning up orphan processes
-deploy	Complete job	2026-08-14T03:58:42.0334127Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	Set up job	﻿2026-08-14T03:59:10.0755295Z Current runner version: '2.336.0'
+deploy	Set up job	2026-08-14T03:59:10.0791669Z ##[group]Runner Image Provisioner
+deploy	Set up job	2026-08-14T03:59:10.0793369Z Hosted Compute Agent
+deploy	Set up job	2026-08-14T03:59:10.0794327Z Version: 20260707.563
+deploy	Set up job	2026-08-14T03:59:10.0795381Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+deploy	Set up job	2026-08-14T03:59:10.0796617Z Build Date: 2026-07-07T19:33:50Z
+deploy	Set up job	2026-08-14T03:59:10.0797796Z Worker ID: {46fe4997-3513-4e21-80aa-ab66bc4c002d}
+deploy	Set up job	2026-08-14T03:59:10.0799390Z Azure Region: eastus
+deploy	Set up job	2026-08-14T03:59:10.0800392Z ##[endgroup]
+deploy	Set up job	2026-08-14T03:59:10.0803220Z ##[group]Operating System
+deploy	Set up job	2026-08-14T03:59:10.0804275Z Ubuntu
+deploy	Set up job	2026-08-14T03:59:10.0805133Z 24.04.4
+deploy	Set up job	2026-08-14T03:59:10.0806010Z LTS
+deploy	Set up job	2026-08-14T03:59:10.0806882Z ##[endgroup]
+deploy	Set up job	2026-08-14T03:59:10.0808216Z ##[group]Runner Image
+deploy	Set up job	2026-08-14T03:59:10.0809744Z Image: ubuntu-24.04
+deploy	Set up job	2026-08-14T03:59:10.0810822Z Version: 20260720.247.2
+deploy	Set up job	2026-08-14T03:59:10.0812733Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+deploy	Set up job	2026-08-14T03:59:10.0815798Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+deploy	Set up job	2026-08-14T03:59:10.0817659Z ##[endgroup]
+deploy	Set up job	2026-08-14T03:59:10.0819840Z ##[group]GITHUB_TOKEN Permissions
+deploy	Set up job	2026-08-14T03:59:10.0822982Z Contents: write
+deploy	Set up job	2026-08-14T03:59:10.0824071Z Metadata: read
+deploy	Set up job	2026-08-14T03:59:10.0825054Z ##[endgroup]
+deploy	Set up job	2026-08-14T03:59:10.0828298Z Secret source: Actions
+deploy	Set up job	2026-08-14T03:59:10.0830766Z Prepare workflow directory
+deploy	Set up job	2026-08-14T03:59:10.1596101Z Prepare all required actions
+deploy	Set up job	2026-08-14T03:59:10.1669487Z Getting action download info
+deploy	Set up job	2026-08-14T03:59:10.3234036Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+deploy	Set up job	2026-08-14T03:59:10.5611334Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+deploy	Set up job	2026-08-14T03:59:10.8008105Z Complete job name: deploy
+deploy	Run actions/checkout@v4	﻿2026-08-14T03:59:10.8721945Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8731358Z ##[group]Run actions/checkout@v4
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8732111Z with:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8732617Z   repository: linwuyen/Consultant_System
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8736687Z   token: ***
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8737124Z   ssh-strict: true
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8737569Z   ssh-user: git
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8738021Z   persist-credentials: true
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8738526Z   clean: true
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8738976Z   sparse-checkout-cone-mode: true
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8739753Z   fetch-depth: 1
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8740185Z   fetch-tags: false
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8740633Z   show-progress: true
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8741088Z   lfs: false
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8741504Z   submodules: false
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8742006Z   set-safe-directory: true
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8742511Z   allow-unsafe-pr-checkout: false
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8743282Z env:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8743798Z   CLOUDFLARE_API_TOKEN: ***
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8744333Z   ***: 
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.8744790Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9767820Z Syncing repository: linwuyen/Consultant_System
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9771092Z ##[group]Getting Git version info
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9772531Z Working directory is '/home/runner/work/Consultant_System/Consultant_System'
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9774779Z [command]/usr/bin/git version
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9874402Z git version 2.54.0
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9928835Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9946042Z Temporarily overriding HOME='/home/runner/work/_temp/6cb45708-8b53-427e-9b56-a0e625d1714c' before making global git config changes
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9948481Z Adding repository directory to the temporary git global config as a safe directory
+deploy	Run actions/checkout@v4	2026-08-14T03:59:10.9953609Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Consultant_System/Consultant_System
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0005364Z Deleting the contents of '/home/runner/work/Consultant_System/Consultant_System'
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0015159Z ##[group]Initializing the repository
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0016352Z [command]/usr/bin/git init /home/runner/work/Consultant_System/Consultant_System
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0111191Z hint: Using 'master' as the name for the initial branch. This default branch name
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0113180Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0114789Z hint: to use in all of your new repositories, which will suppress this warning,
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0116132Z hint: call:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0117080Z hint:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0117975Z hint: 	git config --global init.defaultBranch <name>
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0119276Z hint:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0120316Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0121932Z hint: 'development'. The just-created branch can be renamed via this command:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0123392Z hint:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0124135Z hint: 	git branch -m <name>
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0124980Z hint:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0126078Z hint: Disable this message with "git config set advice.defaultBranchName false"
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0128064Z Initialized empty Git repository in /home/runner/work/Consultant_System/Consultant_System/.git/
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0131329Z [command]/usr/bin/git remote add origin https://github.com/linwuyen/Consultant_System
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0178679Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0180146Z ##[group]Disabling automatic garbage collection
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0182814Z [command]/usr/bin/git config --local gc.auto 0
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0217148Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0218332Z ##[group]Setting up auth
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0225949Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0281326Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0709363Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.0752212Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.1007440Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.1048297Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.1308413Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.1351092Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.1352537Z ##[group]Fetching the repository
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.1363303Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +489e9edd361e619d240abcccba84ae7d846192ee:refs/remotes/origin/main
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3515038Z From https://github.com/linwuyen/Consultant_System
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3516675Z  * [new ref]         489e9edd361e619d240abcccba84ae7d846192ee -> origin/main
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3550049Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3551053Z ##[group]Determining the checkout info
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3552952Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3558854Z [command]/usr/bin/git sparse-checkout disable
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3608847Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3640777Z ##[group]Checking out the ref
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3645044Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3728293Z Switched to a new branch 'main'
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3731939Z branch 'main' set up to track 'origin/main'.
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3738575Z ##[endgroup]
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3831818Z [command]/usr/bin/git log -1 --format=%H
+deploy	Run actions/checkout@v4	2026-08-14T03:59:11.3833730Z 489e9edd361e619d240abcccba84ae7d846192ee
+deploy	Run actions/setup-node@v4	﻿2026-08-14T03:59:11.4114706Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4117555Z ##[group]Run actions/setup-node@v4
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4118107Z with:
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4118517Z   node-version: 22
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4118965Z   always-auth: false
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4119603Z   check-latest: false
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4123640Z   token: ***
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4124083Z env:
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4124567Z   CLOUDFLARE_API_TOKEN: ***
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4125098Z   ***: 
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.4125549Z ##[endgroup]
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.5546218Z Found in cache @ /opt/hostedtoolcache/node/22.23.1/x64
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.5550257Z (node:2252) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.5551719Z (Use `node --trace-deprecation ...` to show where the warning was created)
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.5553497Z ##[group]Environment details
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.9390042Z node: v22.23.1
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.9392038Z npm: 10.9.8
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.9393059Z yarn: 1.22.22
+deploy	Run actions/setup-node@v4	2026-08-14T03:59:11.9395265Z ##[endgroup]
+deploy	Diagnose Cloudflare secret shape safely	﻿2026-08-14T03:59:11.9577725Z ##[group]Run python - <<'PY'
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9579473Z ^[[36;1mpython - <<'PY'^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9580724Z ^[[36;1mimport os, re^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9582169Z ^[[36;1mraw = os.environ.get('CLOUDFLARE_API_TOKEN', '')^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9583818Z ^[[36;1mstripped = raw.strip()^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9585161Z ^[[36;1mprint('raw_length=' + str(len(raw)))^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9586777Z ^[[36;1mprint('stripped_length=' + str(len(stripped)))^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9588843Z ^[[36;1mprint('contains_whitespace=' + str(bool(re.search(r'\s', stripped))))^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9658049Z ^[[36;1mprint('contains_bearer=' + str(bool(re.search(r'bearer', stripped, re.I))))^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9660845Z ^[[36;1mprint('contains_assignment=' + str('=' in stripped))^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9663220Z ^[[36;1mprint('looks_like_account_id=' + str(bool(re.fullmatch(r'[0-9a-fA-F]{32}', stripped))))^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9665942Z ^[[36;1mprint('has_scannable_prefix=' + str(bool(re.match(r'^cf(?:ut|at|k)_', stripped))))^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9668013Z ^[[36;1mPY^[[0m
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9728567Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9730400Z env:
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9731820Z   CLOUDFLARE_API_TOKEN: ***
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9733020Z   ***: 
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:11.9733923Z ##[endgroup]
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:12.0037582Z raw_length=21
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:12.0039027Z stripped_length=21
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:12.0040589Z contains_whitespace=False
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:12.0041821Z contains_bearer=False
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:12.0042994Z contains_assignment=False
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:12.0044215Z looks_like_account_id=False
+deploy	Diagnose Cloudflare secret shape safely	2026-08-14T03:59:12.0045511Z has_scannable_prefix=False
+deploy	Deploy, migrate, refresh, audit and snapshot	﻿2026-08-14T03:59:12.0147304Z ##[group]Run bash scripts/cloudflare-ci.sh
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0148739Z ^[[36;1mbash scripts/cloudflare-ci.sh^[[0m
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0196948Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0198471Z env:
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0199862Z   CLOUDFLARE_API_TOKEN: ***
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0200972Z   ***: 
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0201779Z ##[endgroup]
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0304292Z 
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0305747Z ==> Normalize Cloudflare API token
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0557363Z ##[error]CLOUDFLARE_API_TOKEN is not a valid Cloudflare API token after normalization.
+deploy	Deploy, migrate, refresh, audit and snapshot	2026-08-14T03:59:12.0570067Z ##[error]Process completed with exit code 1.
+deploy	Post Run actions/checkout@v4	﻿2026-08-14T03:59:12.0872801Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.0877940Z Post job cleanup.
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.1776307Z [command]/usr/bin/git version
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.1822828Z git version 2.54.0
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.1871230Z Temporarily overriding HOME='/home/runner/work/_temp/895df271-c96d-4a07-8f1c-edd9033361fa' before making global git config changes
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.1874862Z Adding repository directory to the temporary git global config as a safe directory
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.1880148Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Consultant_System/Consultant_System
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.1922967Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.1962218Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.2227101Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.2259528Z http.https://github.com/.extraheader
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.2273644Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.2313451Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.2593940Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+deploy	Post Run actions/checkout@v4	2026-08-14T03:59:12.2644903Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+deploy	Complete job	﻿2026-08-14T03:59:12.3081806Z Cleaning up orphan processes
+deploy	Complete job	2026-08-14T03:59:12.3504070Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
