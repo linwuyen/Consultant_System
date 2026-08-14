@@ -68,6 +68,8 @@ def main() -> None:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     reports = payload.get("reports") or []
     updated_at = payload.get("updated_at") or ""
+    normalized = [(row, normalize_topics(row.get("topics"))) for row in reports]
+    topic_names = sorted({topic for _, topics in normalized for topic in topics})
 
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(prefix="consultant-", suffix=".db", delete=False, dir=DB_PATH.parent) as tmp:
@@ -85,11 +87,10 @@ def main() -> None:
                 ("database", "SQLite"),
             ],
         )
+        con.executemany("INSERT INTO topics(name) VALUES(?)", [(name,) for name in topic_names])
 
-        topic_names = set()
-        for row in reports:
-            topics = normalize_topics(row.get("topics"))
-            topic_names.update(topics)
+        for row, topics in normalized:
+            report_id = str(row.get("id") or "")
             search_text = " ".join(
                 [
                     str(row.get("company") or ""),
@@ -107,7 +108,7 @@ def main() -> None:
                 ) VALUES(?,?,?,?,?,?,?,?,?,?)
                 """,
                 (
-                    str(row.get("id") or ""),
+                    report_id,
                     str(row.get("company") or ""),
                     str(row.get("title") or ""),
                     row.get("date") or None,
@@ -120,11 +121,9 @@ def main() -> None:
                 ),
             )
             con.executemany(
-                "INSERT OR IGNORE INTO report_topics(report_id,topic) VALUES(?,?)",
-                [(str(row.get("id") or ""), topic) for topic in topics],
+                "INSERT INTO report_topics(report_id,topic) VALUES(?,?)",
+                [(report_id, topic) for topic in topics],
             )
-
-        con.executemany("INSERT INTO topics(name) VALUES(?)", [(name,) for name in sorted(topic_names)])
 
         for source in config.get("sources") or []:
             con.execute(
