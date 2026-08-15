@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-14T20:25:05Z",
+  "updated_at": "2026-08-15T02:21:19Z",
   "reports": [
     {
       "id": "f67e3531ca3e50d2",
@@ -13,7 +13,7 @@
       ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T20:25:05Z",
-      "last_seen_at": "2026-08-14T20:25:05Z"
+      "last_seen_at": "2026-08-15T02:21:19Z"
     },
     {
       "id": "b2410c38496bdd14",
@@ -27,7 +27,7 @@
       ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T20:25:05Z",
-      "last_seen_at": "2026-08-14T20:25:05Z"
+      "last_seen_at": "2026-08-15T02:21:19Z"
     },
     {
       "id": "b23ad749503a9913",
@@ -41,7 +41,7 @@
       ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T20:25:05Z",
-      "last_seen_at": "2026-08-14T20:25:05Z"
+      "last_seen_at": "2026-08-15T02:21:19Z"
     },
     {
       "id": "16775921a5bedece",
@@ -55,7 +55,7 @@
       ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:25:05Z"
+      "last_seen_at": "2026-08-15T02:21:19Z"
     },
     {
       "id": "39f0a96642dffeef",
@@ -71,7 +71,7 @@
       ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:25:05Z"
+      "last_seen_at": "2026-08-15T02:21:19Z"
     },
     {
       "id": "2ebd55010827a52f",
@@ -86,7 +86,7 @@
       ],
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:25:05Z"
+      "last_seen_at": "2026-08-15T02:21:19Z"
     },
     {
       "id": "8170d5288ded54a3",
@@ -112,7 +112,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "a333523ae675b16d",
@@ -127,7 +127,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "e2b69ea7f89a4715",
@@ -208,7 +208,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "2529db3a5e73ef1b",
@@ -236,7 +236,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "ac5990bf51045549",
@@ -250,7 +250,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "e47eb28e4c2dfa7d",
@@ -264,7 +264,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "b824819b8a1f3d87",
@@ -294,7 +294,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "2f5872bc8c3af628",
@@ -324,7 +324,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "7ef96ec92c83213c",
@@ -338,7 +338,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "54cb9bb79d916e0f",
@@ -350,7 +350,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "1ed2516bd044da0b",
@@ -377,7 +377,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "ed81e95a173915e9",
@@ -418,7 +418,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "949fb4b8836f9fce",
@@ -430,7 +430,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "ba2440e7f1f075bc",
@@ -444,7 +444,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "2d3badc239c8bc1d",
@@ -458,7 +458,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "eb559f4d0cbfa96a",
@@ -473,7 +473,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "00acadde477c01dc",
@@ -485,7 +485,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "df2a13b8384b1ca4",
@@ -499,7 +499,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "9e0204dc7a5ffdbf",
@@ -513,7 +513,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "87185b35b773a568",
@@ -527,7 +527,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "3774d328d4ef5679",
@@ -542,7 +542,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "1e10e453046b2b5c",
@@ -576,7 +576,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "d6c298cff1d6122b",
@@ -590,7 +590,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "872b3208c9832cef",
@@ -617,7 +617,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "5ae1e35e3c890cc9",
@@ -631,7 +631,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "599e8bfd1357816e",
@@ -657,7 +657,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "0121f3cf2f038405",
@@ -669,7 +669,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "c18d5cb35c9bdc63",
@@ -684,7 +684,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "abe999dc7078d77d",
@@ -700,7 +700,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "851be29de49b9718",
@@ -712,7 +712,7 @@
       "topics": [],
       "source_name": "PwC Today's Issues",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "f9ac4415b76b0f42",
@@ -724,7 +724,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "1ddfc7ea93a3c93b",
@@ -739,7 +739,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "492aab51b12b768f",
@@ -751,7 +751,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "c362437eb62e5cea",
@@ -766,7 +766,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "dc91a624c4b29856",
@@ -780,7 +780,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "69b7a6331a8a588e",
@@ -792,7 +792,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "9705c684602bb9c0",
@@ -807,7 +807,7 @@
       ],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     },
     {
       "id": "e4d8bf785dfdb2da",
@@ -819,7 +819,7 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-14T20:22:31Z"
+      "last_seen_at": "2026-08-15T02:19:55Z"
     }
   ]
 }
