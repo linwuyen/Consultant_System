@@ -1,0 +1,35 @@
+name: One-shot merged branch cleanup
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/cleanup-merged-agent-branches.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Delete merged agent branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          for branch in agent/consultant-system-v2 agent/finish-hardening; do
+            if git ls-remote --exit-code --heads origin "refs/heads/$branch" >/dev/null 2>&1; then
+              git push origin --delete "$branch"
+            fi
+          done
+      - name: Remove this one-shot workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/cleanup-merged-agent-branches.yml
+          git commit -m 'chore: remove one-shot branch cleanup'
+          git push origin HEAD:main
