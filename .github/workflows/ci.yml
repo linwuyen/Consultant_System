@@ -1,0 +1,93 @@
+name: Quality checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pip install -r requirements.txt
+      - run: npm install
+      - run: python -m py_compile scripts/common.py scripts/update_reports.py scripts/update_reader_fallback.py scripts/audit_coverage.py scripts/build_sqlite.py scripts/build_manifest.py
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/build_sqlite.py
+      - run: python scripts/build_manifest.py
+      - run: npm run check:syntax
+
+  live-canary:
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Live metadata refresh
+        run: python scripts/update_reports.py
+      - name: Live blocked-publisher fallback
+        run: python scripts/update_reader_fallback.py
+      - name: Audit content and ingestion health
+        run: python scripts/audit_coverage.py
+      - name: Build SQLite and manifest
+        run: |
+          python scripts/build_sqlite.py
+          python scripts/build_manifest.py
+      - name: Validate canary outputs
+        run: |
+          python - <<'PY'
+          import hashlib, json, sqlite3
+          from pathlib import Path
+          root = Path('.')
+          reports = json.loads((root/'data/reports.json').read_text(encoding='utf-8'))['reports']
+          health = json.loads((root/'data/source_health.json').read_text(encoding='utf-8'))
+          manifest = json.loads((root/'data/manifest.json').read_text(encoding='utf-8'))
+          companies = {'McKinsey','BCG','Deloitte','PwC'}
+          assert companies <= {r['company'] for r in reports}
+          health_companies = {r['company'] for r in health['sources'].values()}
+          assert companies <= health_companies, health_companies
+          assert manifest['schema_version'] == 2
+          assert manifest['contract'] == 'research-context-only'
+          assert manifest['score_influence'] is False
+          assert all(v['ingestion_status'] != 'fail' for v in manifest['companies'].values()), manifest['companies']
+          dirty = [r for r in reports if any(x in (r.get('description') or '').lower() for x in ('amazonaws.com','brightspot','%2f'))]
+          assert not dirty, [(r['company'], r['title']) for r in dirty[:5]]
+          china = [r for r in reports if r.get('title') == "What CEOs Should Know About China’s Business Ambitions"]
+          if china and china[0].get('observation_mode') == 'reader':
+              assert 'AI' not in (china[0].get('topics') or []), china[0]
+          con = sqlite3.connect(root/'data/consultant.db')
+          assert con.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
+          tables = {r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+          assert 'source_health' in tables
+          con.close()
+          for name in ('reports.json','reports.csv','consultant.db'):
+              digest = hashlib.sha256((root/'data'/name).read_bytes()).hexdigest()
+              assert manifest['artifacts'][name]['sha256'] == digest, name
+          print('LIVE_CANARY PASS')
+          print(json.dumps(manifest['companies'], ensure_ascii=False, indent=2))
+          PY
+      - name: Upload canary snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: consultant-live-canary
+          path: |
+            data/reports.json
+            data/reports.csv
+            data/source_health.json
+            data/manifest.json
+            data/consultant.db

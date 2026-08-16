@@ -1,19 +1,12 @@
-name: Update SQLite research database
+name: Update research database
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 1 * * *" # 09:17 Asia/Taipei
+    - cron: "17 1 * * *"
   push:
     branches: [main]
-    paths:
-      - "scripts/update_reports.py"
-      - "scripts/update_reader_fallback.py"
-      - "scripts/build_sqlite.py"
-      - "scripts/audit_coverage.py"
-      - "config/sources.json"
-      - "requirements.txt"
-      - ".github/workflows/update-reports.yml"
+    paths: ["scripts/**","tests/**","config/sources.json","requirements.txt",".github/workflows/update-reports.yml"]
 
 permissions:
   contents: write
@@ -25,7 +18,7 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,50 +28,43 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-
-      - name: Syntax check crawler
-        run: python -m py_compile scripts/update_reports.py scripts/update_reader_fallback.py scripts/build_sqlite.py scripts/audit_coverage.py
-
-      - name: Refresh directly reachable research metadata
+      - name: Syntax check
+        run: python -m py_compile scripts/common.py scripts/update_reports.py scripts/update_reader_fallback.py scripts/audit_coverage.py scripts/build_sqlite.py scripts/build_manifest.py
+      - name: Regression tests
+        run: python -m unittest discover -s tests -v
+      - name: Refresh direct official metadata
         run: python scripts/update_reports.py
-
-      - name: Refresh blocked-publisher metadata fallback
+      - name: Refresh blocked-publisher fallback
         run: python scripts/update_reader_fallback.py
-
-      - name: Audit four-firm coverage
+      - name: Audit content and ingestion health
         run: python scripts/audit_coverage.py
-
-      - name: Build SQLite database
+      - name: Build SQLite schema v2
         run: python scripts/build_sqlite.py
-
-      - name: Verify SQLite database
+      - name: Build downstream manifest
+        run: python scripts/build_manifest.py
+      - name: Verify published contract
         run: |
           python - <<'PY'
-          import sqlite3
+          import json, sqlite3
           con = sqlite3.connect('data/consultant.db')
           assert con.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
-          tables = {row[0] for row in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
-          required = {'reports', 'topics', 'report_topics', 'sources', 'meta'}
-          assert required <= tables, (required, tables)
-          total = con.execute('SELECT COUNT(*) FROM reports').fetchone()[0]
-          companies = dict(con.execute('SELECT company, COUNT(*) FROM reports GROUP BY company'))
-          assert all(companies.get(c, 0) >= 3 for c in ('McKinsey', 'BCG', 'Deloitte', 'PwC')), companies
-          print('SQLite integrity PASS')
-          print('reports =', total)
-          print('companies =', companies)
+          assert con.execute("SELECT value FROM meta WHERE key='schema_version'").fetchone()[0] == '2'
+          required = {'reports','topics','report_topics','sources','source_health','meta'}
+          tables = {r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+          assert required <= tables
           con.close()
+          manifest = json.load(open('data/manifest.json', encoding='utf-8'))
+          assert manifest['contract'] == 'research-context-only'
+          assert manifest['score_influence'] is False
+          assert manifest['schema_version'] == 2
           PY
-
-      - name: Commit refreshed database
+      - name: Commit refreshed snapshot
         shell: bash
         run: |
-          if git diff --quiet -- data/reports.json data/reports.csv data/consultant.db; then
-            echo "No database changes"
-            exit 0
-          fi
+          if git diff --quiet -- data/reports.json data/reports.csv data/source_health.json data/consultant.db data/manifest.json; then exit 0; fi
           git config user.name "consultant-system-bot"
           git config user.email "consultant-system-bot@users.noreply.github.com"
-          git add data/reports.json data/reports.csv data/consultant.db
-          git commit -m "chore: refresh SQLite research database"
+          git add data/reports.json data/reports.csv data/source_health.json data/consultant.db data/manifest.json
+          git commit -m "chore: refresh research snapshot"
           git pull --rebase origin main
           git push origin HEAD:main
