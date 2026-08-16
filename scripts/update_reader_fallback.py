@@ -5,7 +5,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import requests
 
@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "sources.json"
 READER_PREFIX = "https://r.jina.ai/"
 TIMEOUT = 60
-LINK_RE = re.compile(r"\[([^\]\n]{4,300})\]\((https?://[^)\s]+)\)")
+LINK_RE = re.compile(r"\[([^\]\n]{4,300})\]\(([^)\s]+)\)")
 GENERIC = {"read more", "learn more", "explore", "more", "home", "contact", "download", "see all", "view all"}
 
 MCKINSEY_BOOTSTRAP = [
@@ -49,11 +49,17 @@ def _bounded_card_text(text: str, matches: list[re.Match[str]], index: int) -> s
     current = matches[index]; next_start = matches[index+1].start() if index+1 < len(matches) else len(text)
     return text[current.end():min(next_start,current.end()+900)]
 
+def _reader_url(raw: str, source_url: str) -> str:
+    raw = raw.strip().strip('<>')
+    if raw.startswith(("#", "mailto:", "javascript:", "data:")):
+        return ""
+    return canonicalize(urljoin(source_url, raw))
+
 def extract_markdown(text: str, source: dict, topic_keywords: dict[str,list[str]], now: str) -> list[dict]:
     matches = list(LINK_RE.finditer(text)); out: dict[str,dict] = {}
     for index, match in enumerate(matches):
-        title = clean_text(re.sub(r"[*_#`]+"," ",match.group(1)),300); url = canonicalize(match.group(2))
-        if len(title) < 14 or title.lower() in GENERIC or not allowed(url,source): continue
+        title = clean_text(re.sub(r"[*_#`]+"," ",match.group(1)),300); url = _reader_url(match.group(2), source["url"])
+        if len(title) < 14 or title.lower() in GENERIC or not url or not allowed(url,source): continue
         published_at = _nearest_date(text,match.start(),match.end())
         if not published_at: continue
         description = clean_description(_bounded_card_text(text,matches,index), title=title)
