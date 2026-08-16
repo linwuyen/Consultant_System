@@ -53,7 +53,8 @@ def _reader_url(raw: str, source_url: str) -> str:
     raw = raw.strip().strip('<>')
     if raw.startswith(("#", "mailto:", "javascript:", "data:")):
         return ""
-    return canonicalize(urljoin(source_url, raw))
+    base = source_url if source_url.endswith("/") else source_url + "/"
+    return canonicalize(urljoin(base, raw))
 
 def extract_markdown(text: str, source: dict, topic_keywords: dict[str,list[str]], now: str) -> list[dict]:
     matches = list(LINK_RE.finditer(text)); out: dict[str,dict] = {}
