@@ -16,9 +16,11 @@ CONFIG_PATH = ROOT / "config" / "sources.json"
 READER_PREFIX = "https://r.jina.ai/"
 TIMEOUT = 60
 LINK_RE = re.compile(r"\[([^\]\n]{4,300})\]\(([^)\s]+)\)")
+URL_RE = re.compile(r"https?://[^\s<>()\]\"']+")
 GENERIC = {"read more", "learn more", "explore", "more", "home", "contact", "download", "see all", "view all"}
 
-MCKINSEY_BOOTSTRAP = [
+MCKINSEY_VERIFIED_SEEDS = [
+    {"title":"The shift to 800-volt DC at data centers: Implications for providers","date":"2026-07-30","url":"https://www.mckinsey.com/industries/industrials/our-insights/the-shift-to-800-volt-dc-at-data-centers-implications-for-providers","description":"McKinsey examines the shift toward 800-volt direct-current power architectures in AI data centers and the implications for equipment providers."},
     {"title":"Semiconductors: Etching the new map of strategic supply","date":"2026-06-30","url":"https://www.mckinsey.com/mgi/our-research/semiconductors-etching-the-new-map-of-strategic-supply","description":"As geopolitics shift, more countries are wooing semiconductor manufacturers to enhance resilience while demand for advanced semiconductors continues to grow."},
     {"title":"Frontiers of compute: The technologies to reduce AI inference costs","date":"2026-06-25","url":"https://www.mckinsey.com/industries/semiconductors/our-insights/frontiers-of-compute-the-technologies-to-reduce-ai-inference-costs","description":"AI infrastructure investment is creating sustained demand across the semiconductor value chain as compute becomes a strategic asset."},
     {"title":"The next era of semiconductor value creation","date":"2026-03-30","url":"https://www.mckinsey.com/industries/semiconductors/our-insights/the-next-era-of-semiconductor-value-creation","description":"The AI boom and data center buildout are driving semiconductor demand and changing the industry value-creation agenda."},
@@ -63,15 +65,6 @@ def _diagnose_empty_reader(text: str, source: dict) -> None:
         title = clean_text(re.sub(r"[*_#`]+", " ", match.group(1)), 100)
         href = clean_text(match.group(2), 160)
         print(f"  LINK title={title!r} href={href!r}")
-    dated_lines = []
-    for raw_line in text.splitlines():
-        line = clean_text(raw_line, 180)
-        if line and normalize_date(line):
-            dated_lines.append(line)
-        if len(dated_lines) >= 10:
-            break
-    for line in dated_lines:
-        print(f"  DATE_LINE {line!r}")
 
 def extract_markdown(text: str, source: dict, topic_keywords: dict[str,list[str]], now: str) -> list[dict]:
     matches = list(LINK_RE.finditer(text)); out: dict[str,dict] = {}
@@ -85,41 +78,63 @@ def extract_markdown(text: str, source: dict, topic_keywords: dict[str,list[str]
         out[url] = item
     return list(out.values())
 
-def bootstrap_mckinsey(topic_keywords: dict[str,list[str]], now: str) -> list[dict]:
-    return [make_report(company="McKinsey",source_name="McKinsey official verified bootstrap",url=row["url"],title=row["title"],published_at=row["date"],description=row["description"],topic_keywords=topic_keywords,now=now,published_at_source="verified-bootstrap",description_source="verified-bootstrap",observation_mode="bootstrap") for row in MCKINSEY_BOOTSTRAP]
+def extract_sitemap_urls(text: str, source: dict) -> set[str]:
+    urls: set[str] = set()
+    for match in URL_RE.finditer(text):
+        raw = match.group(0).rstrip(".,;:")
+        try: url = canonicalize(raw)
+        except Exception: continue
+        if allowed(url, source): urls.add(url)
+    return urls
+
+def verified_seed_rows(topic_keywords: dict[str,list[str]], now: str) -> list[dict]:
+    return [make_report(company="McKinsey",source_name="McKinsey official verified seed",url=row["url"],title=row["title"],published_at=row["date"],description=row["description"],topic_keywords=topic_keywords,now=now,published_at_source="verified-seed",description_source="verified-seed",observation_mode="verified-seed") for row in MCKINSEY_VERIFIED_SEEDS]
+
+def _ensure_verified_seeds(reports: dict[str,dict], topic_keywords: dict[str,list[str]], now: str) -> bool:
+    changed = False
+    for item in verified_seed_rows(topic_keywords, now):
+        if item["url"] in reports: continue
+        reports[item["url"]] = item; changed = True
+        print(f"VERIFIED_SEED McKinsey: {item['date']} {item['title']}")
+    return changed
 
 def _prune_source_health(health: dict, config: dict) -> None:
-    active = {
-        source_key(row["company"], row["name"], row["url"], "direct")
-        for row in config.get("sources") or []
-    }
-    active.update({
-        source_key(row["company"], row["name"], row["url"], "reader")
-        for row in config.get("fallback_sources") or []
-    })
+    active = {source_key(row["company"], row["name"], row["url"], "direct") for row in config.get("sources") or []}
+    active.update({source_key(row["company"], row["name"], row["url"], "reader") for row in config.get("fallback_sources") or []})
+    active.update({source_key(row["company"], row["name"], row["url"], "sitemap-reader") for row in config.get("sitemap_sources") or []})
     sources = health.get("sources") or {}
     health["sources"] = {key: row for key, row in sources.items() if key in active}
 
 def main() -> int:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8")); topic_keywords = config.get("topic_keywords") or {}; max_empty = int((config.get("health_policy") or {}).get("max_consecutive_empty_runs",3)); now = utc_now()
-    payload = load_snapshot(); reports = reports_by_url(payload); health = load_source_health(); content_changed = False; live_observed: dict[str,int] = {}
+    payload = load_snapshot(); reports = reports_by_url(payload); health = load_source_health(); content_changed = _ensure_verified_seeds(reports, topic_keywords, now); live_observed: dict[str,int] = {}
+
+    for source in config.get("sitemap_sources") or []:
+        transport_ok = False; error = ""; observed = 0
+        try:
+            text = reader_fetch(source["url"]); discovered = extract_sitemap_urls(text, source); transport_ok = True
+            known = {url for url,row in reports.items() if row.get("company") == source["company"] and url in discovered}
+            unknown = discovered - set(reports)
+            observed = len(known)
+            print(f"SITEMAP {source['company']} {source['name']}: discovered={len(discovered)} known_observed={observed} new_unverified_candidates={len(unknown)}")
+        except Exception as exc:
+            error = f"{type(exc).__name__}:{exc}"; print(f"WARN sitemap reader failed {source['url']}: {error}",file=sys.stderr)
+        live_observed[source["company"]] = live_observed.get(source["company"],0) + observed
+        update_source_health(health,company=source["company"],name=source["name"],url=source["url"],transport="sitemap-reader",attempted_at=now,transport_ok=transport_ok,observed_count=observed,error=error,max_consecutive_empty_runs=max_empty)
+
     for source in config.get("fallback_sources") or []:
         items: list[dict] = []; transport_ok = False; error = ""; text = ""
         try:
             text = reader_fetch(source["url"]); items = extract_markdown(text,source,topic_keywords,now); transport_ok = True
             print(f"READER {source['company']} {source['name']}: {len(items)} dated official links")
-            if source.get("company") == "McKinsey" and not items:
-                _diagnose_empty_reader(text, source)
+            if source.get("company") == "McKinsey" and not items: _diagnose_empty_reader(text, source)
         except Exception as exc:
             error = f"{type(exc).__name__}:{exc}"; print(f"WARN reader fallback failed {source['url']}: {error}",file=sys.stderr)
         live_observed[source["company"]] = live_observed.get(source["company"],0) + len(items)
         for item in items:
             merged, changed = merge_report(reports.get(item["url"]),item,now); reports[item["url"]] = merged; content_changed = content_changed or changed
         update_source_health(health,company=source["company"],name=source["name"],url=source["url"],transport="reader",attempted_at=now,transport_ok=transport_ok,observed_count=len(items),error=error,max_consecutive_empty_runs=max_empty)
-    if not any(row.get("company") == "McKinsey" for row in reports.values()):
-        seeds = bootstrap_mckinsey(topic_keywords,now); print(f"BOOTSTRAP McKinsey: {len(seeds)} verified official records")
-        for item in seeds:
-            merged, changed = merge_report(reports.get(item["url"]),item,now); reports[item["url"]] = merged; content_changed = content_changed or changed
+
     _prune_source_health(health, config)
     payload["reports"] = list(reports.values()); write_snapshot(payload,content_changed=content_changed,now=now); write_source_health(health)
     counts = {company:sum(1 for row in reports.values() if row.get("company") == company) for company in ("McKinsey","BCG","Deloitte","PwC")}
