@@ -38,31 +38,9 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
-      - name: Probe McKinsey crawler-native transports
-        continue-on-error: true
-        run: |
-          python - <<'PY'
-          import re, requests
-          targets = {
-              'sitemap-direct': 'https://www.mckinsey.com/sitemap.xml',
-              'sitemap-reader': 'https://r.jina.ai/https://www.mckinsey.com/sitemap.xml',
-              'article-reader': 'https://r.jina.ai/https://www.mckinsey.com/industries/industrials/our-insights/the-shift-to-800-volt-dc-at-data-centers-implications-for-providers',
-          }
-          for name, url in targets.items():
-              try:
-                  r = requests.get(url, timeout=30, headers={'User-Agent':'ConsultantSystemBot/2.0','Accept':'*/*','X-Timeout':'25'})
-                  text = r.text
-                  urls = re.findall(r'https?://[^\s<>()\]"\']+', text)
-                  dates = re.findall(r'\b20\d{2}[-/]\d{1,2}[-/]\d{1,2}\b|\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2}\b', text, re.I)
-                  print(f'PROBE {name}: status={r.status_code} chars={len(text)} urls={len(urls)} dates={dates[:5]}')
-                  for value in urls[:8]: print('  URL', value[:220])
-                  print('  PREFIX', repr(text[:300]))
-              except Exception as exc:
-                  print(f'PROBE {name}: ERROR {type(exc).__name__}: {exc}')
-          PY
       - name: Live metadata refresh
         run: python scripts/update_reports.py
-      - name: Live blocked-publisher fallback
+      - name: Live reader and sitemap fallback
         run: python scripts/update_reader_fallback.py
       - name: Audit content and ingestion health
         run: python scripts/audit_coverage.py
@@ -90,15 +68,22 @@ jobs:
           mck = manifest['companies']['McKinsey']
           assert mck['ingestion_status'] == 'healthy', mck
           assert int(mck['observed_count']) >= 3, mck
+          assert (mck['latest_publication'] or '') >= '2026-07-30', mck
+          sitemap_rows = [r for r in health['sources'].values() if r.get('company') == 'McKinsey' and r.get('transport') == 'sitemap-reader']
+          assert len(sitemap_rows) == 1 and sitemap_rows[0]['status'] == 'healthy', sitemap_rows
+          seed = [r for r in reports if r.get('url') == 'https://www.mckinsey.com/industries/industrials/our-insights/the-shift-to-800-volt-dc-at-data-centers-implications-for-providers']
+          assert seed and seed[0].get('published_at_source') == 'verified-seed' and seed[0].get('observation_mode') == 'verified-seed', seed
           dirty = [r for r in reports if any(x in (r.get('description') or '').lower() for x in ('amazonaws.com','brightspot','%2f'))]
           assert not dirty, [(r['company'], r['title']) for r in dirty[:5]]
           china = [r for r in reports if r.get('title') == "What CEOs Should Know About China’s Business Ambitions"]
-          if china and china[0].get('observation_mode') == 'reader':
+          if china and china[0].get('observation_mode') == 'reader-fallback':
               assert 'AI' not in (china[0].get('topics') or []), china[0]
           con = sqlite3.connect(root/'data/consultant.db')
           assert con.execute('PRAGMA integrity_check').fetchone()[0] == 'ok'
           tables = {r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
           assert 'source_health' in tables
+          transports = {r[0] for r in con.execute("SELECT transport FROM sources WHERE company='McKinsey'")}
+          assert 'sitemap-reader' in transports, transports
           con.close()
           for name in ('reports.json','reports.csv','consultant.db','source_health.json'):
               digest = hashlib.sha256((root/'data'/name).read_bytes()).hexdigest()
