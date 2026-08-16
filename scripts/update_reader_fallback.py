@@ -9,7 +9,7 @@ from urllib.parse import urljoin, urlparse
 
 import requests
 
-from common import canonicalize, clean_description, clean_text, load_snapshot, load_source_health, make_report, merge_report, normalize_date, reports_by_url, update_source_health, utc_now, write_snapshot, write_source_health
+from common import canonicalize, clean_description, clean_text, load_snapshot, load_source_health, make_report, merge_report, normalize_date, reports_by_url, source_key, update_source_health, utc_now, write_snapshot, write_source_health
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_PATH = ROOT / "config" / "sources.json"
@@ -88,6 +88,18 @@ def extract_markdown(text: str, source: dict, topic_keywords: dict[str,list[str]
 def bootstrap_mckinsey(topic_keywords: dict[str,list[str]], now: str) -> list[dict]:
     return [make_report(company="McKinsey",source_name="McKinsey official verified bootstrap",url=row["url"],title=row["title"],published_at=row["date"],description=row["description"],topic_keywords=topic_keywords,now=now,published_at_source="verified-bootstrap",description_source="verified-bootstrap",observation_mode="bootstrap") for row in MCKINSEY_BOOTSTRAP]
 
+def _prune_source_health(health: dict, config: dict) -> None:
+    active = {
+        source_key(row["company"], row["name"], row["url"], "direct")
+        for row in config.get("sources") or []
+    }
+    active.update({
+        source_key(row["company"], row["name"], row["url"], "reader")
+        for row in config.get("fallback_sources") or []
+    })
+    sources = health.get("sources") or {}
+    health["sources"] = {key: row for key, row in sources.items() if key in active}
+
 def main() -> int:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8")); topic_keywords = config.get("topic_keywords") or {}; max_empty = int((config.get("health_policy") or {}).get("max_consecutive_empty_runs",3)); now = utc_now()
     payload = load_snapshot(); reports = reports_by_url(payload); health = load_source_health(); content_changed = False; live_observed: dict[str,int] = {}
@@ -108,6 +120,7 @@ def main() -> int:
         seeds = bootstrap_mckinsey(topic_keywords,now); print(f"BOOTSTRAP McKinsey: {len(seeds)} verified official records")
         for item in seeds:
             merged, changed = merge_report(reports.get(item["url"]),item,now); reports[item["url"]] = merged; content_changed = content_changed or changed
+    _prune_source_health(health, config)
     payload["reports"] = list(reports.values()); write_snapshot(payload,content_changed=content_changed,now=now); write_source_health(health)
     counts = {company:sum(1 for row in reports.values() if row.get("company") == company) for company in ("McKinsey","BCG","Deloitte","PwC")}
     print("FALLBACK COVERAGE",counts,"live_observed",live_observed,"content_changed",content_changed)
