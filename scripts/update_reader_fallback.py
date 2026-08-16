@@ -56,6 +56,23 @@ def _reader_url(raw: str, source_url: str) -> str:
     base = source_url if source_url.endswith("/") else source_url + "/"
     return canonicalize(urljoin(base, raw))
 
+def _diagnose_empty_reader(text: str, source: dict) -> None:
+    matches = list(LINK_RE.finditer(text))
+    print(f"READER_DIAG {source['name']}: chars={len(text)} markdown_links={len(matches)}")
+    for match in matches[:10]:
+        title = clean_text(re.sub(r"[*_#`]+", " ", match.group(1)), 100)
+        href = clean_text(match.group(2), 160)
+        print(f"  LINK title={title!r} href={href!r}")
+    dated_lines = []
+    for raw_line in text.splitlines():
+        line = clean_text(raw_line, 180)
+        if line and normalize_date(line):
+            dated_lines.append(line)
+        if len(dated_lines) >= 10:
+            break
+    for line in dated_lines:
+        print(f"  DATE_LINE {line!r}")
+
 def extract_markdown(text: str, source: dict, topic_keywords: dict[str,list[str]], now: str) -> list[dict]:
     matches = list(LINK_RE.finditer(text)); out: dict[str,dict] = {}
     for index, match in enumerate(matches):
@@ -75,10 +92,12 @@ def main() -> int:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8")); topic_keywords = config.get("topic_keywords") or {}; max_empty = int((config.get("health_policy") or {}).get("max_consecutive_empty_runs",3)); now = utc_now()
     payload = load_snapshot(); reports = reports_by_url(payload); health = load_source_health(); content_changed = False; live_observed: dict[str,int] = {}
     for source in config.get("fallback_sources") or []:
-        items: list[dict] = []; transport_ok = False; error = ""
+        items: list[dict] = []; transport_ok = False; error = ""; text = ""
         try:
             text = reader_fetch(source["url"]); items = extract_markdown(text,source,topic_keywords,now); transport_ok = True
             print(f"READER {source['company']} {source['name']}: {len(items)} dated official links")
+            if source.get("company") == "McKinsey" and not items:
+                _diagnose_empty_reader(text, source)
         except Exception as exc:
             error = f"{type(exc).__name__}:{exc}"; print(f"WARN reader fallback failed {source['url']}: {error}",file=sys.stderr)
         live_observed[source["company"]] = live_observed.get(source["company"],0) + len(items)
