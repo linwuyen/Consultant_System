@@ -58,7 +58,7 @@ def main() -> None:
             con.execute("""INSERT INTO reports(id,company,title,published_at,url,description,source_name,discovered_at,last_seen_at,published_at_source,description_source,observation_mode,topic_method,search_text) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (str(row.get("id") or ""),str(row.get("company") or ""),str(row.get("title") or ""),row.get("date") or None,str(row.get("url") or ""),str(row.get("description") or ""),str(row.get("source_name") or ""),row.get("discovered_at") or None,row.get("last_seen_at") or None,str(row.get("published_at_source") or ""),str(row.get("description_source") or ""),str(row.get("observation_mode") or ""),str(row.get("topic_method") or ""),search_text))
             con.executemany("INSERT INTO report_topics(report_id,topic) VALUES(?,?)",[(str(row.get("id") or ""),topic) for topic in topics])
-        for transport,key in (("direct","sources"),("reader","fallback_sources")):
+        for transport,key in (("direct","sources"),("reader","fallback_sources"),("sitemap-reader","sitemap_sources")):
             for source in config.get(key) or []:
                 con.execute("INSERT OR REPLACE INTO sources(url,company,name,transport) VALUES(?,?,?,?)",(str(source.get("url") or ""),str(source.get("company") or ""),str(source.get("name") or ""),transport))
         for row in (health.get("sources") or {}).values():

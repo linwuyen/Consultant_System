@@ -7,12 +7,13 @@
   "sources": [
     {"company":"Deloitte","name":"Deloitte Insights","url":"https://www.deloitte.com/us/en/insights.html?site=global-en","allowed_path_prefixes":["/us/en/insights/","/global/en/our-thinking/"]},
     {"company":"PwC","name":"PwC Today's Issues","url":"https://www.pwc.com/gx/en/issues.html","allowed_path_prefixes":["/gx/en/issues/","/gx/en/research-insights/","/gx/en/industries/"]},
-    {"company":"PwC","name":"PwC C-suite Insights","url":"https://www.pwc.com/gx/en/issues/c-suite-insights.html","allowed_path_prefixes":["/gx/en/issues/c-suite-insights/","/gx/en/research-insights/"]},
-    {"company":"PwC","name":"PwC Energy Publications","url":"https://www.pwc.com/gx/en/industries/energy-utilities-resources/publications.html","allowed_path_prefixes":["/gx/en/industries/energy-utilities-resources/","/gx/en/issues/","/gx/en/research-insights/"]},
-    {"company":"PwC","name":"PwC Public Sector Research Centre","url":"https://www.pwc.com/gx/en/industries/government-public-sector/public-sector-research-centre.html","allowed_path_prefixes":["/gx/en/industries/government-public-sector/","/gx/en/issues/","/gx/en/research-insights/"]}
+    {"company":"PwC","name":"PwC C-suite Insights","url":"https://www.pwc.com/gx/en/issues/c-suite-insights.html","allowed_path_prefixes":["/gx/en/issues/c-suite-insights/","/gx/en/research-insights/"]}
+  ],
+  "sitemap_sources": [
+    {"company":"McKinsey","name":"McKinsey Official Sitemap","url":"https://www.mckinsey.com/sitemap.xml","allowed_path_prefixes":["/industries/semiconductors/our-insights/","/industries/industrials/our-insights/","/industries/automotive-and-assembly/our-insights/","/mgi/our-research/","/capabilities/"]}
   ],
   "fallback_sources": [
-    {"company":"McKinsey","name":"McKinsey Semiconductor Insights","url":"https://www.mckinsey.com/industries/semiconductors/our-insights","allowed_path_prefixes":["/industries/semiconductors/","/mgi/our-research/","/capabilities/","/featured-insights/"]},
+    {"company":"McKinsey","name":"McKinsey Semiconductor Insights Reader","url":"https://www.mckinsey.com/industries/semiconductors/our-insights","allowed_path_prefixes":["/industries/semiconductors/our-insights/","/industries/industrials/our-insights/","/industries/automotive-and-assembly/our-insights/","/mgi/our-research/","/capabilities/"]},
     {"company":"McKinsey","name":"McKinsey Featured Insights","url":"https://www.mckinsey.com/featured-insights/en","allowed_path_prefixes":["/featured-insights/","/mgi/our-research/","/capabilities/","/industries/"]},
     {"company":"BCG","name":"BCG Publications","url":"https://www.bcg.com/publications","allowed_path_prefixes":["/publications/"]}
   ],
