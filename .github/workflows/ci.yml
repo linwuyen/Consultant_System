@@ -11,12 +11,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: "22"
       - run: pip install -r requirements.txt
@@ -32,8 +32,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
           cache: pip
@@ -65,6 +65,9 @@ jobs:
           assert manifest['contract'] == 'research-context-only'
           assert manifest['score_influence'] is False
           assert all(v['ingestion_status'] != 'fail' for v in manifest['companies'].values()), manifest['companies']
+          mck = manifest['companies']['McKinsey']
+          assert mck['ingestion_status'] == 'healthy', mck
+          assert int(mck['observed_count']) >= 3, mck
           dirty = [r for r in reports if any(x in (r.get('description') or '').lower() for x in ('amazonaws.com','brightspot','%2f'))]
           assert not dirty, [(r['company'], r['title']) for r in dirty[:5]]
           china = [r for r in reports if r.get('title') == "What CEOs Should Know About China’s Business Ambitions"]
@@ -75,14 +78,14 @@ jobs:
           tables = {r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
           assert 'source_health' in tables
           con.close()
-          for name in ('reports.json','reports.csv','consultant.db'):
+          for name in ('reports.json','reports.csv','consultant.db','source_health.json'):
               digest = hashlib.sha256((root/'data'/name).read_bytes()).hexdigest()
               assert manifest['artifacts'][name]['sha256'] == digest, name
           print('LIVE_CANARY PASS')
           print(json.dumps(manifest['companies'], ensure_ascii=False, indent=2))
           PY
       - name: Upload canary snapshot
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: consultant-live-canary
           path: |
