@@ -29,6 +29,7 @@ HTTP_USER_AGENT = (
     "(KHTML, like Gecko) Chrome/151.0 Safari/537.36"
 )
 ROBOTS_USER_AGENT = "ConsultantSystemBot"
+ROBOTS_READER_PREFIX = "https://r.jina.ai/"
 MAX_LINKS_PER_SOURCE = 60
 MAX_LISTING_REPORTS = 30
 REQUEST_DELAY_SECONDS = 0.20
@@ -64,20 +65,48 @@ def make_session() -> requests.Session:
     return session
 
 
+def parse_robots_text(robots_url: str, text: str) -> RobotFileParser | None:
+    lines = text.splitlines()
+    first_rule = next(
+        (index for index, line in enumerate(lines) if line.strip().lower().startswith("user-agent:")),
+        None,
+    )
+    if first_rule is None:
+        return None
+    parser = RobotFileParser(); parser.set_url(robots_url); parser.parse(lines[first_rule:])
+    return parser
+
+
 def robots_allowed(session: requests.Session, url: str, cache: dict[str, RobotFileParser | None]) -> bool | None:
     parsed = urlparse(url)
     origin = f"{parsed.scheme}://{parsed.netloc}"
     if origin not in cache:
         robots_url = f"{origin}/robots.txt"
+        parser: RobotFileParser | None = None
         try:
             response = session.get(robots_url, timeout=TIMEOUT)
-            if not response.ok:
-                cache[origin] = None
-            else:
-                parser = RobotFileParser(); parser.set_url(robots_url); parser.parse(response.text.splitlines())
-                cache[origin] = parser
+            if response.ok:
+                parser = parse_robots_text(robots_url, response.text)
         except requests.RequestException:
-            cache[origin] = None
+            pass
+        if parser is None:
+            try:
+                response = requests.get(
+                    ROBOTS_READER_PREFIX + robots_url,
+                    timeout=TIMEOUT,
+                    headers={
+                        "User-Agent": "ConsultantSystemBot/2.0 (+https://github.com/linwuyen/Consultant_System)",
+                        "Accept": "text/plain",
+                        "X-Timeout": "15",
+                    },
+                )
+                if response.ok:
+                    parser = parse_robots_text(robots_url, response.text)
+                    if parser is not None:
+                        print(f"  ROBOTS fallback verified via reader: {origin}")
+            except requests.RequestException:
+                pass
+        cache[origin] = parser
     parser = cache[origin]
     return None if parser is None else parser.can_fetch(ROBOTS_USER_AGENT, url)
 
