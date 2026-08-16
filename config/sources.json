@@ -5,10 +5,12 @@
     "max_consecutive_empty_runs": 3
   },
   "sources": [
-    {"company":"McKinsey","name":"McKinsey Semiconductor Insights","url":"https://www.mckinsey.com/industries/semiconductors/our-insights","allowed_path_prefixes":["/industries/semiconductors/our-insights/","/industries/industrials/our-insights/","/industries/automotive-and-assembly/our-insights/","/mgi/our-research/","/capabilities/"],"listing_only":true},
     {"company":"Deloitte","name":"Deloitte Insights","url":"https://www.deloitte.com/us/en/insights.html?site=global-en","allowed_path_prefixes":["/us/en/insights/","/global/en/our-thinking/"]},
     {"company":"PwC","name":"PwC Today's Issues","url":"https://www.pwc.com/gx/en/issues.html","allowed_path_prefixes":["/gx/en/issues/","/gx/en/research-insights/","/gx/en/industries/"]},
     {"company":"PwC","name":"PwC C-suite Insights","url":"https://www.pwc.com/gx/en/issues/c-suite-insights.html","allowed_path_prefixes":["/gx/en/issues/c-suite-insights/","/gx/en/research-insights/"]}
+  ],
+  "sitemap_sources": [
+    {"company":"McKinsey","name":"McKinsey Official Sitemap","url":"https://www.mckinsey.com/sitemap.xml","allowed_path_prefixes":["/industries/semiconductors/our-insights/","/industries/industrials/our-insights/","/industries/automotive-and-assembly/our-insights/","/mgi/our-research/","/capabilities/"]}
   ],
   "fallback_sources": [
     {"company":"McKinsey","name":"McKinsey Semiconductor Insights Reader","url":"https://www.mckinsey.com/industries/semiconductors/our-insights","allowed_path_prefixes":["/industries/semiconductors/our-insights/","/industries/industrials/our-insights/","/industries/automotive-and-assembly/our-insights/","/mgi/our-research/","/capabilities/"]},
