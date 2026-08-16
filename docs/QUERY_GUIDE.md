@@ -1,94 +1,21 @@
 # Query Guide
 
-這個 repo 的查詢策略是先用低成本文字搜尋，再讓 AI 做跨來源比較。
+## 1. 先確認 snapshot 是否可信
 
-## 1. GitHub / Codex 搜尋順序
+先看 `data/manifest.json`：schema、overall health、各公司 ingestion status、artifact hash。
 
-先查：
+若某公司 `degraded`，可使用 cached records，但回答中應標示 live ingestion 異常；若 `fail`，不要把該公司的 coverage 描述為正常。
 
-```text
-catalog/sources.csv
-sources/
-knowledge/
-```
+## 2. 查 production records
 
-若查「AI + 製造業」：
+優先查 `data/consultant.db` 或 `data/reports.json`。`catalog/` 與 `sources/*.md` 是人工 discovery/context，不是最新 production records。
 
-```text
-AI manufacturing
-AI industrial
-AI factory
-AI productivity
-```
+查詢時把以下欄位一起帶出：company、title、published_at/date、url、description、published_at_source、observation_mode。
 
-若查「半導體 / 電源 / 資料中心」：
+## 3. Evidence 升級
 
-```text
-semiconductor
-advanced electronics
-power electronics
-energy storage
-data center power
-power infrastructure
-```
+metadata record 只代表「發現了一篇研究」，不代表其主張已被驗證。只有需要進入決策 thesis 的報告才建立 `knowledge/` note，並拆成：已知事實、顧問觀點、forecast、方法、樣本、限制、反證與待驗證項目。
 
-## 2. 推薦 AI Prompt
+## 4. 重大決策
 
-### 單一主題
-
-```text
-在 Consultant_System 中搜尋「semiconductor」。
-先列出命中的顧問公司與來源日期，再整理：
-1. 已知事實
-2. 顧問觀點
-3. 關鍵數據
-4. 假設 / 方法
-5. 可能反例
-6. 對台灣產業的可能意義
-7. 原始 URL
-```
-
-### 四家交叉比較
-
-```text
-搜尋 McKinsey、BCG、Deloitte、PwC 對 enterprise AI 的公開研究。
-只使用 repo 內有來源 URL 的資料。
-比較共識、分歧、資料年份、樣本與可驗證性。
-不要把 survey perception 當成企業實際績效。
-```
-
-### 投資研究
-
-```text
-找出與 semiconductor / data center / power infrastructure 有關的顧問研究。
-把「事實、顧問推估、我的投資假設」分開。
-指出哪些數據需要再用公司財報、政府統計或產業資料驗證。
-```
-
-## 3. 新資料加入流程
-
-每看到值得保存的公開報告：
-
-1. 記錄官方 URL。
-2. 建立 `knowledge/YYYY/YYYY-MM-DD-firm-topic.md`。
-3. 填寫 publication_date、last_checked、topics、regions。
-4. 用自己的文字整理結論。
-5. 重要數字註明來源與口徑。
-6. 有預測值時寫出基準年、預測年、假設。
-7. 如為 survey，保存樣本數、對象與調查期間。
-
-## 4. 何時不相信摘要
-
-遇到以下情況必須回原文：
-
-- 投資 / 財務重大決策
-- 數字口徑不明
-- 報告超過 2 年且主題快速變動
-- AI、半導體、能源價格等快速變化領域
-- 不同顧問公司結論互相矛盾
-- 二手媒體引用顧問數字但沒有原始報告
-
-## 5. 最小維護原則
-
-不要一開始建立向量資料庫、RAG server 或自動爬蟲。
-先累積 50-100 篇高品質、結構化 Markdown；只有當 GitHub / AI 搜尋開始明顯找不到東西時，再升級索引架構。
+投資、財務與快速變化主題必須回原始 publisher page，並優先再用公司財報、政府統計或其他第一手資料驗證。

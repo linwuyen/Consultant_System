@@ -1,0 +1,28 @@
+name: Quality checks
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pip install -r requirements.txt
+      - run: npm install
+      - run: python -m py_compile scripts/common.py scripts/update_reports.py scripts/update_reader_fallback.py scripts/audit_coverage.py scripts/build_sqlite.py scripts/build_manifest.py
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/build_sqlite.py
+      - run: python scripts/build_manifest.py
+      - run: npm run check:syntax

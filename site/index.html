@@ -1,140 +1,14 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="McKinsey、BCG、Deloitte、PwC 公開研究 SQLite 資料庫" />
-  <title>Consultant Research Database</title>
-  <link rel="stylesheet" href="./styles.css" />
-</head>
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content="McKinsey、BCG、Deloitte、PwC 公開研究與 ingestion health SQLite 資料庫"/><title>Consultant Research Database</title><link rel="stylesheet" href="./styles.css"/></head>
 <body>
-  <header class="topbar">
-    <div class="shell topbar-inner">
-      <div>
-        <p class="eyebrow">CONSULTANT SYSTEM · SQLITE</p>
-        <h1>Research Database</h1>
-        <p class="subtitle">McKinsey · BCG · Deloitte · PwC 公開研究索引 · Browser SQL</p>
-      </div>
-      <nav class="top-actions" aria-label="資料入口">
-        <a class="button ghost" href="./data/consultant.db">SQLite</a>
-        <a class="button ghost" href="./data/reports.json">JSON</a>
-        <a class="button ghost" href="./data/reports.csv">CSV</a>
-        <a class="button" href="https://github.com/linwuyen/Consultant_System" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="shell main-grid">
-    <section class="dashboard" aria-labelledby="db-overview-title">
-      <div class="section-heading">
-        <div>
-          <p class="section-kicker">DATABASE OVERVIEW</p>
-          <h2 id="db-overview-title">SQLite 資料庫狀態</h2>
-        </div>
-        <div class="freshness" id="freshness"><span class="dot"></span><span>載入中</span></div>
-      </div>
-
-      <div class="kpi-grid" id="kpis">
-        <div class="kpi skeleton"></div><div class="kpi skeleton"></div><div class="kpi skeleton"></div><div class="kpi skeleton"></div>
-      </div>
-
-      <div class="coverage-panel">
-        <div class="panel-title-row">
-          <div>
-            <h3>四家公司 Coverage</h3>
-            <p>直接由 consultant.db 聚合資料量、日期完整度與最新研究。</p>
-          </div>
-          <span class="muted" id="updatedAt"></span>
-        </div>
-        <div class="coverage-grid" id="coverage"></div>
-      </div>
-    </section>
-
-    <section class="database" aria-labelledby="database-title">
-      <div class="section-heading db-heading">
-        <div>
-          <p class="section-kicker">RESEARCH RECORDS</p>
-          <h2 id="database-title">研究資料表</h2>
-        </div>
-        <div class="view-toggle" aria-label="顯示模式">
-          <button id="tableViewBtn" class="toggle active" type="button">表格</button>
-          <button id="cardViewBtn" class="toggle" type="button">卡片</button>
-        </div>
-      </div>
-
-      <div class="filter-panel">
-        <label class="search-field">
-          <span>全文搜尋</span>
-          <input id="q" type="search" placeholder="AI、semiconductor、energy、supply chain…" autocomplete="off" />
-        </label>
-        <label><span>公司</span><select id="company"><option value="">全部</option></select></label>
-        <label><span>主題</span><select id="topic"><option value="">全部</option></select></label>
-        <label><span>年份</span><select id="year"><option value="">全部</option></select></label>
-        <label><span>排序</span><select id="sort"><option value="date-desc">最新發布</option><option value="date-asc">最早發布</option><option value="company">公司</option><option value="title">標題 A–Z</option></select></label>
-        <label><span>每頁</span><select id="pageSize"><option>25</option><option selected>50</option><option>100</option></select></label>
-        <button id="clearFilters" class="clear-button" type="button">清除篩選</button>
-      </div>
-
-      <div class="query-status">
-        <div><strong id="resultCount">載入中…</strong><span id="activeFilters"></span></div>
-        <div class="quality-inline" id="qualityInline"></div>
-      </div>
-
-      <div id="tableView" class="table-wrap">
-        <table class="research-table">
-          <thead>
-            <tr>
-              <th class="col-date">發布日期</th>
-              <th class="col-company">公司</th>
-              <th>研究 / 摘要</th>
-              <th class="col-topic">主題</th>
-              <th class="col-source">來源</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
-
-      <section id="cardView" class="card-grid" hidden aria-live="polite"></section>
-      <div id="empty" class="empty" hidden>沒有符合目前條件的研究。</div>
-
-      <div class="pagination" id="pagination">
-        <span id="pageInfo"></span>
-        <div>
-          <button id="prevPage" class="page-button" type="button">← 上一頁</button>
-          <button id="nextPage" class="page-button" type="button">下一頁 →</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="sql-panel" aria-labelledby="sql-title">
-      <div class="section-heading">
-        <div>
-          <p class="section-kicker">SQL CONSOLE</p>
-          <h2 id="sql-title">直接查 consultant.db</h2>
-        </div>
-        <span class="muted">唯讀 · SQLite WASM</span>
-      </div>
-      <div class="sql-console">
-        <textarea id="sqlInput" spellcheck="false">SELECT company, COUNT(*) AS reports, MAX(published_at) AS latest
+<header class="topbar"><div class="shell topbar-inner"><div><p class="eyebrow">CONSULTANT SYSTEM · SQLITE V2</p><h1>Research Database</h1><p class="subtitle">Research metadata · provenance · ingestion health · Browser SQL</p></div><nav class="top-actions" aria-label="資料入口"><a class="button ghost" href="./data/consultant.db">SQLite</a><a class="button ghost" href="./data/reports.json">JSON</a><a class="button ghost" href="./data/reports.csv">CSV</a><a class="button ghost" href="./data/manifest.json">Manifest</a><a class="button" href="https://github.com/linwuyen/Consultant_System" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div></header>
+<main class="shell main-grid">
+<section class="dashboard" aria-labelledby="db-overview-title"><div class="section-heading"><div><p class="section-kicker">SNAPSHOT HEALTH</p><h2 id="db-overview-title">內容新鮮度與 Ingestion Health</h2></div><div class="freshness" id="freshness"><span class="dot"></span><span>載入中</span></div></div><div class="kpi-grid" id="kpis"><div class="kpi skeleton"></div><div class="kpi skeleton"></div><div class="kpi skeleton"></div><div class="kpi skeleton"></div></div><div class="coverage-panel"><div class="panel-title-row"><div><h3>四家公司 operational status</h3><p>Records / publication freshness 與 live ingestion observation 分開顯示。</p></div><span class="muted" id="updatedAt"></span></div><div class="coverage-grid" id="coverage"></div></div></section>
+<section class="database" aria-labelledby="database-title"><div class="section-heading db-heading"><div><p class="section-kicker">RESEARCH RECORDS</p><h2 id="database-title">研究資料表</h2></div><div class="view-toggle"><button id="tableViewBtn" class="toggle active" type="button">表格</button><button id="cardViewBtn" class="toggle" type="button">卡片</button></div></div><div class="filter-panel"><label class="search-field"><span>全文搜尋</span><input id="q" type="search" placeholder="AI、semiconductor、energy、supply chain…" autocomplete="off"/></label><label><span>公司</span><select id="company"><option value="">全部</option></select></label><label><span>主題</span><select id="topic"><option value="">全部</option></select></label><label><span>年份</span><select id="year"><option value="">全部</option></select></label><label><span>排序</span><select id="sort"><option value="date-desc">最新發布</option><option value="date-asc">最早發布</option><option value="company">公司</option><option value="title">標題 A–Z</option></select></label><label><span>每頁</span><select id="pageSize"><option>25</option><option selected>50</option><option>100</option></select></label><button id="clearFilters" class="clear-button" type="button">清除篩選</button></div><div class="query-status"><div><strong id="resultCount">載入中…</strong><span id="activeFilters"></span></div><div class="quality-inline" id="qualityInline"></div></div><div id="tableView" class="table-wrap"><table class="research-table"><thead><tr><th class="col-date">發布日期</th><th class="col-company">公司</th><th>研究 / 摘要 / Provenance</th><th class="col-topic">主題</th><th class="col-source">來源</th></tr></thead><tbody id="tableBody"></tbody></table></div><section id="cardView" class="card-grid" hidden aria-live="polite"></section><div id="empty" class="empty" hidden>沒有符合目前條件的研究。</div><div class="pagination" id="pagination"><span id="pageInfo"></span><div><button id="prevPage" class="page-button" type="button">← 上一頁</button><button id="nextPage" class="page-button" type="button">下一頁 →</button></div></div></section>
+<section class="sql-panel" aria-labelledby="sql-title"><div class="section-heading"><div><p class="section-kicker">SQL SANDBOX</p><h2 id="sql-title">直接查 consultant.db</h2></div><span class="muted">browser-memory · 不會改遠端 DB</span></div><div class="sql-console"><textarea id="sqlInput" spellcheck="false">SELECT company, COUNT(*) AS reports, MAX(published_at) AS latest
 FROM reports
 GROUP BY company
-ORDER BY reports DESC;</textarea>
-        <div class="sql-actions">
-          <button id="runSql" class="button" type="button">Run SQL</button>
-          <span id="sqlStatus" class="muted">資料庫載入後即可執行</span>
-        </div>
-        <div id="sqlResult" class="sql-result"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="shell footer">
-    <p>資料為各顧問公司公開頁面的 metadata、摘要與原始連結；不鏡像文章全文。研究結論與數字請回官方來源驗證。</p>
-    <p>GitHub Actions 每日 09:17（Asia/Taipei）更新 SQLite。</p>
-  </footer>
-
-  <script src="./vendor/sql-wasm.js"></script>
-  <script src="./app.js" defer></script>
-</body>
-</html>
+ORDER BY reports DESC;</textarea><div class="sql-actions"><button id="runSql" class="button" type="button">Run SQL</button><span id="sqlStatus" class="muted">資料庫載入後即可執行</span></div><div id="sqlResult" class="sql-result"></div></div></section>
+</main>
+<footer class="shell footer"><p>metadata description ≠ verified evidence。重大決策請回官方原始頁面與第一手資料核對。</p><p>GitHub Actions 每日 09:17（Asia/Taipei）更新；content freshness 與 ingestion health 分開追蹤。</p></footer><script src="./vendor/sql-wasm.js"></script><script src="./app.js" defer></script></body></html>

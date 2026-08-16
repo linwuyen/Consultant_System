@@ -1,63 +1,34 @@
 # AGENTS.md
 
-本 repository 是公開顧問研究的可檢索知識庫。
+本 repository 是公開顧問研究的 **evidence discovery + ingestion health layer**。
 
-## 查詢優先順序
+## Production query order
 
-1. 先搜尋 `catalog/sources.csv` 找官方入口與主題。
-2. 再搜尋 `sources/*.md` 了解各顧問公司的研究分類。
-3. 最後搜尋 `knowledge/` 中已整理的單篇研究筆記。
+1. 先讀 `data/manifest.json`：確認 schema、overall health、各公司 ingestion status。
+2. 查 `data/consultant.db` 或 `data/reports.json`：取得 production research records。
+3. `knowledge/`：只在已有人工/結構化 evidence note 時使用。
+4. `sources/*.md` 與 `catalog/`：僅提供 publisher context / 人工 discovery，不是 production source of truth。
+
+## Canonical config
+
+`config/sources.json` 是 crawler sources、fallback sources、health policy 與 topic keyword 的唯一 production canonical configuration。
 
 ## 回答規則
 
-查詢本 repo 時，優先輸出：
+優先輸出：已知事實、顧問公司的原始觀點、合理推論、待驗證項目、publication date / provenance / 原始 URL。
 
-1. 已知事實
-2. 顧問公司的原始觀點
-3. 合理推論
-4. 待驗證項目
-5. 原始 URL 與日期
+不要：
 
-不要把顧問公司的推估值描述成確定事實。
-不要把舊報告當成目前狀況；先檢查 publication_date / last_checked。
-如果多家顧問公司對同一主題有不同結論，保留差異，不要強行平均。
+- 把顧問公司的 forecast 當確定事實。
+- 把 metadata description 當已驗證 evidence。
+- 把 survey perception 當 audited performance。
+- 把 `reports.json.updated_at` 當 crawler health；operational health 看 `source_health` / `manifest`。
+- 在 ingestion `degraded` / `fail` 時假裝 coverage 正常。
 
-## 新增研究筆記格式
+## Knowledge note contract
 
-每篇研究建議建立成：
+`knowledge/YYYY/YYYY-MM-DD-firm-topic-slug.md` 至少包含：一句話結論、已知事實/數據、顧問觀點、方法/假設、限制/反例、對決策意義、待驗證項目、原始來源。
 
-```text
-knowledge/YYYY/YYYY-MM-DD-firm-topic-slug.md
-```
+## 版權與 evidence boundary
 
-Markdown front matter：
-
-```yaml
----
-firm: McKinsey
-source_type: report
-publication_date: 2026-01-01
-last_checked: 2026-08-09
-topics:
-  - AI
-  - manufacturing
-regions:
-  - global
-url: https://example.com
----
-```
-
-正文至少包含：
-
-- 一句話結論
-- 已知事實 / 數據
-- 顧問觀點
-- 假設與方法
-- 可能反例 / 限制
-- 對決策的意義
-- 原始來源
-
-## 版權與資料邊界
-
-除非來源明確允許再散布，不要直接保存完整文章或完整 PDF 文字。
-以官方 URL、metadata、短摘錄、自己的摘要與分析為主。
+除非來源明確允許再散布，不保存完整文章或完整 PDF 文字。以官方 URL、metadata、短摘錄與自己的分析為主。投資、產業與重大決策必須回原始來源與第一手資料核對。
