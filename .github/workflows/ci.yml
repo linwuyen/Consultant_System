@@ -38,6 +38,28 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+      - name: Probe McKinsey crawler-native transports
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          import re, requests
+          targets = {
+              'sitemap-direct': 'https://www.mckinsey.com/sitemap.xml',
+              'sitemap-reader': 'https://r.jina.ai/https://www.mckinsey.com/sitemap.xml',
+              'article-reader': 'https://r.jina.ai/https://www.mckinsey.com/industries/industrials/our-insights/the-shift-to-800-volt-dc-at-data-centers-implications-for-providers',
+          }
+          for name, url in targets.items():
+              try:
+                  r = requests.get(url, timeout=30, headers={'User-Agent':'ConsultantSystemBot/2.0','Accept':'*/*','X-Timeout':'25'})
+                  text = r.text
+                  urls = re.findall(r'https?://[^\s<>()\]"\']+', text)
+                  dates = re.findall(r'\b20\d{2}[-/]\d{1,2}[-/]\d{1,2}\b|\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+20\d{2}\b', text, re.I)
+                  print(f'PROBE {name}: status={r.status_code} chars={len(text)} urls={len(urls)} dates={dates[:5]}')
+                  for value in urls[:8]: print('  URL', value[:220])
+                  print('  PREFIX', repr(text[:300]))
+              except Exception as exc:
+                  print(f'PROBE {name}: ERROR {type(exc).__name__}: {exc}')
+          PY
       - name: Live metadata refresh
         run: python scripts/update_reports.py
       - name: Live blocked-publisher fallback
