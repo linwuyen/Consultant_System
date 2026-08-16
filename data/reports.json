@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-16T06:18:23Z",
+  "updated_at": "2026-08-16T06:59:18Z",
   "reports": [
     {
       "id": "f67e3531ca3e50d2",
@@ -225,6 +225,26 @@
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-08T17:09:53Z",
       "last_seen_at": "2026-08-08T17:09:53Z"
+    },
+    {
+      "id": "be9a5e3ca8ca39bd",
+      "company": "McKinsey",
+      "title": "The shift to 800-volt DC at data centers: Implications for providers",
+      "date": "2026-07-30",
+      "url": "https://www.mckinsey.com/industries/industrials/our-insights/the-shift-to-800-volt-dc-at-data-centers-implications-for-providers",
+      "description": "McKinsey examines the shift toward 800-volt direct-current power architectures in AI data centers and the implications for equipment providers.",
+      "topics": [
+        "AI",
+        "Energy",
+        "Data Center"
+      ],
+      "source_name": "McKinsey official verified seed",
+      "discovered_at": "2026-08-16T06:59:18Z",
+      "last_seen_at": "2026-08-16T06:59:18Z",
+      "published_at_source": "verified-seed",
+      "description_source": "verified-seed",
+      "observation_mode": "verified-seed",
+      "topic_method": "keyword-v2"
     },
     {
       "id": "5928c908d17618ff",
@@ -646,7 +666,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-16T06:17:36Z",
+      "last_seen_at": "2026-08-16T06:58:30Z",
       "published_at_source": "visible-near-h1",
       "description_source": "meta",
       "observation_mode": "direct-article",
