@@ -10,7 +10,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from bs4 import BeautifulSoup
 from common import clean_description, infer_topics, update_source_health
 from update_reader_fallback import extract_markdown
-from update_reports import extract_published_at
+from update_reports import extract_published_at, parse_robots_text
 
 class QualityTests(unittest.TestCase):
     def test_reader_card_does_not_borrow_next_card_topic(self):
@@ -43,6 +43,15 @@ March 30, 2026 - Semiconductor companies must make bold strategic moves.
         rows = extract_markdown(text, source, topics, "2026-08-16T00:00:00Z")
         self.assertEqual(len(rows), 2)
         self.assertTrue(all(r["url"].startswith("https://www.mckinsey.com/industries/semiconductors/our-insights/") for r in rows))
+
+    def test_reader_wrapped_robots_text_stays_fail_closed_and_respects_rules(self):
+        text = """Title: robots.txt\nURL Source: https://www.mckinsey.com/robots.txt\nMarkdown Content:\nUser-agent: *\nDisallow: /search/\nDisallow: /userprofile/\nSitemap: https://www.mckinsey.com/sitemap.xml\n"""
+        parser = parse_robots_text("https://www.mckinsey.com/robots.txt", text)
+        self.assertIsNotNone(parser)
+        assert parser is not None
+        self.assertTrue(parser.can_fetch("ConsultantSystemBot", "https://www.mckinsey.com/industries/semiconductors/our-insights"))
+        self.assertFalse(parser.can_fetch("ConsultantSystemBot", "https://www.mckinsey.com/search/foo"))
+        self.assertIsNone(parse_robots_text("https://example.com/robots.txt", "Title: no rules here"))
 
     def test_dirty_asset_description_is_rejected(self):
         dirty = "url=http%3A%2F%2Fboston-consulting-group-brightspot.s3.amazonaws.com%2Ffoo.gif Image 52 Learn More"
