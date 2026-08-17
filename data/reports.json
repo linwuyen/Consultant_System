@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-16T06:59:18Z",
+  "updated_at": "2026-08-17T02:34:49Z",
   "reports": [
     {
       "id": "f67e3531ca3e50d2",
@@ -666,7 +666,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-16T06:58:30Z",
+      "last_seen_at": "2026-08-17T02:34:49Z",
       "published_at_source": "visible-near-h1",
       "description_source": "meta",
       "observation_mode": "direct-article",
