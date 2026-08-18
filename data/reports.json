@@ -1,6 +1,26 @@
 {
-  "updated_at": "2026-08-17T02:34:49Z",
+  "updated_at": "2026-08-18T02:30:35Z",
   "reports": [
+    {
+      "id": "452a85a4c8a0358b",
+      "company": "BCG",
+      "title": "Powering AI Through Grid-Positive Data Centers",
+      "date": "2026-08-18",
+      "url": "https://www.bcg.com/publications/2026/powering-ai-through-grid-positive-data-centers",
+      "description": "Data centers are one of the fastest-growing sources of new demand on power grids, creating pressure on the energy system.",
+      "topics": [
+        "AI",
+        "Energy",
+        "Data Center"
+      ],
+      "source_name": "BCG Publications",
+      "discovered_at": "2026-08-18T02:30:35Z",
+      "last_seen_at": "2026-08-18T02:30:35Z",
+      "published_at_source": "reader-near-link",
+      "description_source": "reader-card",
+      "observation_mode": "reader-fallback",
+      "topic_method": "keyword-v2"
+    },
     {
       "id": "f67e3531ca3e50d2",
       "company": "BCG",
@@ -666,7 +686,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-17T02:34:49Z",
+      "last_seen_at": "2026-08-18T02:29:58Z",
       "published_at_source": "visible-near-h1",
       "description_source": "meta",
       "observation_mode": "direct-article",

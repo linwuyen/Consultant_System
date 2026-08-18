@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "snapshot_id": "35fc95e9e9f96e26",
-  "generated_at": "2026-08-17T02:36:00Z",
-  "content_updated_at": "2026-08-17T02:34:49Z",
-  "health_updated_at": "2026-08-17T02:35:47Z",
+  "snapshot_id": "f63913106e7cf5b2",
+  "generated_at": "2026-08-18T02:31:37Z",
+  "content_updated_at": "2026-08-18T02:30:35Z",
+  "health_updated_at": "2026-08-18T02:30:35Z",
   "overall_health": "healthy",
   "contract": "research-context-only",
   "score_influence": false,
@@ -13,46 +13,46 @@
       "latest_publication": "2026-07-30",
       "ingestion_status": "healthy",
       "observed_count": 5,
-      "last_success_at": "2026-08-17T02:35:47Z"
+      "last_success_at": "2026-08-18T02:30:35Z"
     },
     "BCG": {
-      "records": 13,
-      "latest_publication": "2026-08-14",
+      "records": 14,
+      "latest_publication": "2026-08-18",
       "ingestion_status": "healthy",
-      "observed_count": 6,
-      "last_success_at": "2026-08-17T02:35:47Z"
+      "observed_count": 7,
+      "last_success_at": "2026-08-18T02:30:35Z"
     },
     "Deloitte": {
       "records": 37,
       "latest_publication": "2026-08-10",
       "ingestion_status": "healthy",
       "observed_count": 33,
-      "last_success_at": "2026-08-17T02:34:49Z"
+      "last_success_at": "2026-08-18T02:29:58Z"
     },
     "PwC": {
       "records": 5,
       "latest_publication": "2026-06-23",
       "ingestion_status": "healthy",
       "observed_count": 6,
-      "last_success_at": "2026-08-17T02:34:49Z"
+      "last_success_at": "2026-08-18T02:29:58Z"
     }
   },
   "artifacts": {
     "reports.json": {
-      "sha256": "3b4c46f72292138b930079609b896c22b962a1a824994ff9bc557a32357b23be",
-      "bytes": 46577
+      "sha256": "8360d4164b9fb9af185593761b6776d54a590a3f675637f87d42a70e51350063",
+      "bytes": 47373
     },
     "reports.csv": {
-      "sha256": "3700b510d3bd5fad0a1d2c9b04fa8d92a66e5e6190332ba90433074ec7b1f94e",
-      "bytes": 27525
+      "sha256": "4209c6b99c4dfc43b9b6ce70a4aeb9c0c96cda7f246102306d7848aea9ce1a88",
+      "bytes": 27951
     },
     "consultant.db": {
-      "sha256": "cd9cb40675431f63cae8c28ebbd771c03ec2db0bde1dd73b8f963ce76624c0fa",
+      "sha256": "232cbed75f3ae007e22b313905254aae25d4426bdfebb944806f287fb8f8c99d",
       "bytes": 135168
     },
     "source_health.json": {
-      "sha256": "d772e1d53e689a7eee1785f120e5f540c8c7a0166a5f0935897a59636421c6f1",
-      "bytes": 3313
+      "sha256": "d3833d70b6a2555dc1a1bc0acc39782cd536305f61928fc97c9df8e47e6d485c",
+      "bytes": 3309
     }
   }
 }
