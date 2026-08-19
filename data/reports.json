@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-18T02:30:35Z",
+  "updated_at": "2026-08-19T02:32:43Z",
   "reports": [
     {
       "id": "452a85a4c8a0358b",
@@ -141,6 +141,22 @@
       "source_name": "BCG Publications",
       "discovered_at": "2026-08-14T04:04:54Z",
       "last_seen_at": "2026-08-14T04:04:54Z"
+    },
+    {
+      "id": "57e2a39398649fab",
+      "company": "Deloitte",
+      "title": "State of the US Consumer: July–August 2026",
+      "date": "2026-08-11",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/consumer-pulse/state-of-the-us-consumer.html",
+      "description": "Gas price expectations are cooling, while consumer financial well-being remains firm",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
     },
     {
       "id": "097f00bd91c61706",
@@ -299,6 +315,24 @@
       "last_seen_at": "2026-08-08T17:09:53Z"
     },
     {
+      "id": "023e6b889f15c86b",
+      "company": "Deloitte",
+      "title": "Resilience with a pinch of caution for the US labor market",
+      "date": "2026-07-19",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/spotlight/private-sector-job-growth.html",
+      "description": "The US labor market has improved noticeably in 2026 after a weak 2025, but the rebound remains uneven across sectors and vulnerable amid challenges",
+      "topics": [
+        "Supply Chain"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
       "id": "c3658431b8e0fb11",
       "company": "Deloitte",
       "title": "Four futures for technology infrastructure: Which one are you building toward?",
@@ -347,6 +381,26 @@
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
       "last_seen_at": "2026-08-16T06:17:36Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
+      "id": "b0f5f671bf858e4d",
+      "company": "Deloitte",
+      "title": "Oil prices and AI investment play major role in the US economic forecast for 2026–2031",
+      "date": "2026-06-30",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/us-economic-forecast/united-states-outlook-analysis.html",
+      "description": "Elevated oil prices will be largely dictating the future trajectory of the US economy, but the ongoing AI investment cycle will also be a crucial growth driver",
+      "topics": [
+        "AI",
+        "Economics",
+        "Strategy"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
       "published_at_source": "jsonld:datePublished",
       "description_source": "meta",
       "observation_mode": "direct-article",
@@ -421,6 +475,22 @@
       "topic_method": "keyword-v2"
     },
     {
+      "id": "f5daf6da85b05d40",
+      "company": "Deloitte",
+      "title": "Quantum computing is coming. How to reduce expensive guesswork to build business value now",
+      "date": "2026-06-18",
+      "url": "https://www.deloitte.com/us/en/insights/topics/technology-management/quantum-computing-readiness.html",
+      "description": "Quantum-inspired methods can bring tangible business value today and build readiness to utilize future quantum computers when they become available. Here’s how.",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
       "id": "7ef96ec92c83213c",
       "company": "Deloitte",
       "title": "The $9 trillion knowledge exodus: How organizations can turn baby boomer retirements into a competitive advantage",
@@ -433,6 +503,22 @@
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
       "last_seen_at": "2026-08-16T06:17:36Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
+      "id": "5e5954fffb0df280",
+      "company": "Deloitte",
+      "title": "4 shifts are shaping technology infrastructure. How can leaders avoid creating systems they can’t change?",
+      "date": "2026-05-31",
+      "url": "https://www.deloitte.com/us/en/insights/topics/technology-management/digital-infrastructure-strategy.html",
+      "description": "Technology architecture choices made today could create tomorrow’s legacy systems. Here’s how leaders can avoid architected disadvantage.",
+      "topics": [],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
       "published_at_source": "jsonld:datePublished",
       "description_source": "meta",
       "observation_mode": "direct-article",
@@ -455,6 +541,24 @@
       "topic_method": "keyword-v2"
     },
     {
+      "id": "8c91c6dd6b870470",
+      "company": "Deloitte",
+      "title": "What skills might boards need as tectonic shifts reshape the business landscape?",
+      "date": "2026-05-19",
+      "url": "https://www.deloitte.com/us/en/insights/topics/leadership/board-composition-skill-needs.html",
+      "description": "Many of the largest US-based companies’ boards are led by execs with traditional leadership backgrounds, Deloitte analysis shows. Could other capabilities strengthen this mix?",
+      "topics": [
+        "Workforce"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
       "id": "1ed2516bd044da0b",
       "company": "Deloitte",
       "title": "FSI Predictions 2026",
@@ -464,7 +568,32 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
+      "id": "0a684569d247ee9c",
+      "company": "Deloitte",
+      "title": "Implications of the Middle East conflict for the US economy",
+      "date": "2026-05-12",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/us-economy-impact-higher-oil-prices-middle-east-conflict.html",
+      "description": "Higher oil prices driven by the conflict in the Middle East will likely affect the US economy and consumer, despite resilient growth in AI investments and the US energy sector",
+      "topics": [
+        "AI",
+        "Energy",
+        "Economics",
+        "Strategy"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
     },
     {
       "id": "2dd1c8868505cac4",
@@ -480,6 +609,24 @@
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
       "last_seen_at": "2026-08-16T06:17:36Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
+      "id": "8d3e8ee1bcef4224",
+      "company": "Deloitte",
+      "title": "Changing inflation dynamics pose new risks for the US economy",
+      "date": "2026-03-31",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/spotlight/us-inflation-dynamics-effect-us-economy.html",
+      "description": "The March 2026 Economics Insider analyzes changing US inflation trends, their possible drivers, and their effects on US consumer spending",
+      "topics": [
+        "Economics"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
       "published_at_source": "jsonld:datePublished",
       "description_source": "meta",
       "observation_mode": "direct-article",
@@ -512,7 +659,11 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
     },
     {
       "id": "dfb26f948df3f955",
@@ -674,6 +825,24 @@
       "topic_method": "keyword-v2"
     },
     {
+      "id": "d2dbe3d2783fc573",
+      "company": "Deloitte",
+      "title": "Technology is helping drive sustainability transformation",
+      "date": "2026-01-19",
+      "url": "https://www.deloitte.com/us/en/insights/topics/leadership/technology-for-sustainability.html",
+      "description": "Deloitte Global’s survey of C-level executives shows how companies are using technology to track sustainability metrics, reduce risks, and support business model transformation",
+      "topics": [
+        "Strategy"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
       "id": "3774d328d4ef5679",
       "company": "PwC",
       "title": "PwC’s 29th Global CEO Survey: Leading through uncertainty in the age of AI",
@@ -686,7 +855,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-18T02:29:58Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
       "published_at_source": "visible-near-h1",
       "description_source": "meta",
       "observation_mode": "direct-article",
@@ -759,7 +928,11 @@
       "topics": [],
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-08T17:09:53Z"
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
     },
     {
       "id": "28221fb09f627173",
@@ -897,6 +1070,24 @@
       "discovered_at": "2026-08-14T04:04:54Z",
       "last_seen_at": "2026-08-16T06:17:36Z",
       "published_at_source": "visible-near-h1",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
+    {
+      "id": "6d622c0165434eb2",
+      "company": "Deloitte",
+      "title": "Reimagining CHRO roles and responsibilities for strategic growth",
+      "date": "2025-04-22",
+      "url": "https://www.deloitte.com/us/en/insights/topics/business-strategy-growth/chro-roles-and-responsibilities.html",
+      "description": "the evolving CHRO responsibilities and competencies essential for strategic growth and organizational success in today's dynamic business environment",
+      "topics": [
+        "Strategy"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-19T02:32:43Z",
+      "last_seen_at": "2026-08-19T02:32:43Z",
+      "published_at_source": "jsonld:datePublished",
       "description_source": "meta",
       "observation_mode": "direct-article",
       "topic_method": "keyword-v2"
