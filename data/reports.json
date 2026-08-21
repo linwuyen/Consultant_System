@@ -1,6 +1,24 @@
 {
-  "updated_at": "2026-08-20T02:30:57Z",
+  "updated_at": "2026-08-21T02:37:11Z",
   "reports": [
+    {
+      "id": "097f00bd91c61706",
+      "company": "Deloitte",
+      "title": "What’s happening this week in economics?",
+      "date": "2026-08-19",
+      "url": "https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html",
+      "description": "Deloitte’s team of economists examines news and trends from around the world.",
+      "topics": [
+        "Economics"
+      ],
+      "source_name": "Deloitte Insights",
+      "discovered_at": "2026-08-08T17:09:53Z",
+      "last_seen_at": "2026-08-21T02:37:11Z",
+      "published_at_source": "jsonld:datePublished",
+      "description_source": "meta",
+      "observation_mode": "direct-article",
+      "topic_method": "keyword-v2"
+    },
     {
       "id": "452a85a4c8a0358b",
       "company": "BCG",
@@ -153,24 +171,6 @@
       "source_name": "Deloitte Insights",
       "discovered_at": "2026-08-19T02:32:43Z",
       "last_seen_at": "2026-08-19T02:32:43Z",
-      "published_at_source": "jsonld:datePublished",
-      "description_source": "meta",
-      "observation_mode": "direct-article",
-      "topic_method": "keyword-v2"
-    },
-    {
-      "id": "097f00bd91c61706",
-      "company": "Deloitte",
-      "title": "What’s happening this week in economics?",
-      "date": "2026-08-10",
-      "url": "https://www.deloitte.com/us/en/insights/topics/economy/global-economic-outlook/weekly-update.html",
-      "description": "Deloitte’s team of economists examines news and trends from around the world.",
-      "topics": [
-        "Economics"
-      ],
-      "source_name": "Deloitte Insights",
-      "discovered_at": "2026-08-08T17:09:53Z",
-      "last_seen_at": "2026-08-16T06:17:36Z",
       "published_at_source": "jsonld:datePublished",
       "description_source": "meta",
       "observation_mode": "direct-article",
@@ -855,7 +855,7 @@
       ],
       "source_name": "PwC C-suite Insights",
       "discovered_at": "2026-08-14T04:04:54Z",
-      "last_seen_at": "2026-08-20T02:30:57Z",
+      "last_seen_at": "2026-08-21T02:37:11Z",
       "published_at_source": "visible-near-h1",
       "description_source": "meta",
       "observation_mode": "direct-article",

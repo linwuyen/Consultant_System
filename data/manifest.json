@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
-  "snapshot_id": "cd93b143db63d8cb",
-  "generated_at": "2026-08-20T02:34:12Z",
-  "content_updated_at": "2026-08-20T02:30:57Z",
-  "health_updated_at": "2026-08-20T02:33:09Z",
+  "snapshot_id": "d41f4def75f29e9e",
+  "generated_at": "2026-08-21T02:39:29Z",
+  "content_updated_at": "2026-08-21T02:37:11Z",
+  "health_updated_at": "2026-08-21T02:38:28Z",
   "overall_health": "healthy",
   "contract": "research-context-only",
   "score_influence": false,
@@ -13,45 +13,45 @@
       "latest_publication": "2026-07-30",
       "ingestion_status": "healthy",
       "observed_count": 5,
-      "last_success_at": "2026-08-20T02:33:09Z"
+      "last_success_at": "2026-08-21T02:38:28Z"
     },
     "BCG": {
       "records": 14,
       "latest_publication": "2026-08-18",
       "ingestion_status": "healthy",
       "observed_count": 6,
-      "last_success_at": "2026-08-20T02:33:09Z"
+      "last_success_at": "2026-08-21T02:38:28Z"
     },
     "Deloitte": {
       "records": 47,
-      "latest_publication": "2026-08-11",
+      "latest_publication": "2026-08-19",
       "ingestion_status": "healthy",
       "observed_count": 30,
-      "last_success_at": "2026-08-20T02:30:57Z"
+      "last_success_at": "2026-08-21T02:37:11Z"
     },
     "PwC": {
       "records": 5,
       "latest_publication": "2026-06-23",
       "ingestion_status": "healthy",
       "observed_count": 6,
-      "last_success_at": "2026-08-20T02:30:57Z"
+      "last_success_at": "2026-08-21T02:37:11Z"
     }
   },
   "artifacts": {
     "reports.json": {
-      "sha256": "e5a11e598df4cb962d842df37d9059e266365552c98be52ecde36fd34a223de5",
+      "sha256": "124a5198e57ba18d69137f34a0d7d05eaf842c9af418393002d7f97cefebb289",
       "bytes": 56261
     },
     "reports.csv": {
-      "sha256": "88f471a6d80f8f36321c07979e7e2ad893a576fb231a2a5a9a573775439383b2",
+      "sha256": "6ccd5990043a07b7f0293ff7070f44bc4995fd067447f21344e25cbb949c011d",
       "bytes": 32989
     },
     "consultant.db": {
-      "sha256": "c2a8470a4e1e1a2d80895dc8a011d15ce7869f26858ea2a4a7c0326194418573",
+      "sha256": "cde9c9e2ede59789cd7b6c9d435e8cbf7634a830298d488d8d88b0608c8103e0",
       "bytes": 143360
     },
     "source_health.json": {
-      "sha256": "a83c32d50a73eba3e878be269ec4a2a61eb3e2b5c0b4eb675b004255a51d3dc8",
+      "sha256": "86a50ff3856d2fb389351374bb65c528b5ef2e6603f70716e2a860eb7030bb15",
       "bytes": 3309
     }
   }
